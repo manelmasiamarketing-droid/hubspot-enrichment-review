@@ -56,7 +56,7 @@ app.post('/api/create-company', async (req, res) => {
 });
 
 // Creates the 3 custom properties (acceso_comercial_newsletter,
-// acuerdo_contacto_directo_firmado, fecha_firma_acuerdo_directo) if they
+// acuerdo_de_contacto_directo_firmado, fecha_firma_acuerdo_directo) if they
 // don't already exist. Schema-only -- touches no company records. Only
 // called from the explicit "Crear propiedades en HubSpot" button.
 app.post('/api/setup-properties', async (req, res) => {

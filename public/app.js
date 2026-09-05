@@ -105,7 +105,7 @@ function render() {
     const dateEl = document.querySelector(`.agreementDate[data-id="${id}"]`);
     const p = proposals.find((x) => String(x.companyId) === String(id));
     const existing = state.selected.get(id) || { ...p.proposed };
-    existing.acuerdo_contacto_directo_firmado = checkEl.checked ? 'true' : 'false';
+    existing.acuerdo_de_contacto_directo_firmado = checkEl.checked ? 'true' : 'false';
     if (dateEl.value) existing.fecha_firma_acuerdo_directo = dateEl.value;
     state.selected.set(id, existing);
     const rowCheck = document.querySelector(`.rowCheck[data-id="${id}"]`);
@@ -163,7 +163,7 @@ function updateSelectionSummary() {
 
 document.getElementById('refreshBtn').addEventListener('click', () => load(true));
 document.getElementById('setupPropsBtn').addEventListener('click', async () => {
-  if (!confirm('Esto crea (si no existen) 3 propiedades nuevas en HubSpot: acceso_comercial_newsletter, acuerdo_contacto_directo_firmado y fecha_firma_acuerdo_directo. No toca ningún dato de ninguna company. ¿Confirmas?')) return;
+  if (!confirm('Esto crea (si no existen) 3 propiedades nuevas en HubSpot: acceso_comercial_newsletter, acuerdo_de_contacto_directo_firmado y fecha_firma_acuerdo_directo. No toca ningún dato de ninguna company. ¿Confirmas?')) return;
   const btn = document.getElementById('setupPropsBtn');
   btn.disabled = true;
   btn.textContent = 'Creando…';
