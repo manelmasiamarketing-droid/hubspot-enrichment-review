@@ -9,14 +9,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Cached in memory for the process lifetime -- click "Actualizar" to refresh.
 let cache = null;
+let progress = { stage: 'idle', done: 0, total: null };
+
+app.get('/api/progress', (req, res) => res.json(progress));
 
 app.get('/api/proposals', async (req, res) => {
   try {
     if (!cache || req.query.refresh === '1') {
-      cache = await buildProposals();
+      progress = { stage: 'Iniciando…', done: 0, total: null };
+      cache = await buildProposals((p) => { progress = p; });
+      progress = { stage: 'idle', done: 0, total: null };
     }
     res.json(cache);
   } catch (e) {
+    progress = { stage: 'idle', done: 0, total: null };
     res.status(500).json({ error: String(e.message || e) });
   }
 });

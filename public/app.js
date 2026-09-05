@@ -14,8 +14,24 @@ const FIELD_LABELS = {
   industry_sector: 'Industry Sector',
 };
 
+function formatProgress(p) {
+  if (!p || p.stage === 'idle') return '';
+  const pct = p.total ? ` (${Math.round((p.done / p.total) * 100)}%)` : '';
+  return `${p.stage}${pct}`;
+}
+
 async function load(refresh) {
   document.getElementById('status').textContent = 'Cargando…';
+  document.getElementById('headerSummary').textContent = 'Cargando…';
+
+  const pollId = setInterval(async () => {
+    try {
+      const p = await (await fetch('/api/progress')).json();
+      const text = formatProgress(p);
+      if (text) document.getElementById('headerSummary').textContent = text;
+    } catch (e) { /* ignore -- purely cosmetic */ }
+  }, 700);
+
   try {
     const res = await fetch(`/api/proposals${refresh ? '?refresh=1' : ''}`);
     const body = await res.json();
@@ -30,6 +46,8 @@ async function load(refresh) {
   } catch (e) {
     document.getElementById('headerSummary').textContent = `Error de conexión: ${e.message}`;
     document.getElementById('status').textContent = '';
+  } finally {
+    clearInterval(pollId);
   }
 }
 
