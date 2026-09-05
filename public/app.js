@@ -8,7 +8,7 @@ const FIELD_LABELS = {
   tipo_de_empresa: 'Tipo de Empresa',
   company_score: 'Company Score',
   country: 'País',
-  acceso_comercial_newsletter: 'Acceso comercial / newsletter (propuesto — requiere crear la propiedad en HubSpot)',
+  acceso_comercial_newsletter: 'Acceso comercial / Newsletter',
 };
 
 async function load(refresh) {
@@ -81,25 +81,46 @@ function render() {
       ? `<div class="reasons">${p.reasons.map(escapeHtml).join('<br/>')}</div>` : '';
     const flagsHtml = p.policyFlags.length
       ? `<div class="flag">⚠ ${p.policyFlags.map(escapeHtml).join('<br/>⚠ ')}</div>` : '';
-    const isNewsletterOnly = Object.keys(p.proposed).every((f) => f === 'acceso_comercial_newsletter');
-    const checkboxDisabled = isNewsletterOnly ? 'disabled title="Requiere crear antes la propiedad en HubSpot"' : '';
+
+    const asEndClient = p.deviceInfo && p.deviceInfo.asEndClient;
+    const servedByExternalPartner = asEndClient && asEndClient.partner_group && !asEndClient.is_direct_channel;
+    const agreementHtml = servedByExternalPartner ? `
+      <div class="reasons" style="margin-top:8px;">
+        <label><input type="checkbox" class="agreementCheck" data-id="${p.companyId}" /> Acuerdo de contacto directo firmado</label>
+        <input type="date" class="agreementDate" data-id="${p.companyId}" style="margin-left:6px;" />
+      </div>` : '';
 
     tr.innerHTML = `
-      <td><input type="checkbox" class="rowCheck" data-id="${p.companyId}" ${checkboxDisabled} /></td>
+      <td><input type="checkbox" class="rowCheck" data-id="${p.companyId}" /></td>
       <td><a class="company-link" href="${p.url}" target="_blank">${escapeHtml(p.companyName)}</a></td>
       <td>${p.role || ''}</td>
-      <td>${fieldsHtml}${reasonsHtml}${flagsHtml}</td>
+      <td>${fieldsHtml}${reasonsHtml}${flagsHtml}${agreementHtml}</td>
       <td><span class="badge ${p.confidence}">${p.confidence}</span></td>
     `;
     rowsEl.appendChild(tr);
   }
+
+  function applyAgreementForRow(id) {
+    const checkEl = document.querySelector(`.agreementCheck[data-id="${id}"]`);
+    const dateEl = document.querySelector(`.agreementDate[data-id="${id}"]`);
+    const p = proposals.find((x) => String(x.companyId) === String(id));
+    const existing = state.selected.get(id) || { ...p.proposed };
+    existing.acuerdo_contacto_directo_firmado = checkEl.checked ? 'true' : 'false';
+    if (dateEl.value) existing.fecha_firma_acuerdo_directo = dateEl.value;
+    state.selected.set(id, existing);
+    const rowCheck = document.querySelector(`.rowCheck[data-id="${id}"]`);
+    if (rowCheck) rowCheck.checked = true;
+    updateSelectionSummary();
+  }
+  document.querySelectorAll('.agreementCheck, .agreementDate').forEach((el) => {
+    el.addEventListener('change', (e) => applyAgreementForRow(e.target.dataset.id));
+  });
 
   document.querySelectorAll('.rowCheck').forEach((cb) => {
     cb.addEventListener('change', (e) => {
       const id = e.target.dataset.id;
       const p = proposals.find((x) => String(x.companyId) === String(id));
       const writableProps = { ...p.proposed };
-      delete writableProps.acceso_comercial_newsletter; // proposal only, not a real HubSpot field yet
       if (e.target.checked) state.selected.set(id, writableProps);
       else state.selected.delete(id);
       updateSelectionSummary();
@@ -141,6 +162,22 @@ function updateSelectionSummary() {
 }
 
 document.getElementById('refreshBtn').addEventListener('click', () => load(true));
+document.getElementById('setupPropsBtn').addEventListener('click', async () => {
+  if (!confirm('Esto crea (si no existen) 3 propiedades nuevas en HubSpot: acceso_comercial_newsletter, acuerdo_contacto_directo_firmado y fecha_firma_acuerdo_directo. No toca ningún dato de ninguna company. ¿Confirmas?')) return;
+  const btn = document.getElementById('setupPropsBtn');
+  btn.disabled = true;
+  btn.textContent = 'Creando…';
+  const res = await fetch('/api/setup-properties', { method: 'POST' });
+  const out = await res.json();
+  btn.disabled = false;
+  btn.textContent = '⚙ Crear propiedades en HubSpot';
+  if (!out.ok) {
+    alert(`Error: ${out.error}`);
+    return;
+  }
+  alert(out.results.map((r) => `${r.name}: ${r.status}`).join('\n'));
+  load(true);
+});
 ['confidenceFilter', 'roleFilter', 'searchBox', 'onlyFlagged'].forEach((id) => {
   document.getElementById(id).addEventListener('input', () => { state.page = 0; render(); });
 });

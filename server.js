@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const { buildProposals } = require('./lib/proposals');
-const { updateCompany, createCompany } = require('./lib/hubspot');
+const { updateCompany, createCompany, setupCustomProperties } = require('./lib/hubspot');
 
 const app = express();
 app.use(express.json());
@@ -50,6 +50,20 @@ app.post('/api/create-company', async (req, res) => {
     const r = await createCompany(req.body.properties);
     cache = null;
     res.json({ ok: true, result: r });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: String(e.message || e) });
+  }
+});
+
+// Creates the 3 custom properties (acceso_comercial_newsletter,
+// acuerdo_contacto_directo_firmado, fecha_firma_acuerdo_directo) if they
+// don't already exist. Schema-only -- touches no company records. Only
+// called from the explicit "Crear propiedades en HubSpot" button.
+app.post('/api/setup-properties', async (req, res) => {
+  try {
+    const results = await setupCustomProperties();
+    cache = null;
+    res.json({ ok: true, results });
   } catch (e) {
     res.status(500).json({ ok: false, error: String(e.message || e) });
   }
