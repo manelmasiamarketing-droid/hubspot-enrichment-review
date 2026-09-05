@@ -9,6 +9,9 @@ const FIELD_LABELS = {
   company_score: 'Company Score',
   country: 'País',
   acceso_comercial_newsletter: 'Acceso comercial / Newsletter',
+  website: 'Website',
+  hs_employee_range: 'Tamaño (empleados)',
+  industry_sector: 'Industry Sector',
 };
 
 async function load(refresh) {
