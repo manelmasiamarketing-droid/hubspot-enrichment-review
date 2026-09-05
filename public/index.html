@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Revisión de enriquecimiento HubSpot — nsign</title>
+<style>
+  :root { color-scheme: light; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; margin: 0; background: #f5f6f8; color: #1a1a1a; }
+  header { background: #1a2b4c; color: #fff; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  header h1 { font-size: 18px; margin: 0; }
+  header .summary { font-size: 13px; opacity: .85; }
+  .toolbar { display: flex; gap: 8px; padding: 12px 24px; background: #fff; border-bottom: 1px solid #e2e4e8; flex-wrap: wrap; align-items: center; position: sticky; top: 0; z-index: 5; }
+  .toolbar select, .toolbar input[type=text] { padding: 6px 8px; border: 1px solid #d0d4da; border-radius: 6px; font-size: 13px; }
+  button { cursor: pointer; border: none; border-radius: 6px; padding: 8px 14px; font-size: 13px; font-weight: 600; }
+  button.primary { background: #2563eb; color: #fff; }
+  button.primary:disabled { background: #a9b7d1; cursor: not-allowed; }
+  button.ghost { background: #eef0f4; color: #1a2b4c; }
+  button.danger { background: #b91c1c; color: #fff; }
+  main { padding: 16px 24px 80px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+  th, td { padding: 8px 10px; border-bottom: 1px solid #eef0f4; font-size: 13px; text-align: left; vertical-align: top; }
+  th { background: #fafbfc; position: sticky; top: 53px; }
+  tr:hover { background: #f8fafc; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+  .badge.high { background: #dcfce7; color: #166534; }
+  .badge.medium { background: #fef9c3; color: #854d0e; }
+  .badge.low { background: #fee2e2; color: #991b1b; }
+  .field { margin-bottom: 4px; }
+  .field .name { color: #6b7280; }
+  .field .arrow { color: #9ca3af; margin: 0 4px; }
+  .field .new { color: #1d4ed8; font-weight: 600; }
+  .reasons { color: #6b7280; font-size: 12px; margin-top: 6px; }
+  .flag { color: #b91c1c; font-size: 12px; font-weight: 600; }
+  .company-link { color: #1a2b4c; font-weight: 600; text-decoration: none; }
+  .company-link:hover { text-decoration: underline; }
+  #applyBar { position: fixed; bottom: 0; left: 0; right: 0; background: #1a2b4c; color: #fff; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .unmatched-section { margin-top: 32px; }
+  .unmatched-section h2 { font-size: 15px; }
+  #status { font-size: 13px; color: #6b7280; margin-left: 8px; }
+  .note { background: #fffbeb; border: 1px solid #fde68a; color: #78350f; padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Revisión de enriquecimiento de HubSpot — nsign</h1>
+  <div class="summary" id="headerSummary">Cargando…</div>
+</header>
+
+<div class="toolbar">
+  <button class="ghost" id="refreshBtn">↻ Actualizar propuestas</button>
+  <select id="confidenceFilter">
+    <option value="">Todas las confianzas</option>
+    <option value="high">Alta</option>
+    <option value="medium">Media</option>
+    <option value="low">Baja</option>
+  </select>
+  <select id="roleFilter">
+    <option value="">Todos los roles</option>
+    <option value="end_client">Cliente final</option>
+    <option value="partner">Partner</option>
+    <option value="end_client+partner">Cliente + Partner</option>
+  </select>
+  <input type="text" id="searchBox" placeholder="Buscar empresa…" />
+  <label style="font-size:13px;"><input type="checkbox" id="onlyFlagged" /> Solo con excepción de política</label>
+  <span id="status"></span>
+</div>
+
+<main>
+  <div class="note">
+    Nada se aplica a HubSpot automáticamente. Marca las filas que quieras aplicar y usa el botón
+    <strong>“Verificar y aplicar a HubSpot”</strong> al final de la página — solo eso escribe datos.
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:24px;"><input type="checkbox" id="selectAll" /></th>
+        <th>Empresa</th>
+        <th>Rol detectado</th>
+        <th>Cambios propuestos</th>
+        <th>Confianza</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <div class="unmatched-section">
+    <h2>Clientes activos en el historial sin company en HubSpot (candidatos a crear)</h2>
+    <table>
+      <thead><tr><th>Cliente</th><th>Dispositivos activos</th><th>País</th><th>Vía</th><th></th></tr></thead>
+      <tbody id="unmatchedRows"></tbody>
+    </table>
+  </div>
+</main>
+
+<div id="applyBar">
+  <span id="selectionSummary">0 cambios seleccionados</span>
+  <button class="primary" id="applyBtn" disabled>Verificar y aplicar a HubSpot</button>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
