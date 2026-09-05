@@ -182,6 +182,14 @@ function updateSelectionSummary() {
   document.getElementById('applyBtn').disabled = state.selected.size === 0;
 }
 
+function syncToolbarHeight() {
+  const h = document.querySelector('.toolbar').getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--toolbar-height', `${Math.ceil(h)}px`);
+}
+syncToolbarHeight();
+window.addEventListener('resize', syncToolbarHeight);
+new ResizeObserver(syncToolbarHeight).observe(document.querySelector('.toolbar'));
+
 document.getElementById('refreshBtn').addEventListener('click', () => load(true));
 document.getElementById('setupPropsBtn').addEventListener('click', async () => {
   if (!confirm('Esto crea (si no existen) 3 propiedades nuevas en HubSpot: acceso_comercial_newsletter, acuerdo_de_contacto_directo_firmado y fecha_firma_acuerdo_directo. No toca ningún dato de ninguna company. ¿Confirmas?')) return;
