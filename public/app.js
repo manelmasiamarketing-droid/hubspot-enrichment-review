@@ -1,6 +1,7 @@
 const state = {
   data: null,
   selected: new Map(), // companyId -> properties object to apply
+  page: 0,
 };
 
 const FIELD_LABELS = {
@@ -56,10 +57,22 @@ function render() {
   document.getElementById('headerSummary').textContent =
     `${totalCompaniesScanned} companies escaneadas · ${proposals.length} con cambios propuestos · ${unmatchedClients.length} clientes sin match`;
 
+  const filtered = proposals.filter(passesFilters);
+  const pageSize = Number(document.getElementById('pageSize').value); // 0 = all
+  const totalPages = pageSize > 0 ? Math.max(1, Math.ceil(filtered.length / pageSize)) : 1;
+  state.page = Math.min(state.page, totalPages - 1);
+  const start = pageSize > 0 ? state.page * pageSize : 0;
+  const end = pageSize > 0 ? start + pageSize : filtered.length;
+  const pageItems = filtered.slice(start, end);
+
+  document.getElementById('pageIndicator').textContent =
+    pageSize > 0 ? `Página ${state.page + 1} de ${totalPages} (${filtered.length} filas)` : `${filtered.length} filas`;
+  document.getElementById('prevPage').disabled = state.page === 0;
+  document.getElementById('nextPage').disabled = state.page >= totalPages - 1;
+
   const rowsEl = document.getElementById('rows');
   rowsEl.innerHTML = '';
-  for (const p of proposals) {
-    if (!passesFilters(p)) continue;
+  for (const p of pageItems) {
     const tr = document.createElement('tr');
     const fieldsHtml = Object.entries(p.proposed)
       .map(([field, value]) => fieldRow(field, p.current[field], value))
@@ -129,8 +142,11 @@ function updateSelectionSummary() {
 
 document.getElementById('refreshBtn').addEventListener('click', () => load(true));
 ['confidenceFilter', 'roleFilter', 'searchBox', 'onlyFlagged'].forEach((id) => {
-  document.getElementById(id).addEventListener('input', render);
+  document.getElementById(id).addEventListener('input', () => { state.page = 0; render(); });
 });
+document.getElementById('pageSize').addEventListener('input', () => { state.page = 0; render(); });
+document.getElementById('prevPage').addEventListener('click', () => { state.page -= 1; render(); });
+document.getElementById('nextPage').addEventListener('click', () => { state.page += 1; render(); });
 document.getElementById('selectAll').addEventListener('change', (e) => {
   document.querySelectorAll('.rowCheck:not([disabled])').forEach((cb) => {
     cb.checked = e.target.checked;
