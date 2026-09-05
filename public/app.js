@@ -13,6 +13,7 @@ const FIELD_LABELS = {
   website: 'Website',
   hs_employee_range: 'Tamaño (empleados)',
   industry_sector: 'Industry Sector',
+  idioma: 'Idioma',
 };
 
 function formatProgress(p) {
@@ -75,9 +76,9 @@ function escapeHtml(s) {
 }
 
 function render() {
-  const { proposals, unmatchedClients, totalCompaniesScanned } = state.data;
+  const { proposals, unmatchedClients, unmatchedPartners, totalCompaniesScanned } = state.data;
   document.getElementById('headerSummary').textContent =
-    `${totalCompaniesScanned} companies escaneadas · ${proposals.length} con cambios propuestos · ${unmatchedClients.length} clientes sin match`;
+    `${totalCompaniesScanned} companies escaneadas · ${proposals.length} con cambios propuestos · ${unmatchedClients.length} clientes sin match · ${unmatchedPartners.length} partners sin match`;
 
   const filtered = proposals.filter(passesFilters);
   const pageSize = Number(document.getElementById('pageSize').value); // 0 = all
@@ -192,6 +193,36 @@ function render() {
       btn.textContent = out.ok ? 'Creada ✓' : 'Error';
     });
   });
+
+  const unmatchedPartnersEl = document.getElementById('unmatchedPartnerRows');
+  if (unmatchedPartnersEl) {
+    unmatchedPartnersEl.innerHTML = '';
+    for (const p of unmatchedPartners) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${escapeHtml(p.name)}</td>
+        <td>${p.active_devices}</td>
+        <td>${p.managed_client_count}</td>
+        <td><span class="badge low">${escapeHtml(p.suggestedTier)}</span></td>
+        <td><button class="ghost createPartnerBtn" data-name="${escapeHtml(p.name)}" data-tier="${escapeHtml(p.suggestedTier)}">Crear en HubSpot</button></td>
+      `;
+      unmatchedPartnersEl.appendChild(tr);
+    }
+    document.querySelectorAll('.createPartnerBtn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        if (!confirm(`¿Crear la company "${btn.dataset.name}" en HubSpot como Partner (Company Score: ${btn.dataset.tier})?`)) return;
+        btn.disabled = true;
+        btn.textContent = 'Creando…';
+        const res = await fetch('/api/create-company', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ properties: { name: btn.dataset.name, tipo_de_empresa: 'Partner', company_score: btn.dataset.tier } }),
+        });
+        const out = await res.json();
+        btn.textContent = out.ok ? 'Creada ✓' : 'Error';
+      });
+    });
+  }
 
   renderBranchClusters();
 }
