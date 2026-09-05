@@ -1,6 +1,7 @@
 const state = {
   data: null,
   selected: new Map(), // companyId -> properties object to apply
+  selectedAssociations: new Map(), // companyId -> { fromId, toId }
   page: 0,
 };
 
@@ -110,12 +111,18 @@ function render() {
         <label><input type="checkbox" class="agreementCheck" data-id="${p.companyId}" /> Acuerdo de contacto directo firmado</label>
         <input type="date" class="agreementDate" data-id="${p.companyId}" style="margin-left:6px;" />
       </div>` : '';
+    const associationsHtml = (p.proposedAssociations || []).map((a) => `
+      <div class="reasons" style="margin-top:8px;">
+        <label><input type="checkbox" class="assocCheck" data-id="${p.companyId}" data-target-id="${a.targetId}" />
+        🔗 Vincular con partner <a href="${a.targetUrl}" target="_blank">${escapeHtml(a.targetName)}</a></label>
+        <div style="margin-left:22px;">${escapeHtml(a.reason)}</div>
+      </div>`).join('');
 
     tr.innerHTML = `
       <td><input type="checkbox" class="rowCheck" data-id="${p.companyId}" /></td>
       <td><a class="company-link" href="${p.url}" target="_blank">${escapeHtml(p.companyName)}</a></td>
       <td>${p.role || ''}</td>
-      <td>${fieldsHtml}${reasonsHtml}${flagsHtml}${agreementHtml}</td>
+      <td>${fieldsHtml}${reasonsHtml}${flagsHtml}${agreementHtml}${associationsHtml}</td>
       <td><span class="badge ${p.confidence}">${p.confidence}</span></td>
     `;
     rowsEl.appendChild(tr);
@@ -135,6 +142,16 @@ function render() {
   }
   document.querySelectorAll('.agreementCheck, .agreementDate').forEach((el) => {
     el.addEventListener('change', (e) => applyAgreementForRow(e.target.dataset.id));
+  });
+
+  document.querySelectorAll('.assocCheck').forEach((cb) => {
+    cb.addEventListener('change', (e) => {
+      const id = e.target.dataset.id;
+      const targetId = e.target.dataset.targetId;
+      if (e.target.checked) state.selectedAssociations.set(id, { fromId: id, toId: targetId });
+      else state.selectedAssociations.delete(id);
+      updateSelectionSummary();
+    });
   });
 
   document.querySelectorAll('.rowCheck').forEach((cb) => {
@@ -175,11 +192,15 @@ function render() {
       btn.textContent = out.ok ? 'Creada ✓' : 'Error';
     });
   });
+
+  renderBranchClusters();
 }
 
 function updateSelectionSummary() {
-  document.getElementById('selectionSummary').textContent = `${state.selected.size} cambios seleccionados`;
-  document.getElementById('applyBtn').disabled = state.selected.size === 0;
+  const total = state.selected.size + state.selectedAssociations.size;
+  document.getElementById('selectionSummary').textContent =
+    `${state.selected.size} cambios · ${state.selectedAssociations.size} vínculos seleccionados`;
+  document.getElementById('applyBtn').disabled = total === 0;
 }
 
 function syncToolbarHeight() {
@@ -222,21 +243,75 @@ document.getElementById('selectAll').addEventListener('change', (e) => {
 
 document.getElementById('applyBtn').addEventListener('click', async () => {
   const updates = [...state.selected.entries()].map(([companyId, properties]) => ({ companyId, properties }));
-  if (!confirm(`Esto va a escribir ${updates.length} cambios en HubSpot ahora mismo. ¿Confirmas?`)) return;
+  const associations = [...state.selectedAssociations.values()];
+  if (!confirm(`Esto va a escribir ${updates.length} cambios y crear ${associations.length} vínculos en HubSpot ahora mismo. ¿Confirmas?`)) return;
   document.getElementById('applyBtn').disabled = true;
   document.getElementById('applyBtn').textContent = 'Aplicando…';
-  const res = await fetch('/api/apply', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ updates }),
-  });
-  const out = await res.json();
-  const failed = out.results.filter((r) => !r.ok);
-  alert(failed.length ? `${out.results.length - failed.length} aplicados, ${failed.length} fallaron (ver consola)` : `${out.results.length} cambios aplicados correctamente`);
-  if (failed.length) console.error(failed);
+
+  const allFailed = [];
+  if (updates.length) {
+    const res = await fetch('/api/apply', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ updates }),
+    });
+    const out = await res.json();
+    allFailed.push(...out.results.filter((r) => !r.ok));
+  }
+  if (associations.length) {
+    const res = await fetch('/api/apply-associations', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ associations }),
+    });
+    const out = await res.json();
+    allFailed.push(...out.results.filter((r) => !r.ok));
+  }
+
+  alert(allFailed.length
+    ? `${updates.length + associations.length - allFailed.length} aplicados, ${allFailed.length} fallaron (ver consola)`
+    : `${updates.length + associations.length} cambios aplicados correctamente`);
+  if (allFailed.length) console.error(allFailed);
   state.selected.clear();
+  state.selectedAssociations.clear();
   document.getElementById('applyBtn').textContent = 'Verificar y aplicar a HubSpot';
   load(true);
 });
+
+function renderBranchClusters() {
+  const { branchClusters, branchClustersWithoutParent } = state.data;
+  const el = document.getElementById('branchClusterRows');
+  if (!el) return;
+  el.innerHTML = '';
+  for (const cluster of branchClusters) {
+    const tr = document.createElement('tr');
+    const childrenHtml = cluster.children.map((c) => `<a href="${c.url}" target="_blank">${escapeHtml(c.name)}</a>`).join(', ');
+    tr.innerHTML = `
+      <td><a class="company-link" href="${cluster.parentUrl}" target="_blank">${escapeHtml(cluster.parentName)}</a></td>
+      <td>${childrenHtml} <span class="badge low">${cluster.children.length}</span></td>
+      <td><button class="ghost linkBranchesBtn" data-parent-id="${cluster.parentId}" data-child-ids="${cluster.children.map((c) => c.id).join(',')}">Vincular sucursales</button></td>
+    `;
+    el.appendChild(tr);
+  }
+  document.querySelectorAll('.linkBranchesBtn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const childIds = btn.dataset.childIds.split(',');
+      if (!confirm(`¿Vincular ${childIds.length} sucursales como hijas de esta company (jerarquía Parent/Child de HubSpot)?`)) return;
+      btn.disabled = true;
+      btn.textContent = 'Vinculando…';
+      const res = await fetch('/api/link-branches', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ parentId: btn.dataset.parentId, childIds }),
+      });
+      const out = await res.json();
+      const failed = out.results.filter((r) => !r.ok);
+      btn.textContent = failed.length ? `${failed.length} fallaron` : 'Vinculado ✓';
+      if (failed.length) console.error(failed);
+    });
+  });
+
+  const noParentEl = document.getElementById('branchClustersNoParent');
+  if (noParentEl) {
+    noParentEl.innerHTML = branchClustersWithoutParent.length
+      ? branchClustersWithoutParent.map((c) => `<li><strong>${escapeHtml(c.base)}</strong> (${c.children.length}): ${c.children.map(escapeHtml).join(', ')}</li>`).join('')
+      : '<li style="color:#9ca3af;">Ninguno</li>';
+  }
+}
 
 load(false);

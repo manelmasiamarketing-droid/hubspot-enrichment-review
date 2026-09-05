@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const { buildProposals } = require('./lib/proposals');
-const { updateCompany, createCompany, setupCustomProperties } = require('./lib/hubspot');
+const { updateCompany, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany } = require('./lib/hubspot');
 
 const app = express();
 app.use(express.json());
@@ -73,6 +73,49 @@ app.post('/api/setup-properties', async (req, res) => {
   } catch (e) {
     res.status(500).json({ ok: false, error: String(e.message || e) });
   }
+});
+
+// Creates plain company<->company associations (e.g. client <-> managing
+// partner). Only called from the explicit checkbox+apply flow for a row's
+// proposed association.
+app.post('/api/apply-associations', async (req, res) => {
+  const { associations } = req.body; // [{ fromId, toId }]
+  if (!Array.isArray(associations) || associations.length === 0) {
+    return res.status(400).json({ error: 'No associations provided' });
+  }
+  const results = [];
+  for (const a of associations) {
+    try {
+      await associateCompanies(a.fromId, a.toId);
+      results.push({ fromId: a.fromId, toId: a.toId, ok: true });
+    } catch (e) {
+      results.push({ fromId: a.fromId, toId: a.toId, ok: false, error: String(e.message || e) });
+    }
+  }
+  cache = null;
+  res.json({ results });
+});
+
+// Links branch companies (e.g. "FABORIT (Novapa)") as children of their
+// detected parent brand company using HubSpot's native Parent/Child Company
+// hierarchy. Only called from the explicit "Vincular sucursales" button per
+// cluster.
+app.post('/api/link-branches', async (req, res) => {
+  const { parentId, childIds } = req.body;
+  if (!parentId || !Array.isArray(childIds) || childIds.length === 0) {
+    return res.status(400).json({ error: 'parentId and childIds are required' });
+  }
+  const results = [];
+  for (const childId of childIds) {
+    try {
+      await associateParentChildCompany(parentId, childId);
+      results.push({ childId, ok: true });
+    } catch (e) {
+      results.push({ childId, ok: false, error: String(e.message || e) });
+    }
+  }
+  cache = null;
+  res.json({ results });
 });
 
 const port = process.env.PORT || 3000;
