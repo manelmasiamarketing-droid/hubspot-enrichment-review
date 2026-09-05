@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: hubspot-enrichment-review
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: HUBSPOT_TOKEN
+        sync: false
+      - key: HUBSPOT_PORTAL_ID
+        sync: false
+      - key: NODE_VERSION
+        value: 20
