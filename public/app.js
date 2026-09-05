@@ -12,10 +12,21 @@ const FIELD_LABELS = {
 
 async function load(refresh) {
   document.getElementById('status').textContent = 'Cargando…';
-  const res = await fetch(`/api/proposals${refresh ? '?refresh=1' : ''}`);
-  state.data = await res.json();
-  document.getElementById('status').textContent = '';
-  render();
+  try {
+    const res = await fetch(`/api/proposals${refresh ? '?refresh=1' : ''}`);
+    const body = await res.json();
+    if (!res.ok || body.error) {
+      document.getElementById('headerSummary').textContent = `Error: ${body.error || res.status}`;
+      document.getElementById('status').textContent = '';
+      return;
+    }
+    state.data = body;
+    document.getElementById('status').textContent = '';
+    render();
+  } catch (e) {
+    document.getElementById('headerSummary').textContent = `Error de conexión: ${e.message}`;
+    document.getElementById('status').textContent = '';
+  }
 }
 
 function passesFilters(p) {
