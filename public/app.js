@@ -14,7 +14,12 @@ const FIELD_LABELS = {
   hs_employee_range: 'Tamaño (empleados)',
   industry_sector: 'Industry Sector',
   idioma: 'Idioma',
+  estado_del_partner: 'Life-Cycle Stage',
+  company_countries: 'Country Location',
+  lifecyclestage: 'Lifecycle Stage',
 };
+
+const LIFECYCLESTAGE_LABELS = { '1741627641': 'Churn' };
 
 function formatProgress(p) {
   if (!p || p.stage === 'idle') return '';
@@ -65,10 +70,15 @@ function passesFilters(p) {
   return true;
 }
 
+function displayValue(field, value) {
+  if (field === 'lifecyclestage' && LIFECYCLESTAGE_LABELS[value]) return LIFECYCLESTAGE_LABELS[value];
+  return value;
+}
+
 function fieldRow(field, current, proposed) {
   return `<div class="field"><span class="name">${FIELD_LABELS[field] || field}:</span> ${
-    current ? `<span>${escapeHtml(current)}</span>` : '<span style="color:#9ca3af">(vacío)</span>'
-  }<span class="arrow">→</span><span class="new">${escapeHtml(proposed)}</span></div>`;
+    current ? `<span>${escapeHtml(displayValue(field, current))}</span>` : '<span style="color:#9ca3af">(vacío)</span>'
+  }<span class="arrow">→</span><span class="new">${escapeHtml(displayValue(field, proposed))}</span></div>`;
 }
 
 function escapeHtml(s) {

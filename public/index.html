@@ -115,9 +115,10 @@
   </select>
   <select id="roleFilter">
     <option value="">Todos los roles</option>
-    <option value="end_client">Cliente final</option>
     <option value="partner">Partner</option>
+    <option value="end_client">Cliente final</option>
     <option value="end_client+partner">Cliente + Partner</option>
+    <option value="ex_client">Exclientes (Churn)</option>
   </select>
   <input type="text" id="searchBox" placeholder="Buscar empresa…" />
   <label style="font-size:13px;"><input type="checkbox" id="onlyFlagged" /> Solo con excepción de política</label>
@@ -132,9 +133,19 @@
 
 <main>
   <div class="note">
-    Nada se aplica a HubSpot automáticamente. Marca las filas que quieras aplicar y usa el botón
-    <strong>“Verificar y aplicar a HubSpot”</strong> al final de la página — solo eso escribe datos.
+    Primero identificamos los partners (quién distribuye), y a partir de ahí se atribuyen los clientes que gestiona cada uno. Nada se aplica a HubSpot automáticamente.
+    Marca las filas que quieras aplicar y usa el botón <strong>“Verificar y aplicar a HubSpot”</strong> al final de la página — solo eso escribe datos.
   </div>
+
+  <div class="unmatched-section" style="margin-top:0;">
+    <h2>Paso 1 — Partners/resellers activos sin company en HubSpot (candidatos a crear)</h2>
+    <table>
+      <thead><tr><th>Partner</th><th>Dispositivos activos</th><th>Clientes gestionados</th><th>Tier sugerido</th><th></th></tr></thead>
+      <tbody id="unmatchedPartnerRows"></tbody>
+    </table>
+  </div>
+
+  <h2 style="font-size:14.5px; font-weight:700; color:var(--navy); margin:28px 0 12px;">Paso 2 — Revisión de cambios propuestos (partners primero, luego sus clientes)</h2>
   <table>
     <thead>
       <tr>
@@ -158,14 +169,6 @@
     <table>
       <thead><tr><th>Cliente</th><th>Dispositivos activos</th><th>País</th><th>Vía</th><th></th></tr></thead>
       <tbody id="unmatchedRows"></tbody>
-    </table>
-  </div>
-
-  <div class="unmatched-section">
-    <h2>Partners/resellers activos en el historial sin company en HubSpot (candidatos a crear)</h2>
-    <table>
-      <thead><tr><th>Partner</th><th>Dispositivos activos</th><th>Clientes gestionados</th><th>Tier sugerido</th><th></th></tr></thead>
-      <tbody id="unmatchedPartnerRows"></tbody>
     </table>
   </div>
 

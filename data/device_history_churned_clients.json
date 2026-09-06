@@ -1,0 +1,6548 @@
+{
+ ".": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": null,
+  "last_movement": "2022-12-22",
+  "partner_group": null,
+  "total_devices_ever": 42
+ },
+ "0": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2023-02-08",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "015900 - SWC GARE DE l'EST": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2024-04-26",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 12
+ },
+ "016987 - SWC - Gare Montparnasse à supprimer": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-01-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "017279 - GARE DU NORD - MAISON PRADIER": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-06-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "017821 - SWC  VERSAILLES CHANTIERS": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2023-09-14",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "026869 - AÉROPORT D'ORLY - EXKI": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "032042 - LA CHAPONNE COLUMBUS": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-04-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "12-MALAGA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-03-22",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "152 - APLUS INFORMATIQUE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "15906/15902 - Gare de l'Est - GJG à supprimer": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-27",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "16986 - MADO GARE MONTPARNASSE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2023-06-16",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "17501 - PARIS GARE DE LYON - PAUL QUAI 23": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": true,
+  "last_movement": "2023-05-12",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "19316 - Vero Beach": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2026-01-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "19990 - Palm Beach Gardens": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2026-01-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "25598 - RT1 PAUL [G5 bis]": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2023-07-04",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "25626 - ORY1 ZP HALL 3 - PAUL [G5]": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "26896 - BSL DEPARTS FR - PAUL [G4A bis] à supprimer": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-27",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "2789 Bolboreta Smart Lavandería": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-02-02",
+  "partner_group": "GIMAGE GROUP SL",
+  "total_devices_ever": 4
+ },
+ "2821 DENTOMEDIC PONFERRADA CENTRO INTEGRAL ESTETICO DENTAL SL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-12-01",
+  "partner_group": "GIMAGE GROUP SL",
+  "total_devices_ever": 2
+ },
+ "29s LALIGA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-03-31",
+  "partner_group": "SUTEC SISTEMAS SL",
+  "total_devices_ever": 42
+ },
+ "31795 - AIRE D'AUTHEZAT - PHILEAS": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2024-10-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "32048 - AIRE DE LA CHAPONNE - ARCHE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-01-26",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 12
+ },
+ "32055 - AIRE DE DOMMARTIN LES TOUL - ARCHE - SUPPRIME": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 14
+ },
+ "32090 - AIRE DE LA CHAPONNE - MARMITE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-04-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "32138 - AIRE DE LA FERTÉ - ARCHE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-01-26",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 10
+ },
+ "33303- Salle de restauration": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-04-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "33610 - HAUT FOREZ - COLUMBUS": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "36671 - AIRE DE BERCHEM - ARCHE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-06-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "36675 BERCHEM PHILEAS": {
+  "active_devices": 0,
+  "countries": [
+   "Luxembourg"
+  ],
+  "country": "Luxembourg",
+  "is_direct_channel": true,
+  "last_movement": "2025-06-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "38905 - AIRE DE VIRONVAY - A TABLE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-04-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 14
+ },
+ "38908 - VIRONVAY - RED HIPPO à supprimer": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-06-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "38942 - VITRAC PAUL [G4C]": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2023-10-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "3Fgym Ltd": {
+  "active_devices": 0,
+  "countries": [
+   "United Kingdom of Great Britain and Northern Ireland"
+  ],
+  "country": "United Kingdom of Great Britain and Northern Ireland",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-04",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "665 IKEA Las Rozas": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 54
+ },
+ "70605 - Mira Mesa": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2026-01-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "@ Unasigned Players": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-11-03",
+  "partner_group": "LUK HIAR SL",
+  "total_devices_ever": 16
+ },
+ "A SUPPRIME DE NSIGN": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2025-08-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 88
+ },
+ "ABACUS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 12
+ },
+ "AD Cap D’agde": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2025-03-27",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "AD PORT PIN ROLLAND": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2025-03-27",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "AD Vilanova": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-03-27",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "ADMINISTRADORA DE BIENES Y SUELOS 2000": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "AEROPUERTO BILBAO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-09-12",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 56
+ },
+ "AIRE D'URVILLERS - BÂTIMENT": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-27",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "AIRE DE BARCHON - BÂTIMENT": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "AIRE DE FRONTONNAIS - BÂTIMENT": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-01-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "AIRE DE GEVREY CHAMBERTIN EST - BÂTIMENT": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-12-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "AIRE DE LA CHAPONNE - BÂTIMENT": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-04-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "AL PASO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2023-08-21",
+  "partner_group": "SMART WORLD SMWR SA",
+  "total_devices_ever": 46
+ },
+ "ALDI": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-26",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "ALIEXPRESS - HUAWEI ESPAÑA - 55": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-11-15",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "ALVAREZ GÓMEZ - 138": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-03-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "ANTOJO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-02-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "ARAMARK": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "ARAMARK BBVA MADRID": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 18
+ },
+ "ARAMARK CORTEFIEL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "ARAMARK Mutua Madrid Open": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-10-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "ARAMARK Universidad Villanueva": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "AREAS  AEROPUERTOS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-02-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "AREAS FRANCE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 24
+ },
+ "AREAS SEDE": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": true,
+  "last_movement": "2024-01-15",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "AREPA CAFE": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-01-04",
+  "partner_group": "SMART WORLD SMWR SA",
+  "total_devices_ever": 2
+ },
+ "AROMA GASTRO BAR COLOMBIAN CAFE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 2
+ },
+ "ASIGNADOS A TRANTOR": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-06-08",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 16
+ },
+ "AUDEMARS PIGUET SUIZA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-11-25",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 16
+ },
+ "AVIA": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": true,
+  "last_movement": "2023-05-25",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "AYUNTAMIENTO DE PAMPLONA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-02-09",
+  "partner_group": "GRUPO IKAP ARABA SL",
+  "total_devices_ever": 10
+ },
+ "AYUNTAMIENTO DE TOLOSA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-07-24",
+  "partner_group": "GRUPO IKAP ARABA SL",
+  "total_devices_ever": 4
+ },
+ "AYUNTAMIENTO ESPLUGUES": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-11-12",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Alcácer": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 10
+ },
+ "Alinfinitum (Reduxo)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "Aljustrel": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2024-01-15",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 32
+ },
+ "Almodôvar": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 20
+ },
+ "Aquopolis": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 14
+ },
+ "AramarK PWC (Maroto)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "Aramark  Esade Creapolis": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Alianz Barcelona": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Aramark Alianz Madrid": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Aramark Aljavir": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Blanquerna, Barcelona": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark CaixaBank": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 10
+ },
+ "Aramark Carrefour": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-04-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Dupont Asturias": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "Aramark ElConxo": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-12-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Aramark Empresa CAE, Madrid": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Fremap": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Hospital 9 Octubre, Valencia": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-05-14",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Hospital Clínica Denia": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Hospital Nisa Pardo de Aravaca": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-09-12",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Hospital Poniente Almeria": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Hospital Universitario Sureste Arganda": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Lear": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Aramark MAPFRE Sant Cugat": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Aramark Marti Codolar": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Aramark Ntra. Sra. de América": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-09-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Palau Sant Jordi": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Platon": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-11-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Prisa": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Aramark Repsol Campus": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark SIEMENS 3 CANTOS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark SIEMENS GETAFE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Sabadell": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "Aramark SagradaFamilia": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Aramark San Rafael": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Santa María de los Negrales": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-01-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Santiago Compostela": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-04-13",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Soria": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark TORRESPACIO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Aramark Torre Mapfre": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "Aramark Universidad Jaume I": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 12
+ },
+ "Aramark Uriach": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Augusta Aficine": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 18
+ },
+ "Aveiras": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 20
+ },
+ "Ayuntamiento Don Benito": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-11-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "B&I - Aena Alicante": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-08-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "B&I - Amazon BCN 10": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-07",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "B&I - Amazon BCN 15": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-07",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "B&I - C.A.R. Granada": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "B&I - Indra": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-12-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "B&I - Lilly": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-02-08",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "B&I - Meetropolitan Ed. Colonial": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-01-08",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 12
+ },
+ "B&I - Mercedes (VIT)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-12-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "B&I - Roche (BCN)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2022-04-04",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "B&I Webhelp": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-12-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "B&I- 3M": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-05-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "B&I- Navantia Cadiz": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-03-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "B&I-Steelcase": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-06-11",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "B&i - NTT Data": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-09-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "B1TS": {
+  "active_devices": 0,
+  "countries": [
+   "Belgium"
+  ],
+  "country": "Belgium",
+  "is_direct_channel": true,
+  "last_movement": "2024-04-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "BAHCO - SNA EUROPE INDUSTRIES IBERIA, S.A. - 195": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-03-08",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "BAQUEIRA BERET": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-04-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 124
+ },
+ "BARRA ALTA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "BAT POLAND": {
+  "active_devices": 0,
+  "countries": [
+   "Poland"
+  ],
+  "country": "Poland",
+  "is_direct_channel": false,
+  "last_movement": "2026-05-31",
+  "partner_group": "ZEDIS SL",
+  "total_devices_ever": 8826
+ },
+ "BEN & JERRYS FAN PALMA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "BEN & JERRYS MARBELLA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "BEN & JERRYS P.MARITIM BCN": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-05-18",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 10
+ },
+ "BEN & JERRYS PRINCIPE PIO": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": true,
+  "last_movement": "2023-11-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "BEN & JERRY’S PORTA FERRISSA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "BIG TWINS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "BLOTENBERG Gmbh": {
+  "active_devices": 0,
+  "countries": [
+   "Germany"
+  ],
+  "country": "Germany",
+  "is_direct_channel": true,
+  "last_movement": "2023-02-15",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 12
+ },
+ "BLUEDEPEND CC ABRERA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "BNC": {
+  "active_devices": 0,
+  "countries": [
+   "Venezuela (Bolivarian Republic of)"
+  ],
+  "country": "Venezuela (Bolivarian Republic of)",
+  "is_direct_channel": false,
+  "last_movement": "2025-09-03",
+  "partner_group": "PANDA ID SOLUCIONES",
+  "total_devices_ever": 2
+ },
+ "BODEDIS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "BOGGI": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2023-06-16",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 2
+ },
+ "BORRAR 4": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": null,
+  "last_movement": "2022-04-11",
+  "partner_group": null,
+  "total_devices_ever": 4
+ },
+ "BORRAR 7": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": null,
+  "last_movement": "2022-02-09",
+  "partner_group": null,
+  "total_devices_ever": 4
+ },
+ "BORRAR Austria All stores": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": true,
+  "last_movement": "2022-11-22",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "BOSTON WEAR": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-11-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "BOUNTY": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 16
+ },
+ "BRA3 JCDC s.r.o.": {
+  "active_devices": 0,
+  "countries": [
+   "Czech Republic"
+  ],
+  "country": "Czech Republic",
+  "is_direct_channel": false,
+  "last_movement": "2026-05-31",
+  "partner_group": "RICOH CZECH REPUBLIC",
+  "total_devices_ever": 6
+ },
+ "BUPORT GRUP, SL.": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-06-03",
+  "partner_group": "CBCN SOLUCIONES Y EQUIPOS MULTIFUNCIONALES SL",
+  "total_devices_ever": 2
+ },
+ "BY PILLOW": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-12-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Banco Solidario": {
+  "active_devices": 0,
+  "countries": [
+   "Ecuador"
+  ],
+  "country": "Ecuador",
+  "is_direct_channel": true,
+  "last_movement": "2024-08-28",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 16
+ },
+ "Barcelos": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "Base - Sandro Sport - 197": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-05-30",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "Base Betanzos - TODO DEPORTE - 159": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-01-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "Base Calahorra - AMELIA GARCIA SL - 75": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-04-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "Base Loix - LOIX SPORT SL - 83": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-04-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 14
+ },
+ "Base Mataró - JOSÉ LANCHO S.L. - 198": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-03-30",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "Base Natalia - MEMCAS - 60": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-01-13",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 88
+ },
+ "Base Santa Gema - HEREDEROS DE A.M.B, S.L.": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-04-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 22
+ },
+ "Beach Club": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-10-14",
+  "partner_group": "LUK HIAR SL",
+  "total_devices_ever": 4
+ },
+ "Bechtle AG": {
+  "active_devices": 0,
+  "countries": [
+   "Switzerland"
+  ],
+  "country": "Switzerland",
+  "is_direct_channel": false,
+  "last_movement": "2025-03-24",
+  "partner_group": "Bechtle direct Ltd",
+  "total_devices_ever": 6
+ },
+ "BigMat": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Birdie": {
+  "active_devices": 0,
+  "countries": [
+   "Jordan"
+  ],
+  "country": "Jordan",
+  "is_direct_channel": false,
+  "last_movement": "2025-10-01",
+  "partner_group": "RINA GHANDOUR ESTABLISHMENT",
+  "total_devices_ever": 2
+ },
+ "Borrar": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": null,
+  "last_movement": "2023-01-02",
+  "partner_group": null,
+  "total_devices_ever": 2
+ },
+ "Borrar - Deutsche Bank(DEMO)": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-07-07",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "C.C. Alisios": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-04-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "C0001 - 44 segundos": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-08-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "CAFETERIA CRISTIANOS SEBAS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 4
+ },
+ "CANADA HOUSE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "CAPRICHOSA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 2
+ },
+ "CARNES SAN MARTIN": {
+  "active_devices": 0,
+  "countries": [
+   "Nicaragua"
+  ],
+  "country": "Nicaragua",
+  "is_direct_channel": null,
+  "last_movement": "2024-02-07",
+  "partner_group": null,
+  "total_devices_ever": 4
+ },
+ "CARTE D'OR - BOADILLA DEL MONTE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-03-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "CARTE D'OR - LESSEPS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "CARTE D'OR - PUERTO DEL CARMEN": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "CARTE D'OR TORREMOLINOS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-04-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "CARTE D'OR YECLA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-04-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "CARTE D´OR CALLE CARRETAS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-06-08",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "CARTE D´OR TOLEDO": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": true,
+  "last_movement": "2023-10-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "CBCN SOLUCIONES Y EQUIPOS MULTIFUNCIONALES": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-06-03",
+  "partner_group": "CBCN SOLUCIONES Y EQUIPOS MULTIFUNCIONALES SL",
+  "total_devices_ever": 6
+ },
+ "CC Terrassa - Supermercats Tello": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "CCEPTV": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 102
+ },
+ "CEFETRA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "CETELEM": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-03-04",
+  "partner_group": "GIMAGE GROUP SL",
+  "total_devices_ever": 2
+ },
+ "CGMEDIA": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2026-03-26",
+  "partner_group": "SASU INFOWAY SAS",
+  "total_devices_ever": 4
+ },
+ "CHOROTEGA": {
+  "active_devices": 0,
+  "countries": [
+   "Honduras"
+  ],
+  "country": "Honduras",
+  "is_direct_channel": false,
+  "last_movement": "2026-02-02",
+  "partner_group": "MYM PUBLICIDAD A SU ALCANCE SA",
+  "total_devices_ever": 90
+ },
+ "CINES PLAZA CADIZ": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-04-04",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 18
+ },
+ "CINNIA TECH": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-01-16",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "CIRICI FARMACIA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "CLAROR": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "CLÍNICA CORACHAN": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-27",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 12
+ },
+ "COCA COLA - KOLab": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2025-12-31",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 22
+ },
+ "COCA COLA FR.": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2025-12-31",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 86
+ },
+ "COCINA DE ROBERTO": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2026-06-30",
+  "partner_group": "MYM PUBLICIDAD A SU ALCANCE SA",
+  "total_devices_ever": 8
+ },
+ "COMING2": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-07-01",
+  "partner_group": "SUTEC SISTEMAS SL",
+  "total_devices_ever": 76
+ },
+ "COMPAÑÍA DEL TRÓPICO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "COMPUNETWORK SAS": {
+  "active_devices": 0,
+  "countries": [
+   "Colombia"
+  ],
+  "country": "Colombia",
+  "is_direct_channel": true,
+  "last_movement": "2024-08-27",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "CRUZ LORENA": {
+  "active_devices": 0,
+  "countries": [
+   "Nicaragua"
+  ],
+  "country": "Nicaragua",
+  "is_direct_channel": true,
+  "last_movement": "2024-12-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "CUENTA GENERAL BORRAR": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": null,
+  "last_movement": "2024-11-21",
+  "partner_group": null,
+  "total_devices_ever": 8
+ },
+ "CURRITO BURRITO": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2025-02-26",
+  "partner_group": "SAFCO SYSTEMS INC",
+  "total_devices_ever": 6
+ },
+ "CZECHOSLOVAKIA - Dominos": {
+  "active_devices": 0,
+  "countries": [
+   "Czech Republic"
+  ],
+  "country": "Czech Republic",
+  "is_direct_channel": true,
+  "last_movement": "2022-01-11",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "Cafe Barista": {
+  "active_devices": 0,
+  "countries": [
+   "Curaçao"
+  ],
+  "country": "Curaçao",
+  "is_direct_channel": false,
+  "last_movement": "2025-06-17",
+  "partner_group": "AVI-TECH",
+  "total_devices_ever": 6
+ },
+ "Café las Flores": {
+  "active_devices": 0,
+  "countries": [
+   "Nicaragua"
+  ],
+  "country": "Nicaragua",
+  "is_direct_channel": true,
+  "last_movement": "2026-04-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 18
+ },
+ "Castrosua EMT": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2023-12-11",
+  "partner_group": "LUK HIAR SL",
+  "total_devices_ever": 34
+ },
+ "Charter": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2024-06-10",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 2
+ },
+ "Cines Monumental Almeria": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-04-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "Cityriza": {
+  "active_devices": 0,
+  "countries": [
+   "Germany"
+  ],
+  "country": "Germany",
+  "is_direct_channel": false,
+  "last_movement": "2026-03-31",
+  "partner_group": "Cloudriza UG",
+  "total_devices_ever": 40
+ },
+ "Cliente B": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Collège LaSalle - Montréal": {
+  "active_devices": 0,
+  "countries": [
+   "Canada"
+  ],
+  "country": "Canada",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 62
+ },
+ "Comercial Kywi S.A.": {
+  "active_devices": 0,
+  "countries": [
+   "Ecuador"
+  ],
+  "country": "Ecuador",
+  "is_direct_channel": false,
+  "last_movement": "2026-05-31",
+  "partner_group": "TVEEZ ECUADOR SA",
+  "total_devices_ever": 20
+ },
+ "DANONE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 12
+ },
+ "DEMO GRUPO INTE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 2
+ },
+ "DEMO LATAM": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-02-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "DEMO NSIGN ALEJANDRO": {
+  "active_devices": 0,
+  "countries": [
+   "Ecuador"
+  ],
+  "country": "Ecuador",
+  "is_direct_channel": true,
+  "last_movement": "2025-12-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "DEMO NSIGN INTERNO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-11-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "DGFX": {
+  "active_devices": 0,
+  "countries": [
+   "Romania"
+  ],
+  "country": "Romania",
+  "is_direct_channel": false,
+  "last_movement": "2026-01-31",
+  "partner_group": "ZEDIS SL",
+  "total_devices_ever": 32
+ },
+ "DIEGO SOFTMEDIA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 2
+ },
+ "DNA Cascais": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Demo Jesús Pastor": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2022-07-25",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 26
+ },
+ "Dr. Simi Analisis Clinicos": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-25",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 8
+ },
+ "EDAUTO ELIANA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "EDUCA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2022-11-08",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "EL RINCÓN DEL PAN": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-10-31",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 76
+ },
+ "EL SALON DE LA BELLEZA - ADELA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 2
+ },
+ "EL TIO PIO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "EL WORK CAFE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 2
+ },
+ "EMACSA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "ENERSIDE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-05-07",
+  "partner_group": "CBCN SOLUCIONES Y EQUIPOS MULTIFUNCIONALES SL",
+  "total_devices_ever": 12
+ },
+ "ESIC": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 114
+ },
+ "ETEL Automotive Academy": {
+  "active_devices": 0,
+  "countries": [
+   "United Kingdom of Great Britain and Northern Ireland"
+  ],
+  "country": "United Kingdom of Great Britain and Northern Ireland",
+  "is_direct_channel": false,
+  "last_movement": "2025-08-12",
+  "partner_group": "SCAN COMPUTERS INTERNATIONAL LTD",
+  "total_devices_ever": 22
+ },
+ "EUROPASTRY": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-11-13",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "EVENT CORNER": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2026-02-02",
+  "partner_group": "SAS CGMEDIA",
+  "total_devices_ever": 2
+ },
+ "EXTRAVIADOS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2023-09-29",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 6
+ },
+ "Easo": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-03-20",
+  "partner_group": "GRUPO IKAP ARABA SL",
+  "total_devices_ever": 2
+ },
+ "Edificio Ilumina": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-07",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Educa - Bites San Pablo CEU (Sevilla)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-26",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Educa - Lycée Français (BCN)": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": true,
+  "last_movement": "2023-07-04",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Educa- UAB Bellaterra": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-12-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Eivissa Aficine": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 18
+ },
+ "Elche": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-04-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 8
+ },
+ "FACTORY": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2024-06-10",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 4
+ },
+ "FARMACIA MIRABAL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-04",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "FAUNIA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "FC SLOVAN LIBEREC a.s.": {
+  "active_devices": 0,
+  "countries": [
+   "Czech Republic"
+  ],
+  "country": "Czech Republic",
+  "is_direct_channel": false,
+  "last_movement": "2025-07-31",
+  "partner_group": "RICOH CZECH REPUBLIC",
+  "total_devices_ever": 2
+ },
+ "FERIAS NSIGN": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": null,
+  "last_movement": "2024-03-14",
+  "partner_group": null,
+  "total_devices_ever": 2
+ },
+ "FERRER SEGUROS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "FERRERO": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2025-12-31",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 24
+ },
+ "FICOHSA": {
+  "active_devices": 0,
+  "countries": [
+   "El Salvador"
+  ],
+  "country": "El Salvador",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 22
+ },
+ "FINESTRELLES": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 10
+ },
+ "FINLANDIA": {
+  "active_devices": 0,
+  "countries": [
+   "Finland"
+  ],
+  "country": "Finland",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 12
+ },
+ "FLORENCIA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-09-17",
+  "partner_group": "CUSTOM PROJECT GLOBAL DESIGN SL",
+  "total_devices_ever": 6
+ },
+ "FRANC PORT ANDORRA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "FRANCESC GÓMEZ DEMO": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": null,
+  "last_movement": "2025-02-19",
+  "partner_group": null,
+  "total_devices_ever": 2
+ },
+ "Farmacias Medco Xolotlan": {
+  "active_devices": 0,
+  "countries": [
+   "Nicaragua"
+  ],
+  "country": "Nicaragua",
+  "is_direct_channel": false,
+  "last_movement": "2026-04-30",
+  "partner_group": "DIGIKLOUD NICARAGUA",
+  "total_devices_ever": 32
+ },
+ "GESWORK DIGITAL MEDIA SL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-01-07",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 96
+ },
+ "GILAUTO - 258": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-01-07",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "GINSA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "GIRO": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2024-11-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 10
+ },
+ "GMG Comercial Nicaragua S,A": {
+  "active_devices": 0,
+  "countries": [
+   "Nicaragua"
+  ],
+  "country": "Nicaragua",
+  "is_direct_channel": true,
+  "last_movement": "2023-01-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "GOOD NEWS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-22",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "GREENALIA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-09-01",
+  "partner_group": "SUTEC SISTEMAS SL",
+  "total_devices_ever": 6
+ },
+ "GRUPO RECOLETAS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 22
+ },
+ "GRUPO SFERA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-07-31",
+  "partner_group": "SUTEC SISTEMAS SL",
+  "total_devices_ever": 8
+ },
+ "General DABA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-02-22",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "Goldbeck - HU": {
+  "active_devices": 0,
+  "countries": [
+   "Hungary"
+  ],
+  "country": "Hungary",
+  "is_direct_channel": false,
+  "last_movement": "2026-06-30",
+  "partner_group": "DIGITAL STRAZCE S.R.O.",
+  "total_devices_ever": 32
+ },
+ "Grupo OM": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Grândola": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 20
+ },
+ "HEARUSA": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2025-11-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 114
+ },
+ "HLA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-10-14",
+  "partner_group": "LUK HIAR SL",
+  "total_devices_ever": 20
+ },
+ "HMY Valladolid": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2022-08-08",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "HOSPITAL ANGELES PEDREGAL": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2026-05-31",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 4
+ },
+ "HOSPITAL UNIVERSITARI VALL D'HEBRON": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-11-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 132
+ },
+ "HOTEL TROPIC PARK": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-10-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "HUAWEI HOLANDA - Huawei Technologies Netherlands - 67": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-10-04",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "HUBSIDE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2023-01-09",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 14
+ },
+ "Hans Kolb Wellpappe GmbH & Co. KG": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": null,
+  "last_movement": "2024-11-21",
+  "partner_group": null,
+  "total_devices_ever": 2
+ },
+ "Haribo": {
+  "active_devices": 0,
+  "countries": [
+   "Germany"
+  ],
+  "country": "Germany",
+  "is_direct_channel": false,
+  "last_movement": "2026-06-01",
+  "partner_group": "Sterlix GmbH",
+  "total_devices_ever": 10
+ },
+ "Hiperber, EUROMADI": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Hotel & Spa Neptuno Calella": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-04-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Hotel Universal": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 10
+ },
+ "Huawei Barcelona Granvia": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-01-23",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 10
+ },
+ "Huawei CC Xanadú": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-11-15",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 8
+ },
+ "Huawei Flagship BCN": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-05-19",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 34
+ },
+ "Huawei Flagship MAD": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-05-19",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 48
+ },
+ "Huawei La Gavia": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-01-23",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 14
+ },
+ "Huawei Lisboa": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-01-23",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 8
+ },
+ "Huawei Madrid Pp Vergara": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-01-23",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "Huawei Majadahonda": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-06-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 6
+ },
+ "Huawei Malaga": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-11-15",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "Huawei Paris": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-10-04",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "Huawei Paris Creteil Soleil": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-01-23",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 10
+ },
+ "Huawei Stratford": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-01-23",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 8
+ },
+ "ICT": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 50
+ },
+ "IFT": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2026-01-08",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 58
+ },
+ "IKEA AVIGNON": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA BAYONNE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA BORDEAUX": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "IKEA BREST": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA CAEN": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA CLERMONT FERRAND": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA DIJON": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "IKEA ESPAÑA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-10-14",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA EVRY": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA FRANCONVILLE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA GRAND PARILLY": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA GRENOBLE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA HENIN BEAMONT": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA KUWAIT": {
+  "active_devices": 0,
+  "countries": [
+   "Kuwait"
+  ],
+  "country": "Kuwait",
+  "is_direct_channel": true,
+  "last_movement": "2025-10-14",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA LA VALENTINE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA LOMME": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "IKEA METZ": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA MONTPELLIER": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA MULHOUSE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "IKEA NANTES": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA PARIS NORD": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-01-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA PLAISIR": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA REIMS": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA RENNES": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA ROUEN": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA STRASBOURG": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA THIAIS": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA TOULON": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA TOULOUSE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA TOURS": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA VILLIERS SUR MARNE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IKEA VITROLLES": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "INNOVA VISION": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "INTERACTIVO": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": true,
+  "last_movement": "2024-11-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "INTEXT": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "IVS Ibérica (Reduxo)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Isoft Sanidad": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-02-26",
+  "partner_group": "ONEDIRECT COMUNICACIONES S.L.",
+  "total_devices_ever": 2
+ },
+ "JOMAFRA SYSTEMS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-06-01",
+  "partner_group": "JOMAFRA SYSTEMS SLU",
+  "total_devices_ever": 2
+ },
+ "JOVENA": {
+  "active_devices": 0,
+  "countries": [
+   "Madagascar"
+  ],
+  "country": "Madagascar",
+  "is_direct_channel": false,
+  "last_movement": "2024-01-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 20
+ },
+ "Jordi": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": null,
+  "last_movement": "2024-04-30",
+  "partner_group": null,
+  "total_devices_ever": 4
+ },
+ "KABUT": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": true,
+  "last_movement": "2023-05-16",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 14
+ },
+ "KANALI": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-09-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "KAVE HOME": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "KINEZIS": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2026-05-31",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 122
+ },
+ "KINGSPAN": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-03-10",
+  "partner_group": "MEDIA MARKT SATURN SAU",
+  "total_devices_ever": 2
+ },
+ "KIROLAK": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-03-20",
+  "partner_group": "GRUPO IKAP ARABA SL",
+  "total_devices_ever": 4
+ },
+ "KOALA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 48
+ },
+ "KRISPY KREME": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2023-09-20",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 6
+ },
+ "Kantoor Hengelo (IP linq)": {
+  "active_devices": 0,
+  "countries": [
+   "Netherlands"
+  ],
+  "country": "Netherlands",
+  "is_direct_channel": false,
+  "last_movement": "2024-03-11",
+  "partner_group": "IP LINQ",
+  "total_devices_ever": 2
+ },
+ "Kontur": {
+  "active_devices": 0,
+  "countries": [
+   "Germany"
+  ],
+  "country": "Germany",
+  "is_direct_channel": false,
+  "last_movement": "2025-04-30",
+  "partner_group": "AACHEN Design",
+  "total_devices_ever": 2
+ },
+ "LA CROISSANTERIE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2025-06-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "LA FÁBRICA DE EMPANADAS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "LA GITANA LOCA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "LA PANERIA (SAN MARTIN GUATEMALA)": {
+  "active_devices": 0,
+  "countries": [
+   "Guatemala"
+  ],
+  "country": "Guatemala",
+  "is_direct_channel": false,
+  "last_movement": "2025-03-12",
+  "partner_group": "DTSOLUTIONS S.A.",
+  "total_devices_ever": 32
+ },
+ "LA VERDOSA DE CANARIAS SL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 6
+ },
+ "LA XAIRA ALICANTINA S.L. - 237": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-11-25",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "LANZADERA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-07-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 40
+ },
+ "LAS DE PICHI": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": null,
+  "last_movement": "2025-03-03",
+  "partner_group": null,
+  "total_devices_ever": 4
+ },
+ "LCI. Barcelona": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-11-03",
+  "partner_group": "PUBLI-VIP DIGITAL SL",
+  "total_devices_ever": 28
+ },
+ "LE MESS": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2024-11-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "LECLERC": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2023-01-23",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "LED360": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-06-16",
+  "partner_group": "LED 360 SNC DI MINEO BRYAN&C",
+  "total_devices_ever": 2
+ },
+ "LIBRARIE SAURAMPS": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2023-06-30",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 68
+ },
+ "LIFE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 4
+ },
+ "LIVERPOOL": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2025-10-01",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 12
+ },
+ "LOU'S FOOD REPUBLIC (SIAM MALL)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 8
+ },
+ "LUTX CORPORACIO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-07-01",
+  "partner_group": "TD SYNNEX SPAIN SL UNIP",
+  "total_devices_ever": 22
+ },
+ "Laugardalshöll": {
+  "active_devices": 0,
+  "countries": [
+   "Iceland"
+  ],
+  "country": "Iceland",
+  "is_direct_channel": null,
+  "last_movement": "2025-02-27",
+  "partner_group": null,
+  "total_devices_ever": 12
+ },
+ "Leiria": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 24
+ },
+ "Lineal Oral B - 92": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-10-05",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "Lodging Apartments": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-25",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Londoner": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-08-01",
+  "partner_group": "LUK HIAR SL",
+  "total_devices_ever": 4
+ },
+ "MAESTRANZA DE SEVILLA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-03-20",
+  "partner_group": "GRUPO IKAP ARABA SL",
+  "total_devices_ever": 2
+ },
+ "MAHOU SAN MIGUEL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-08-06",
+  "partner_group": "LUK HIAR SL",
+  "total_devices_ever": 4
+ },
+ "MAISON KAYSER": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2024-06-10",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 18
+ },
+ "MARTI VIDEO": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2022-03-12",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 2
+ },
+ "MATCHA CREW": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-02-02",
+  "partner_group": "INSTAL LACIONS I SUPORT INFORMATIC BCN",
+  "total_devices_ever": 2
+ },
+ "MERCADO DE ANTÓN MARTÍN": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-12-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "MERCADO DE LAS AGUILAS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-09-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 22
+ },
+ "MERCADO VILLA DE VALLECAS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-09-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 10
+ },
+ "MEVALI RESTAURANCIÓN SL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 2
+ },
+ "MIAMI CLINICAL RESEARCH": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2025-11-05",
+  "partner_group": "SAFCO SYSTEMS INC",
+  "total_devices_ever": 106
+ },
+ "MOBO GROUP": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2026-04-30",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 1402
+ },
+ "MORTERO & PICADA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-07",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "MR CHURRO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 4
+ },
+ "MULTI INFORMATICA LAS PALMAS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 16
+ },
+ "MULTIVIA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-03-02",
+  "partner_group": "GIMAGE GROUP SL",
+  "total_devices_ever": 4
+ },
+ "MUNICH": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-11-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 56
+ },
+ "Madrid - Francisca Delgado 11 (Azotea)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-04-01",
+  "partner_group": "LUK HIAR SL",
+  "total_devices_ever": 2
+ },
+ "Madrid - Francisca Delgado 11 (Tótem)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-04-01",
+  "partner_group": "LUK HIAR SL",
+  "total_devices_ever": 2
+ },
+ "Manacor Aficine": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 20
+ },
+ "Mariners Take Away - (nsign.tv support please delete this client account)": {
+  "active_devices": 0,
+  "countries": [
+   "Malta"
+  ],
+  "country": "Malta",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "Maskom, EUROMADI": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 92
+ },
+ "Mealhada": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 20
+ },
+ "Mercat de Maó (Reduxo)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Mirko DEMO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-19",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Mirko demo 4": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2023-11-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Multicines Tenerife": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-04-11",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 10
+ },
+ "Musgrave, Tenerife": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-02-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "NAOS Poland": {
+  "active_devices": 0,
+  "countries": [
+   "Poland"
+  ],
+  "country": "Poland",
+  "is_direct_channel": true,
+  "last_movement": "2024-05-09",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "NEUMÁTICOS QUINTANA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-06-30",
+  "partner_group": "TD SYNNEX SPAIN SL UNIP",
+  "total_devices_ever": 4
+ },
+ "NHS North West London": {
+  "active_devices": 0,
+  "countries": [
+   "United Kingdom of Great Britain and Northern Ireland"
+  ],
+  "country": "United Kingdom of Great Britain and Northern Ireland",
+  "is_direct_channel": false,
+  "last_movement": "2023-10-04",
+  "partner_group": "SCAN COMPUTERS INTERNATIONAL LTD",
+  "total_devices_ever": 2
+ },
+ "NIGELSAN DIGITAL SIGNAGE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2026-06-01",
+  "partner_group": "NIGELSAN DIGITAL SIGNAGE",
+  "total_devices_ever": 6
+ },
+ "NIKE": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2023-06-15",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 2
+ },
+ "NORAUTO FRANCE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-08",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "NSIGN.TV QUEUE MANAGEMENT OLD": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-25",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "NUÑEZ DE ARENAS - 33": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-04-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 16
+ },
+ "Natural Barbers 2022 S.L": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-11-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Neocine CC Vega Pz. Molina de Segura": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-03-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Nickelodeon Madrid": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-25",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Nickelodeon Murcia": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-25",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "ORIGENS DOURO": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "ORTODONCIA MÁLAGA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "OXXO GAS": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2025-03-07",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 2
+ },
+ "Ocimax Palma Aficine": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2022-07-15",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Office": {
+  "active_devices": 0,
+  "countries": [
+   "Panama"
+  ],
+  "country": "Panama",
+  "is_direct_channel": false,
+  "last_movement": "2024-10-10",
+  "partner_group": "TVEEZ ECUADOR SA",
+  "total_devices_ever": 2
+ },
+ "OpenTram": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-05-12",
+  "partner_group": "CBCN SOLUCIONES Y EQUIPOS MULTIFUNCIONALES SL",
+  "total_devices_ever": 2
+ },
+ "Oppo Dusseldorf Showroom": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-01-23",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "Oppo ECIS": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-09-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 12
+ },
+ "Oppo Store Lyon": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-01-23",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "Oppo Weu Retail": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-10-04",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "P-KAP Pádel": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-09-30",
+  "partner_group": "GIMAGE GROUP SL",
+  "total_devices_ever": 30
+ },
+ "PACIFIC PALISADES": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2024-11-19",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 2
+ },
+ "PANADERIA LA TECLEÑA": {
+  "active_devices": 0,
+  "countries": [
+   "El Salvador"
+  ],
+  "country": "El Salvador",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 20
+ },
+ "PARQUE Madrid General": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-25",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "PASTELERIA VALERY": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 20
+ },
+ "PEIXOS PUIGNAU": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2022-09-13",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "PEPSICO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2022-07-13",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "PERFUMERIAS FACIAL - BOMARI SL - 46": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-09-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 8
+ },
+ "PH Allure": {
+  "active_devices": 0,
+  "countries": [
+   "Panama"
+  ],
+  "country": "Panama",
+  "is_direct_channel": false,
+  "last_movement": "2025-12-31",
+  "partner_group": "TVEEZ ECUADOR SA",
+  "total_devices_ever": 2
+ },
+ "PHL Airport": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": true,
+  "last_movement": "2022-10-13",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "PIZZA DEL POBLE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-25",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "PIZZA MARKET": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-01-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 180
+ },
+ "PKinno Inc.": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": true,
+  "last_movement": "2024-11-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "PMI DEMO": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2025-04-07",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 2
+ },
+ "POLAND FULCO": {
+  "active_devices": 0,
+  "countries": [
+   "Poland"
+  ],
+  "country": "Poland",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "POLICENTRO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2023-08-28",
+  "partner_group": "SMART WORLD SMWR SA",
+  "total_devices_ever": 20
+ },
+ "PREMIUM EL SALVADOR": {
+  "active_devices": 0,
+  "countries": [
+   "El Salvador"
+  ],
+  "country": "El Salvador",
+  "is_direct_channel": true,
+  "last_movement": "2024-09-04",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 94
+ },
+ "PSC": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "PYRENEES": {
+  "active_devices": 0,
+  "countries": [
+   "Andorra"
+  ],
+  "country": "Andorra",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Panda ID": {
+  "active_devices": 0,
+  "countries": [
+   "Venezuela (Bolivarian Republic of)"
+  ],
+  "country": "Venezuela (Bolivarian Republic of)",
+  "is_direct_channel": false,
+  "last_movement": "2026-06-11",
+  "partner_group": "PANDA ID SOLUCIONES",
+  "total_devices_ever": 8
+ },
+ "Parque Warner": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 28
+ },
+ "Party Fiesta": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-07-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "Penafiel": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "Perfumerias San Remo": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 88
+ },
+ "Perfumería Marionnaud Fátima (P1)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-04-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Perfumería Marionnaud Triangle (P02)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-04-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Pombal": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 28
+ },
+ "PuP Cartagena": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-07-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "PuP Denia": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "PuP Diagonal": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-07-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 12
+ },
+ "PuP Dos Hermanas": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-08-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 12
+ },
+ "PuP Fuencarral": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-11-15",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "PuP Huelva": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "QF+": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 356
+ },
+ "QUIRBODY": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-25",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "REDUXO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "REFORMA": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2026-05-31",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 2
+ },
+ "RENOIR FLORIDABLANCA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2022-01-21",
+  "partner_group": "LUK HIAR SL",
+  "total_devices_ever": 14
+ },
+ "RESIDENCIAL PALAU": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2023-06-02",
+  "partner_group": "MEDIA MARKT SATURN SAU",
+  "total_devices_ever": 2
+ },
+ "RESTAURANTE HAM & SNACKS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "RH PLAY CITY ACOXPA": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-08-17",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 4
+ },
+ "ROADS VISUALS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "RODTECH CONSULTING GROUP": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2025-11-03",
+  "partner_group": "SAFCO SYSTEMS INC",
+  "total_devices_ever": 14
+ },
+ "RUMANIA": {
+  "active_devices": 0,
+  "countries": [
+   "Romania"
+  ],
+  "country": "Romania",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "RXP": {
+  "active_devices": 0,
+  "countries": [
+   "Romania"
+  ],
+  "country": "Romania",
+  "is_direct_channel": false,
+  "last_movement": "2026-01-31",
+  "partner_group": "ZEDIS SL",
+  "total_devices_ever": 4
+ },
+ "Recursos Humanos": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2024-11-08",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 2
+ },
+ "Residencia Jubany": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Restaurante Tabaxco": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Rívoli Aficine": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "SALONES ICH ANA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 2
+ },
+ "SANIDENTAL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "SASCreativos": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2023-03-27",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 2
+ },
+ "SERHS Hotels Brasil": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-06-23",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 24
+ },
+ "SERHS Vilar Rural Arnes": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-06-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "SEVILLA WAGEN": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-06-05",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "SHELL": {
+  "active_devices": 0,
+  "countries": [
+   "Poland"
+  ],
+  "country": "Poland",
+  "is_direct_channel": false,
+  "last_movement": "2023-10-03",
+  "partner_group": "ZEDIS SL",
+  "total_devices_ever": 28
+ },
+ "SKODA": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2021-12-20",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "SMART CASH MANAGEMENT": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 4
+ },
+ "SNCF": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 10
+ },
+ "SODEXO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-04-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "SPA Chile": {
+  "active_devices": 0,
+  "countries": [
+   "Chile"
+  ],
+  "country": "Chile",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "SPAZIO PHONE - Linea 92": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-11-10",
+  "partner_group": "CBCN SOLUCIONES Y EQUIPOS MULTIFUNCIONALES SL",
+  "total_devices_ever": 2
+ },
+ "STRATECH_GLOBAL - USA": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2024-10-01",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 46
+ },
+ "Salud - Clínica Mompia": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-12-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Salud - Daily Break Princesa": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-10-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "Salud - Daily Break San Juan Alicante": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-02-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Salud - H Macarena": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-07-27",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Salud - H Materno Inf Malaga": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-07-27",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Salud - H San Juan de Diós": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-05-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "San Crispim (Reduxo)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Saned": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2022-07-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Santarem": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 28
+ },
+ "Scan Computers International Parent Organisation": {
+  "active_devices": 0,
+  "countries": [
+   "United Kingdom of Great Britain and Northern Ireland"
+  ],
+  "country": "United Kingdom of Great Britain and Northern Ireland",
+  "is_direct_channel": false,
+  "last_movement": "2026-03-11",
+  "partner_group": "SCAN COMPUTERS INTERNATIONAL LTD",
+  "total_devices_ever": 2
+ },
+ "Sex Toys - STC CITY PRYHANKA SL - 59 - 116 - 172 - 189 - 194": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-03-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 56
+ },
+ "Smart and Phone - NOVA PHONE - 100": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-10-07",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 6
+ },
+ "Supermercado - La Jonquera (P03)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "Sweet Fildzan": {
+  "active_devices": 0,
+  "countries": [
+   "Germany"
+  ],
+  "country": "Germany",
+  "is_direct_channel": false,
+  "last_movement": "2025-08-01",
+  "partner_group": "AuVeo PA",
+  "total_devices_ever": 2
+ },
+ "T-SYSTEMS IBERIA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-11-21",
+  "partner_group": "CHANNEL4YOU MARKETING DINÁMICO S.L.",
+  "total_devices_ever": 52
+ },
+ "TABACS COMET": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-02-14",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "TALLERES CURTA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-07-08",
+  "partner_group": "TD SYNNEX SPAIN SL UNIP",
+  "total_devices_ever": 2
+ },
+ "TEA SHOP": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 338
+ },
+ "TECNOMATIC": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-01-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "TENIS SANTANDER": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "THE ANCHOR DOUBLE SL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 2
+ },
+ "THE FRESH POKE": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 48
+ },
+ "THE HOME DEPOT": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2023-11-02",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 16
+ },
+ "THE HOUSE OF WOLF": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2025-10-30",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 4
+ },
+ "TIENDANIMAL - AFFINITY PETCARE S.A - 196": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-03-08",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 16
+ },
+ "TILEGIT SURF": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "MUCHA INFORMÁTICA SLU",
+  "total_devices_ever": 2
+ },
+ "TIenda Flagship GER": {
+  "active_devices": 0,
+  "countries": [
+   "Germany"
+  ],
+  "country": "Germany",
+  "is_direct_channel": false,
+  "last_movement": "2025-05-19",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "TROPICOOL SUPERFOOD": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "TURRIS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-02-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 118
+ },
+ "TUTTI FRUTTI": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-03-07",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "TVD Group": {
+  "active_devices": 0,
+  "countries": [
+   "United Kingdom of Great Britain and Northern Ireland"
+  ],
+  "country": "United Kingdom of Great Britain and Northern Ireland",
+  "is_direct_channel": true,
+  "last_movement": "2025-11-14",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Telmovil": {
+  "active_devices": 0,
+  "countries": [
+   "Nicaragua"
+  ],
+  "country": "Nicaragua",
+  "is_direct_channel": false,
+  "last_movement": "2025-12-31",
+  "partner_group": "TMCELL, INC.",
+  "total_devices_ever": 4
+ },
+ "Tienda SIS FR": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-10-04",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "Tienda SIS GER": {
+  "active_devices": 0,
+  "countries": [
+   "Germany"
+  ],
+  "country": "Germany",
+  "is_direct_channel": false,
+  "last_movement": "2025-05-19",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 16
+ },
+ "Tienda SIS IRL": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2022-11-15",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "Tienda propia HES GER": {
+  "active_devices": 0,
+  "countries": [
+   "Germany"
+  ],
+  "country": "Germany",
+  "is_direct_channel": false,
+  "last_movement": "2025-05-19",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "Tipico Group Limited - (nsign.tv support please delete this client account)": {
+  "active_devices": 0,
+  "countries": [
+   "Malta"
+  ],
+  "country": "Malta",
+  "is_direct_channel": false,
+  "last_movement": "2025-02-03",
+  "partner_group": "NOVO LIMITED",
+  "total_devices_ever": 16
+ },
+ "Touchdown": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-08-01",
+  "partner_group": "LUK HIAR SL",
+  "total_devices_ever": 6
+ },
+ "Tucan Marketing Digital": {
+  "active_devices": 0,
+  "countries": [
+   "Colombia"
+  ],
+  "country": "Colombia",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "Tweak Innovative Solutions": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2025-06-13",
+  "partner_group": "TWEAK Innovative Solutions LLC",
+  "total_devices_ever": 6
+ },
+ "UAP Chile": {
+  "active_devices": 0,
+  "countries": [
+   "Chile"
+  ],
+  "country": "Chile",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 6
+ },
+ "UNILEVER PORTUGAL": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-06",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "UNIVERSIDAD PANAMERICANA": {
+  "active_devices": 0,
+  "countries": [
+   "Mexico"
+  ],
+  "country": "Mexico",
+  "is_direct_channel": false,
+  "last_movement": "2025-08-25",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 10
+ },
+ "URBAN AIR PURIFIER": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 134
+ },
+ "USA": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": false,
+  "last_movement": "2025-07-01",
+  "partner_group": "DIGITAL SIGNAGE SOLUTIONS SA DE CV",
+  "total_devices_ever": 6
+ },
+ "VALL D'HEBRON VHIR": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-11-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "VANADI": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-06-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 26
+ },
+ "VENTANAS EGO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-01",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "VERTEX": {
+  "active_devices": 0,
+  "countries": [
+   "Germany"
+  ],
+  "country": "Germany",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "VERYBOX": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-11-10",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "VIVA OUTDOOR": {
+  "active_devices": 0,
+  "countries": [
+   "El Salvador"
+  ],
+  "country": "El Salvador",
+  "is_direct_channel": true,
+  "last_movement": "2024-11-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "VOS media": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": true,
+  "last_movement": "2023-02-21",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "VW -  ALDAUTO MOTOR S.A.U.) - 211": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-11-30",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW -  MÁLAGA": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-03-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - ALZIRA IMPORT - 229": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-12-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - APERSA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-12-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - AUTOMOVILES CABRERO HUESCA - 206": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-11-12",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - AUTOPODIUM - 216": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-11-12",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - AWAUTO - 214": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-11-12",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "VW - AuAragones AV Navarra - 204": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - CASTELLANA WAGEN": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - CATALUNYA WAGEN": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "VW - CENTROWAGEN S.L - 212": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-11-12",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - COBASA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-01-07",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - Carhaus Molins de Rei": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - Concha Espina - F TOME S.A. - 88": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-01-07",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 18
+ },
+ "VW - ESPAWAGEN": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-01-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - F. TOME - 186": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-09-05",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - Ftome Tauro": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-12-11",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - GARAJE DALMAU": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-09-05",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - GARAJE DALMAU HIGHLIGHT": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-09-05",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - HELMÁNTICA - 292": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - HIGHTLIGHT MAQUINISTA": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-02-29",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - HIGHTLIGHT SAGAMOVIL": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-01-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - HUERTAS MOTORS - 239": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - JARMAUTO - MADRID": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - JARMAUTO - RIVAS": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - LEVANTE WAGEN": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "VW - M. CONDE MADRID - 255": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-09-05",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "VW - MAJADAHONDA": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-09-05",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - MERKAMOTOR - 288": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-12-11",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - MOGAUTO LA MAQUINISTA": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-01-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - MOGAUTO, PADILLA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-01-07",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 16
+ },
+ "VW - MOTOR PACIFICO SEGOVIA - 246": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-09-05",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - MOTORSOL - 215": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-12-11",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - Marza Castellón": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-01-07",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - Marza HIGHLIGHT": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - MÁLAGA 49": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-03-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - NUCESA SA 207": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-09-05",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "VW - PARTE Peñacastillo - 185": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - POETA JOAN MARAGALL - 47": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-01-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 32
+ },
+ "VW - PUERTO DE SAMPORT": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 8
+ },
+ "VW - SADAVI-VALENCIA": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-12-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - SAGAMOVIL": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-02-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - SALA HERMANOS": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-01-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - SERRAMOVIL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-01-07",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - SERVISIMÓ IGUALADA": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-09-05",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - SEVILLA-ALHAMI": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-11-12",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - SOLERA": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-03-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - SUPERWAGEN": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-08-28",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - Sealco San Martin": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - Su Eminencia (Sevilla)": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-08-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "VW - TALLERES MANCHEGOS S.A.": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-12-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - TALLERES XATIVA, S.A. - 218": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-01-07",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - TARTIERE AUTO": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-12-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - TELENAUTO": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-03-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - URAL MOTOR": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-01-07",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "VW - UTREWAL - JEREZ": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-12-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - VALLADOLID WAGEN": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-12-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 4
+ },
+ "VW - VASCONGADA": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-01-07",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - VEPERSA HIGHLIGHT MOURENTE": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2024-04-30",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - VILAMOBIL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-12-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW - WAGEN MOTORS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-12-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "VW GANDIA MOTORS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2024-07-02",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "Vendas Novas": {
+  "active_devices": 0,
+  "countries": [
+   "Portugal"
+  ],
+  "country": "Portugal",
+  "is_direct_channel": true,
+  "last_movement": "2026-03-02",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 26
+ },
+ "Vitasco": {
+  "active_devices": 0,
+  "countries": [
+   "Germany"
+  ],
+  "country": "Germany",
+  "is_direct_channel": null,
+  "last_movement": "2025-09-01",
+  "partner_group": null,
+  "total_devices_ever": 6
+ },
+ "Viñals 1906": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-10-23",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 8
+ },
+ "WALLNER GROUP": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-05-05",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 4
+ },
+ "WESTERN UNION AIRPAK NICARAGUA": {
+  "active_devices": 0,
+  "countries": [
+   "Nicaragua"
+  ],
+  "country": "Nicaragua",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-07",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "WIXALIA SIEGE": {
+  "active_devices": 0,
+  "countries": [
+   "France"
+  ],
+  "country": "France",
+  "is_direct_channel": false,
+  "last_movement": "2022-05-24",
+  "partner_group": "ADN BUREAUTIQUE",
+  "total_devices_ever": 2
+ },
+ "Wanna Sneakers Calahorra - AMELIA GARCIA SL - 72": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": false,
+  "last_movement": "2023-04-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 2
+ },
+ "Wanna Sneakers Natalia - MEMCAS - 60": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-08-01",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 10
+ },
+ "Wanna Sneakers Santa Gema - HEREDEROS A.M.B, S.L.": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": false,
+  "last_movement": "2025-04-03",
+  "partner_group": "HMY YUDIGAR EQUIPAMIENTO SLU",
+  "total_devices_ever": 6
+ },
+ "Wirtschaft und Marketing Soest GmbH": {
+  "active_devices": 0,
+  "countries": [
+   "Germany"
+  ],
+  "country": "Germany",
+  "is_direct_channel": false,
+  "last_movement": "2026-03-02",
+  "partner_group": "E-systems Ihr Systemhaus GmbH & Co. KG",
+  "total_devices_ever": 16
+ },
+ "YMAS SUR": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2023-12-19",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 94
+ },
+ "YMÁS": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2026-05-31",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 270
+ },
+ "ZEBRA DC CENTRAL": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-03-24",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "demopau": {
+  "active_devices": 0,
+  "countries": [],
+  "country": null,
+  "is_direct_channel": true,
+  "last_movement": "2023-03-03",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "iCandydigital test": {
+  "active_devices": 0,
+  "countries": [
+   "United States of America"
+  ],
+  "country": "United States of America",
+  "is_direct_channel": null,
+  "last_movement": "2024-11-21",
+  "partner_group": null,
+  "total_devices_ever": 8
+ },
+ "nZul-Lab": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2024-09-25",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "oMomento": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": true,
+  "last_movement": "2025-04-30",
+  "partner_group": "NETIPBOX TECHNOLOGIES SL",
+  "total_devices_ever": 2
+ },
+ "x": {
+  "active_devices": 0,
+  "countries": [
+   "Spain"
+  ],
+  "country": "Spain",
+  "is_direct_channel": null,
+  "last_movement": "2023-01-04",
+  "partner_group": null,
+  "total_devices_ever": 318
+ }
+}
