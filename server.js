@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const { buildProposals } = require('./lib/proposals');
 const { updateCompany, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany } = require('./lib/hubspot');
+const { buildInventory } = require('./lib/inventory');
 
 const app = express();
 app.use(express.json());
@@ -10,6 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Cached in memory for the process lifetime -- click "Actualizar" to refresh.
 let cache = null;
 let progress = { stage: 'idle', done: 0, total: null };
+let inventoryProgress = { stage: 'idle', done: 0, total: null };
 
 app.get('/api/progress', (req, res) => res.json(progress));
 
@@ -116,6 +118,29 @@ app.post('/api/link-branches', async (req, res) => {
   }
   cache = null;
   res.json({ results });
+});
+
+// Read-only inventory of a SECOND, separate HubSpot account (its own Private
+// App token in HUBSPOT_TOKEN_B), cross-matched against the main nsign
+// account's companies. Step 1 of the account-to-account migration Manel
+// asked for -- never writes anywhere, to either account. Set HUBSPOT_TOKEN_B
+// as an env var before calling this (never commit it).
+app.get('/api/inventory/progress', (req, res) => res.json(inventoryProgress));
+
+app.get('/api/inventory', async (req, res) => {
+  const tokenB = process.env.HUBSPOT_TOKEN_B;
+  if (!tokenB) {
+    return res.status(400).json({ error: 'HUBSPOT_TOKEN_B no está configurado. Crea un Private App token en la cuenta B (con scopes de lectura sobre companies/contacts/deals/notes/tasks/emails/calls/meetings) y añádelo como variable de entorno antes de correr el inventario.' });
+  }
+  try {
+    inventoryProgress = { stage: 'Iniciando…', done: 0, total: null };
+    const result = await buildInventory(tokenB, (p) => { inventoryProgress = p; });
+    inventoryProgress = { stage: 'idle', done: 0, total: null };
+    res.json(result);
+  } catch (e) {
+    inventoryProgress = { stage: 'idle', done: 0, total: null };
+    res.status(500).json({ error: String(e.message || e) });
+  }
 });
 
 const port = process.env.PORT || 3000;

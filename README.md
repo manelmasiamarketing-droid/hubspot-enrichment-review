@@ -59,8 +59,26 @@ python3 scripts/build_device_history.py
 
 ## Safety notes
 
-- The only two endpoints that write to HubSpot are `POST /api/apply` and
-  `POST /api/create-company` — both are only ever called from an explicit
-  button click, never on page load.
+- The endpoints that write to HubSpot (`POST /api/apply`,
+  `POST /api/create-company`, `POST /api/apply-associations`,
+  `POST /api/link-branches`, `POST /api/setup-properties`) are only ever
+  called from an explicit button click + confirmation dialog in the browser,
+  never on page load or automatically.
 - `HUBSPOT_TOKEN` needs Companies read+write scopes only — do not grant
   Contacts/Deals scopes to this app's private app token.
+
+## Second-account inventory (`/inventory.html`)
+
+Read-only tool, step 1 of a one-time full-CRM migration from a second HubSpot
+account into the main nsign account — see `lib/inventory.js`. It never writes
+anywhere, to either account: it only counts objects (companies, contacts,
+deals, notes, tasks, emails, calls, meetings) in the second account and
+cross-matches its companies against nsign's, so Manel and Hugo can see real
+numbers before designing the actual merge/dedup rules (a separate, later
+piece of work).
+
+To use it: create a **separate** Private App token in the other HubSpot
+account (Private App tokens are portal-specific, so `HUBSPOT_TOKEN` from this
+same app cannot be reused) with read scopes on companies/contacts/deals/notes/
+tasks/emails/calls/meetings, set it as `HUBSPOT_TOKEN_B` (env var, never
+committed), then open `/inventory.html` and click "Cargar inventario".
