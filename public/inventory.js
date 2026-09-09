@@ -9,6 +9,13 @@ const OBJECT_LABELS = {
   meetings: 'Reuniones',
 };
 
+const TAB_LABELS = { all: 'Todo', 12: 'Últimos 12 meses', 6: 'Últimos 6 meses', 3: 'Últimos 3 meses' };
+
+const state = {
+  cache: {}, // monthsKey -> last successful response body
+  current: '6',
+};
+
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
@@ -31,6 +38,36 @@ function renderCards(objectCounts, totalCompaniesA) {
   return `<div class="cards">${cards}
     <div class="card"><div class="value">${totalCompaniesA}</div><div class="label">Companies (cuenta A — nsign)</div></div>
   </div>`;
+}
+
+// Small side-by-side strip of every window already fetched this session, so
+// switching tabs builds up a running comparison instead of only ever showing
+// one window at a time -- this is the actual point of having tabs (Manel,
+// 09/09/2026: "para ver que vale la pena").
+function renderComparisonStrip() {
+  const keys = Object.keys(state.cache);
+  if (keys.length < 2) return '';
+  const rows = keys
+    .sort((a, b) => (a === 'all' ? -1 : b === 'all' ? 1 : Number(b) - Number(a)))
+    .map((k) => {
+      const body = state.cache[k];
+      const companiesB = body.companiesComparison.totalInAccountB;
+      const dup = body.companiesComparison.clearDuplicates;
+      const netNew = body.companiesComparison.netNewOrAmbiguous;
+      const deals = body.accountB.objectCounts.deals;
+      return `<tr class="${k === state.current ? 'current' : ''}">
+        <td>${TAB_LABELS[k]}</td>
+        <td>${companiesB}</td>
+        <td>${dup}</td>
+        <td>${netNew}</td>
+        <td>${typeof deals === 'object' ? '—' : deals}</td>
+      </tr>`;
+    }).join('');
+  return `<h2>Comparativa de ventanas ya cargadas</h2>
+    <table>
+      <thead><tr><th>Ventana</th><th>Companies (B)</th><th>Duplicados claros</th><th>Net-new/ambiguos</th><th>Deals (B)</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
 }
 
 function renderComparisonTable(title, rows, kind) {
@@ -58,11 +95,38 @@ function renderComparisonTable(title, rows, kind) {
     </table>`;
 }
 
-async function load() {
+function renderBody(body) {
+  const content = document.getElementById('content');
+  const { accountB, accountA, companiesComparison, filter } = body;
+  let html = renderComparisonStrip();
+  if (filter) {
+    html += `<div class="note">Filtro aplicado: ${escapeHtml(filter.description)}${filter.sinceDate ? ` (desde ${escapeHtml(filter.sinceDate)})` : ''}.</div>`;
+  }
+  html += renderCards(accountB.objectCounts, accountA.totalCompanies);
+  html += `<div class="note">
+    De ${companiesComparison.totalInAccountB} companies en la cuenta B (${TAB_LABELS[state.current].toLowerCase()}):
+    <strong>${companiesComparison.clearDuplicates}</strong> parecen duplicados claros de una company ya existente en nsign,
+    <strong>${companiesComparison.netNewOrAmbiguous}</strong> son net-new o ambiguas (revisar a mano antes de decidir nada).
+  </div>`;
+  html += renderComparisonTable('Duplicados claros', companiesComparison.duplicates, 'dup');
+  html += renderComparisonTable('Net-new / ambiguos', companiesComparison.netNew, 'new');
+  content.innerHTML = html;
+}
+
+async function loadTab(monthsKey) {
+  state.current = monthsKey;
+  document.querySelectorAll('.tab-btn').forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.months === monthsKey);
+  });
+
+  if (state.cache[monthsKey]) {
+    renderBody(state.cache[monthsKey]);
+    return;
+  }
+
   const status = document.getElementById('status');
   const content = document.getElementById('content');
-  const btn = document.getElementById('loadBtn');
-  btn.disabled = true;
+  document.querySelectorAll('.tab-btn').forEach((btn) => { btn.disabled = true; });
   status.textContent = 'Cargando…';
   content.innerHTML = '';
 
@@ -75,10 +139,10 @@ async function load() {
   }, 700);
 
   try {
-    const res = await fetch('/api/inventory');
+    const res = await fetch(`/api/inventory?months=${encodeURIComponent(monthsKey)}`);
     const body = await res.json();
     clearInterval(pollId);
-    btn.disabled = false;
+    document.querySelectorAll('.tab-btn').forEach((btn) => { btn.disabled = false; });
     status.textContent = '';
 
     if (!res.ok || body.error) {
@@ -86,26 +150,16 @@ async function load() {
       return;
     }
 
-    const { accountB, accountA, companiesComparison, filter } = body;
-    let html = '';
-    if (filter) {
-      html += `<div class="note">Filtro aplicado: ${escapeHtml(filter.description)} (desde ${escapeHtml(filter.sinceDate)}).</div>`;
-    }
-    html += renderCards(accountB.objectCounts, accountA.totalCompanies);
-    html += `<div class="note">
-      De ${companiesComparison.totalInAccountB} companies en la cuenta B (actualizadas en los últimos 6 meses):
-      <strong>${companiesComparison.clearDuplicates}</strong> parecen duplicados claros de una company ya existente en nsign,
-      <strong>${companiesComparison.netNewOrAmbiguous}</strong> son net-new o ambiguas (revisar a mano antes de decidir nada).
-    </div>`;
-    html += renderComparisonTable('Duplicados claros', companiesComparison.duplicates, 'dup');
-    html += renderComparisonTable('Net-new / ambiguos', companiesComparison.netNew, 'new');
-    content.innerHTML = html;
+    state.cache[monthsKey] = body;
+    renderBody(body);
   } catch (e) {
     clearInterval(pollId);
-    btn.disabled = false;
+    document.querySelectorAll('.tab-btn').forEach((btn) => { btn.disabled = false; });
     status.textContent = '';
     content.innerHTML = `<div class="error">Error de conexión: ${escapeHtml(e.message)}</div>`;
   }
 }
 
-document.getElementById('loadBtn').addEventListener('click', load);
+document.querySelectorAll('.tab-btn').forEach((btn) => {
+  btn.addEventListener('click', () => loadTab(btn.dataset.months));
+});

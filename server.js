@@ -127,14 +127,24 @@ app.post('/api/link-branches', async (req, res) => {
 // as an env var before calling this (never commit it).
 app.get('/api/inventory/progress', (req, res) => res.json(inventoryProgress));
 
+// ?months=3|6|12|... or ?months=all (or 0) for no date filter at all.
+// Defaults to 6 months when omitted, matching the original scoping request.
+function parseMonthsBack(raw) {
+  if (raw === undefined) return 6;
+  if (raw === 'all' || raw === '0') return null;
+  const n = parseInt(raw, 10);
+  return Number.isFinite(n) && n > 0 ? n : 6;
+}
+
 app.get('/api/inventory', async (req, res) => {
   const tokenB = process.env.HUBSPOT_TOKEN_B;
   if (!tokenB) {
     return res.status(400).json({ error: 'HUBSPOT_TOKEN_B no está configurado. Crea un Private App token en la cuenta B (con scopes de lectura sobre companies/contacts/deals/notes/tasks/emails/calls/meetings) y añádelo como variable de entorno antes de correr el inventario.' });
   }
+  const monthsBack = parseMonthsBack(req.query.months);
   try {
     inventoryProgress = { stage: 'Iniciando…', done: 0, total: null };
-    const result = await buildInventory(tokenB, (p) => { inventoryProgress = p; });
+    const result = await buildInventory(tokenB, monthsBack, (p) => { inventoryProgress = p; });
     inventoryProgress = { stage: 'idle', done: 0, total: null };
     res.json(result);
   } catch (e) {
