@@ -136,15 +136,25 @@ function parseMonthsBack(raw) {
   return Number.isFinite(n) && n > 0 ? n : 6;
 }
 
+// ?activityMonths=12|24|... -- how far back the "actividad real de email"
+// check for net-new companies looks (separate from ?months, which scopes
+// which companies/objects get counted/compared at all). Defaults to 12.
+function parseActivityMonths(raw) {
+  if (raw === undefined) return 12;
+  const n = parseInt(raw, 10);
+  return Number.isFinite(n) && n > 0 ? n : 12;
+}
+
 app.get('/api/inventory', async (req, res) => {
   const tokenB = process.env.HUBSPOT_TOKEN_B;
   if (!tokenB) {
     return res.status(400).json({ error: 'HUBSPOT_TOKEN_B no está configurado. Crea un Private App token en la cuenta B (con scopes de lectura sobre companies/contacts/deals/notes/tasks/emails/calls/meetings) y añádelo como variable de entorno antes de correr el inventario.' });
   }
   const monthsBack = parseMonthsBack(req.query.months);
+  const activityMonths = parseActivityMonths(req.query.activityMonths);
   try {
     inventoryProgress = { stage: 'Iniciando…', done: 0, total: null };
-    const result = await buildInventory(tokenB, monthsBack, (p) => { inventoryProgress = p; });
+    const result = await buildInventory(tokenB, monthsBack, (p) => { inventoryProgress = p; }, activityMonths);
     inventoryProgress = { stage: 'idle', done: 0, total: null };
     res.json(result);
   } catch (e) {

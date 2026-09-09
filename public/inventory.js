@@ -12,9 +12,14 @@ const OBJECT_LABELS = {
 const TAB_LABELS = { all: 'Todo', 12: 'Últimos 12 meses', 6: 'Últimos 6 meses', 3: 'Últimos 3 meses' };
 
 const state = {
-  cache: {}, // monthsKey -> last successful response body
+  cache: {}, // "monthsKey|activityMonths" -> last successful response body
   current: '6',
+  activityMonths: '12',
 };
+
+function cacheKey(monthsKey, activityMonths) {
+  return `${monthsKey}|${activityMonths}`;
+}
 
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -40,16 +45,22 @@ function renderCards(objectCounts, totalCompaniesA) {
   </div>`;
 }
 
-// Small side-by-side strip of every window already fetched this session, so
-// switching tabs builds up a running comparison instead of only ever showing
-// one window at a time -- this is the actual point of having tabs (Manel,
-// 09/09/2026: "para ver que vale la pena").
+// Small side-by-side strip of every (ventana, actividad) combo already
+// fetched this session, so switching tabs builds up a running comparison
+// instead of only ever showing one at a time -- the actual point of having
+// tabs (Manel, 09/09/2026: "para ver que vale la pena").
 function renderComparisonStrip() {
   const keys = Object.keys(state.cache);
   if (keys.length < 2) return '';
   const rows = keys
-    .sort((a, b) => (a === 'all' ? -1 : b === 'all' ? 1 : Number(b) - Number(a)))
+    .sort((ka, kb) => {
+      const [a] = ka.split('|');
+      const [b] = kb.split('|');
+      if (a === b) return ka.localeCompare(kb);
+      return a === 'all' ? -1 : b === 'all' ? 1 : Number(b) - Number(a);
+    })
     .map((k) => {
+      const [monthsKey, activityMonths] = k.split('|');
       const body = state.cache[k];
       const companiesB = body.companiesComparison.totalInAccountB;
       const dup = body.companiesComparison.clearDuplicates;
@@ -58,18 +69,19 @@ function renderComparisonStrip() {
       const realActivity = body.companiesComparison.emailActivityError
         ? 'error'
         : body.companiesComparison.netNewWithRealActivity;
-      return `<tr class="${k === state.current ? 'current' : ''}">
-        <td>${TAB_LABELS[k]}</td>
+      const isCurrent = monthsKey === state.current && activityMonths === state.activityMonths;
+      return `<tr class="${isCurrent ? 'current' : ''}">
+        <td>${TAB_LABELS[monthsKey]}</td>
         <td>${companiesB}</td>
         <td>${dup}</td>
         <td>${netNew}</td>
         <td>${typeof deals === 'object' ? '—' : deals}</td>
-        <td>${realActivity === 'error' ? '<span style="color:#b91c1c;">error</span>' : realActivity}</td>
+        <td>${realActivity === 'error' ? '<span style="color:#b91c1c;">error</span>' : realActivity} <span style="color:#9ca3af;">(${activityMonths}m)</span></td>
       </tr>`;
     }).join('');
   return `<h2>Comparativa de ventanas ya cargadas</h2>
     <table>
-      <thead><tr><th>Ventana</th><th>Companies (B)</th><th>Duplicados claros</th><th>Net-new/ambiguos</th><th>Deals (B)</th><th>Net-new con email real (12m)</th></tr></thead>
+      <thead><tr><th>Ventana</th><th>Companies (B)</th><th>Duplicados claros</th><th>Net-new/ambiguos</th><th>Deals (B)</th><th>Net-new con email real</th></tr></thead>
       <tbody>${rows}</tbody>
     </table>`;
 }
@@ -99,7 +111,7 @@ function renderComparisonTable(title, rows, kind) {
       <td>${activityBadge(r.recentEmailActivity)}</td>
     </tr>`;
   }).join('');
-  const extraHeader = kind === 'new' ? '<th>Actividad real (email, 12m)</th>' : '';
+  const extraHeader = kind === 'new' ? '<th>Actividad real (email)</th>' : '';
   return `<h2>${title} (${rows.length})</h2>
     <table>
       <thead><tr><th>Nombre en cuenta B</th><th>Posible match en cuenta A</th><th>Confianza</th><th>Estado</th>${extraHeader}</tr></thead>
@@ -127,7 +139,7 @@ function renderBody(body) {
       De esas net-new/ambiguas, <strong>${companiesComparison.netNewWithRealActivity}</strong> tienen al menos un email real
       en los últimos ${companiesComparison.emailActivityMonths} meses — una señal más fiable que la fecha de última
       modificación de la company/deal, que en esta cuenta parece tocarse en bloque por algo automático. El resto no
-      muestra actividad de email reciente.
+      muestra actividad de email en esa ventana.
     </div>`;
   }
   html += renderComparisonTable('Duplicados claros', companiesComparison.duplicates, 'dup');
@@ -135,20 +147,25 @@ function renderBody(body) {
   content.innerHTML = html;
 }
 
-async function loadTab(monthsKey) {
+async function load(monthsKey, activityMonths) {
   state.current = monthsKey;
+  state.activityMonths = activityMonths;
   document.querySelectorAll('.tab-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.months === monthsKey);
   });
+  document.querySelectorAll('.activity-btn').forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.activityMonths === activityMonths);
+  });
 
-  if (state.cache[monthsKey]) {
-    renderBody(state.cache[monthsKey]);
+  const key = cacheKey(monthsKey, activityMonths);
+  if (state.cache[key]) {
+    renderBody(state.cache[key]);
     return;
   }
 
   const status = document.getElementById('status');
   const content = document.getElementById('content');
-  document.querySelectorAll('.tab-btn').forEach((btn) => { btn.disabled = true; });
+  document.querySelectorAll('.tab-btn, .activity-btn').forEach((btn) => { btn.disabled = true; });
   status.textContent = 'Cargando…';
   content.innerHTML = '';
 
@@ -161,10 +178,10 @@ async function loadTab(monthsKey) {
   }, 700);
 
   try {
-    const res = await fetch(`/api/inventory?months=${encodeURIComponent(monthsKey)}`);
+    const res = await fetch(`/api/inventory?months=${encodeURIComponent(monthsKey)}&activityMonths=${encodeURIComponent(activityMonths)}`);
     const body = await res.json();
     clearInterval(pollId);
-    document.querySelectorAll('.tab-btn').forEach((btn) => { btn.disabled = false; });
+    document.querySelectorAll('.tab-btn, .activity-btn').forEach((btn) => { btn.disabled = false; });
     status.textContent = '';
 
     if (!res.ok || body.error) {
@@ -172,16 +189,19 @@ async function loadTab(monthsKey) {
       return;
     }
 
-    state.cache[monthsKey] = body;
+    state.cache[key] = body;
     renderBody(body);
   } catch (e) {
     clearInterval(pollId);
-    document.querySelectorAll('.tab-btn').forEach((btn) => { btn.disabled = false; });
+    document.querySelectorAll('.tab-btn, .activity-btn').forEach((btn) => { btn.disabled = false; });
     status.textContent = '';
     content.innerHTML = `<div class="error">Error de conexión: ${escapeHtml(e.message)}</div>`;
   }
 }
 
 document.querySelectorAll('.tab-btn').forEach((btn) => {
-  btn.addEventListener('click', () => loadTab(btn.dataset.months));
+  btn.addEventListener('click', () => load(btn.dataset.months, state.activityMonths));
+});
+document.querySelectorAll('.activity-btn').forEach((btn) => {
+  btn.addEventListener('click', () => load(state.current, btn.dataset.activityMonths));
 });
