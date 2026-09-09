@@ -77,10 +77,23 @@ cross-matches its companies against nsign's, so Manel and Hugo can see real
 numbers before designing the actual merge/dedup rules (a separate, later
 piece of work).
 
-**Scoped to the last 6 months:** every object type is filtered by
-`hs_lastmodifieddate >= today - 6 months` (Manel's request, 09/09/2026) —
-older, untouched records in account B are not counted or considered for the
-comparison at all.
+**Scoped to a chosen recency window:** `/inventory.html` has 4 tabs (Todo /
+12 / 6 / 3 meses) filtering every object type by last-modified date, so
+Manel and Hugo can compare windows side by side (Manel, 09/09/2026) instead
+of trusting a single fixed cutoff. Contacts filters on `lastmodifieddate`
+(the classic property) rather than `hs_lastmodifieddate` -- the latter
+turned out not to be reliably populated on Contacts in the account tested,
+which silently under-counted them in every windowed view until fixed.
+
+**Companies/deals `hs_lastmodifieddate` is not a trustworthy recency signal
+on its own** -- testing against a real account showed ~80-99% of companies
+and deals reading as "recently modified" in every window, almost certainly
+from an automated sync bumping the field rather than real activity. So for
+each net-new company, the tool separately checks whether it has an actual
+EMAIL engagement (`hs_timestamp`) within the last 12 months (via the v4
+associations batch-read + v3 engagement batch-read endpoints) and reports
+that count as `netNewWithRealActivity` -- a much more honest "is this still
+a live account" signal than the company record's own timestamp.
 
 To use it: create a **separate** Private App token in the other HubSpot
 account (Private App tokens are portal-specific, so `HUBSPOT_TOKEN` from this
