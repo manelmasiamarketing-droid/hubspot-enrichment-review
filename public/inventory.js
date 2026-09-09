@@ -86,10 +86,14 @@ async function load() {
       return;
     }
 
-    const { accountB, accountA, companiesComparison } = body;
-    let html = renderCards(accountB.objectCounts, accountA.totalCompanies);
+    const { accountB, accountA, companiesComparison, filter } = body;
+    let html = '';
+    if (filter) {
+      html += `<div class="note">Filtro aplicado: ${escapeHtml(filter.description)} (desde ${escapeHtml(filter.sinceDate)}).</div>`;
+    }
+    html += renderCards(accountB.objectCounts, accountA.totalCompanies);
     html += `<div class="note">
-      De ${companiesComparison.totalInAccountB} companies en la cuenta B:
+      De ${companiesComparison.totalInAccountB} companies en la cuenta B (actualizadas en los últimos 6 meses):
       <strong>${companiesComparison.clearDuplicates}</strong> parecen duplicados claros de una company ya existente en nsign,
       <strong>${companiesComparison.netNewOrAmbiguous}</strong> son net-new o ambiguas (revisar a mano antes de decidir nada).
     </div>`;

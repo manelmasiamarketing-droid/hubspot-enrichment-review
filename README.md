@@ -77,6 +77,11 @@ cross-matches its companies against nsign's, so Manel and Hugo can see real
 numbers before designing the actual merge/dedup rules (a separate, later
 piece of work).
 
+**Scoped to the last 6 months:** every object type is filtered by
+`hs_lastmodifieddate >= today - 6 months` (Manel's request, 09/09/2026) —
+older, untouched records in account B are not counted or considered for the
+comparison at all.
+
 To use it: create a **separate** Private App token in the other HubSpot
 account (Private App tokens are portal-specific, so `HUBSPOT_TOKEN` from this
 same app cannot be reused) with read scopes on companies/contacts/deals/notes/
