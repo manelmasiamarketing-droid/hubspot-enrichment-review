@@ -9,6 +9,9 @@ const OBJECT_LABELS = {
   meetings: 'Reuniones',
 };
 
+const SIGNAL_LABELS = { emails: 'Email', deals: 'Deal (creado)', tasks: 'Tarea' };
+const SIGNAL_ORDER = ['emails', 'deals', 'tasks'];
+
 const TAB_LABELS = { all: 'Todo', 12: 'Últimos 12 meses', 6: 'Últimos 6 meses', 3: 'Últimos 3 meses' };
 
 const state = {
@@ -45,6 +48,10 @@ function renderCards(objectCounts, totalCompaniesA) {
   </div>`;
 }
 
+function fmtSignalValue(v) {
+  return v === 'error' ? '<span style="color:#b91c1c;">error</span>' : (v ?? '—');
+}
+
 // Small side-by-side strip of every (ventana, actividad) combo already
 // fetched this session, so switching tabs builds up a running comparison
 // instead of only ever showing one at a time -- the actual point of having
@@ -62,51 +69,56 @@ function renderComparisonStrip() {
     .map((k) => {
       const [monthsKey, activityMonths] = k.split('|');
       const body = state.cache[k];
-      const companiesB = body.companiesComparison.totalInAccountB;
-      const dup = body.companiesComparison.clearDuplicates;
-      const netNew = body.companiesComparison.netNewOrAmbiguous;
+      const cc = body.companiesComparison;
+      const companiesB = cc.totalInAccountB;
+      const dup = cc.clearDuplicates;
+      const netNew = cc.netNewOrAmbiguous;
       const deals = body.accountB.objectCounts.deals;
-      const netNewActivity = body.companiesComparison.emailActivityError
-        ? 'error'
-        : body.companiesComparison.netNewWithRealActivity;
-      const dupActivity = body.companiesComparison.emailActivityError
-        ? 'error'
-        : body.companiesComparison.duplicatesWithRealActivity;
-      const fmt = (v) => (v === 'error' ? '<span style="color:#b91c1c;">error</span>' : v);
       const isCurrent = monthsKey === state.current && activityMonths === state.activityMonths;
+      const signalCells = SIGNAL_ORDER.map((key) => {
+        const sig = cc.signals && cc.signals[key];
+        if (!sig) return '<td>—</td>';
+        const err = sig.error ? 'error' : null;
+        return `<td>${fmtSignalValue(err || sig.duplicatesWithRealActivity)}/${dup} · ${fmtSignalValue(err || sig.netNewWithRealActivity)}/${netNew}</td>`;
+      }).join('');
       return `<tr class="${isCurrent ? 'current' : ''}">
         <td>${TAB_LABELS[monthsKey]}</td>
         <td>${companiesB}</td>
         <td>${dup}</td>
         <td>${netNew}</td>
         <td>${typeof deals === 'object' ? '—' : deals}</td>
-        <td>${fmt(dupActivity)} / ${dup} <span style="color:#9ca3af;">(${activityMonths}m)</span></td>
-        <td>${fmt(netNewActivity)} <span style="color:#9ca3af;">(${activityMonths}m)</span></td>
+        ${signalCells}
+        <td style="color:#9ca3af;">(${activityMonths}m)</td>
       </tr>`;
     }).join('');
+  const signalHeaders = SIGNAL_ORDER.map((key) => `<th>${SIGNAL_LABELS[key]} (dup/net-new)</th>`).join('');
   return `<h2>Comparativa de ventanas ya cargadas</h2>
     <table>
-      <thead><tr><th>Ventana</th><th>Companies (B)</th><th>Duplicados claros</th><th>Net-new/ambiguos</th><th>Deals (B)</th><th>Duplicados con email real (control)</th><th>Net-new con email real</th></tr></thead>
+      <thead><tr><th>Ventana</th><th>Companies (B)</th><th>Duplicados claros</th><th>Net-new/ambiguos</th><th>Deals (B)</th>${signalHeaders}<th>Ventana actividad</th></tr></thead>
       <tbody>${rows}</tbody>
     </table>`;
 }
 
-function activityBadge(recentEmailActivity) {
-  if (recentEmailActivity === 'error') return '<span style="color:#b91c1c; font-size:11.5px;">error</span>';
-  if (recentEmailActivity === true) return '<span class="badge new">Email reciente</span>';
-  return '<span style="color:#9ca3af; font-size:11.5px;">sin actividad</span>';
+function activityBadge(v) {
+  if (v === 'error') return '<span style="color:#b91c1c; font-size:11.5px;">error</span>';
+  if (v === true) return '<span class="badge new">Sí</span>';
+  return '<span style="color:#9ca3af; font-size:11.5px;">—</span>';
 }
 
 function renderComparisonTable(title, rows, kind) {
   if (!rows.length) return `<h2>${title}</h2><p style="color:#9ca3af;font-size:13px;">Ninguna</p>`;
+  const signalHeaders = kind === 'new' || kind === 'dup'
+    ? SIGNAL_ORDER.map((key) => `<th>${SIGNAL_LABELS[key]}</th>`).join('')
+    : '';
   const body = rows.map((r) => {
+    const signalCells = SIGNAL_ORDER.map((key) => `<td>${activityBadge(r.recentActivity ? r.recentActivity[key] : undefined)}</td>`).join('');
     if (kind === 'dup') {
       return `<tr>
         <td>${escapeHtml(r.nameInB)}</td>
         <td>${escapeHtml(r.matchedNameInA)}</td>
         <td>${(r.score * 100).toFixed(0)}%</td>
         <td><span class="badge dup">Duplicado claro</span></td>
-        <td>${activityBadge(r.recentEmailActivity)}</td>
+        ${signalCells}
       </tr>`;
     }
     return `<tr>
@@ -114,12 +126,12 @@ function renderComparisonTable(title, rows, kind) {
       <td>${r.ambiguous ? escapeHtml(r.possibleMatchInA || '') : '<span style="color:#9ca3af;">—</span>'}</td>
       <td>${r.ambiguous ? `${(r.score * 100).toFixed(0)}%` : ''}</td>
       <td>${r.ambiguous ? '<span class="badge ambig">Ambiguo — revisar</span>' : '<span class="badge new">Net-new</span>'}</td>
-      <td>${activityBadge(r.recentEmailActivity)}</td>
+      ${signalCells}
     </tr>`;
   }).join('');
   return `<h2>${title} (${rows.length})</h2>
     <table>
-      <thead><tr><th>Nombre en cuenta B</th><th>Posible match en cuenta A</th><th>Confianza</th><th>Estado</th><th>Actividad real (email)</th></tr></thead>
+      <thead><tr><th>Nombre en cuenta B</th><th>Posible match en cuenta A</th><th>Confianza</th><th>Estado</th>${signalHeaders}</tr></thead>
       <tbody>${body}</tbody>
     </table>`;
 }
@@ -137,28 +149,28 @@ function renderBody(body) {
     <strong>${companiesComparison.clearDuplicates}</strong> parecen duplicados claros de una company ya existente en nsign,
     <strong>${companiesComparison.netNewOrAmbiguous}</strong> son net-new o ambiguas (revisar a mano antes de decidir nada).
   </div>`;
-  if (companiesComparison.emailActivityError) {
-    html += `<div class="error">No se pudo comprobar la actividad real por email: ${escapeHtml(companiesComparison.emailActivityError)}</div>`;
-  } else {
+
+  for (const key of SIGNAL_ORDER) {
+    const sig = companiesComparison.signals && companiesComparison.signals[key];
+    if (!sig) continue;
+    if (sig.error) {
+      html += `<div class="error">No se pudo comprobar la señal "${SIGNAL_LABELS[key]}": ${escapeHtml(sig.error)}</div>`;
+      continue;
+    }
     const dupRate = companiesComparison.clearDuplicates > 0
-      ? Math.round((companiesComparison.duplicatesWithRealActivity / companiesComparison.clearDuplicates) * 100)
+      ? Math.round((sig.duplicatesWithRealActivity / companiesComparison.clearDuplicates) * 100)
       : null;
-    const mechanismLooksBlind = companiesComparison.clearDuplicates > 0 && companiesComparison.duplicatesWithRealActivity === 0;
+    const mechanismLooksBlind = companiesComparison.clearDuplicates > 0 && sig.duplicatesWithRealActivity === 0;
     html += `<div class="note">
-      <strong>Control de fiabilidad:</strong> de los ${companiesComparison.clearDuplicates} duplicados claros (cuentas que YA
-      sabemos que son clientes reales en ambos sistemas), <strong>${companiesComparison.duplicatesWithRealActivity}</strong>
-      ${dupRate !== null ? `(${dupRate}%)` : ''} muestran un email real en los últimos ${companiesComparison.emailActivityMonths} meses.
+      <strong>Señal "${SIGNAL_LABELS[key]}" (control de fiabilidad):</strong> de los ${companiesComparison.clearDuplicates} duplicados claros
+      (cuentas YA sabidas reales), <strong>${sig.duplicatesWithRealActivity}</strong>${dupRate !== null ? ` (${dupRate}%)` : ''}
+      tienen un ${SIGNAL_LABELS[key].toLowerCase()} real en los últimos ${sig.activityMonths} meses.
       ${mechanismLooksBlind
-        ? ' <strong style="color:#b91c1c;">0% incluso en cuentas que sabemos activas — esto sugiere que en este portal los emails no se asocian directamente a la Company (probablemente solo a Contacto), y el 0% de net-new de abajo NO es un hallazgo de negocio fiable, es un punto ciego de este chequeo.</strong>'
-        : ' Esto confirma que el mecanismo sí encuentra actividad real cuando existe, así que el resultado de abajo (net-new) es de fiar.'}
-    </div>`;
-    html += `<div class="note">
-      De las net-new/ambiguas, <strong>${companiesComparison.netNewWithRealActivity}</strong> tienen al menos un email real
-      en los últimos ${companiesComparison.emailActivityMonths} meses — una señal más fiable que la fecha de última
-      modificación de la company/deal, que en esta cuenta parece tocarse en bloque por algo automático. El resto no
-      muestra actividad de email en esa ventana.
+        ? ` <strong style="color:#b91c1c;">0% incluso en cuentas activas conocidas — esta señal no se puede usar en este portal (no hay asociación directa Company→${SIGNAL_LABELS[key]}).</strong>`
+        : ` Señal fiable — de las net-new/ambiguas, <strong>${sig.netNewWithRealActivity}</strong> muestran esta misma actividad real.`}
     </div>`;
   }
+
   html += renderComparisonTable('Duplicados claros', companiesComparison.duplicates, 'dup');
   html += renderComparisonTable('Net-new / ambiguos', companiesComparison.netNew, 'new');
   content.innerHTML = html;

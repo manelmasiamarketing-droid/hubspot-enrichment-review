@@ -89,11 +89,22 @@ which silently under-counted them in every windowed view until fixed.
 on its own** -- testing against a real account showed ~80-99% of companies
 and deals reading as "recently modified" in every window, almost certainly
 from an automated sync bumping the field rather than real activity. So for
-each net-new company, the tool separately checks whether it has an actual
-EMAIL engagement (`hs_timestamp`) within the last 12 months (via the v4
-associations batch-read + v3 engagement batch-read endpoints) and reports
-that count as `netNewWithRealActivity` -- a much more honest "is this still
-a live account" signal than the company record's own timestamp.
+every duplicate AND net-new company, the tool checks several independent
+"real activity" signals -- an Email (`hs_timestamp`), a Deal (`createdate`,
+immutable so it can't be bulk-touched), and a Task (`hs_timestamp`) directly
+associated to that company within the chosen window (via the v4 associations
+batch-read + v3 object batch-read endpoints, see `ACTIVITY_SIGNALS` in
+`lib/inventory.js`).
+
+**Each signal is self-validating.** Because the check runs on duplicates
+too (companies already known to be real, active customers in both
+accounts), the duplicates result works as a built-in control group: if a
+signal reads ~0% even on those known-active companies, that signal is
+useless in this portal (found 09/09/2026: emails aren't associated directly
+to Companies here at all, only Deals/Tasks are candidates worth trusting)
+and its net-new result should be ignored. If a signal is real, the
+duplicates rate should be meaningfully higher than 0%, and its net-new
+result becomes actionable.
 
 To use it: create a **separate** Private App token in the other HubSpot
 account (Private App tokens are portal-specific, so `HUBSPOT_TOKEN` from this
