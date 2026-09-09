@@ -66,9 +66,13 @@ function renderComparisonStrip() {
       const dup = body.companiesComparison.clearDuplicates;
       const netNew = body.companiesComparison.netNewOrAmbiguous;
       const deals = body.accountB.objectCounts.deals;
-      const realActivity = body.companiesComparison.emailActivityError
+      const netNewActivity = body.companiesComparison.emailActivityError
         ? 'error'
         : body.companiesComparison.netNewWithRealActivity;
+      const dupActivity = body.companiesComparison.emailActivityError
+        ? 'error'
+        : body.companiesComparison.duplicatesWithRealActivity;
+      const fmt = (v) => (v === 'error' ? '<span style="color:#b91c1c;">error</span>' : v);
       const isCurrent = monthsKey === state.current && activityMonths === state.activityMonths;
       return `<tr class="${isCurrent ? 'current' : ''}">
         <td>${TAB_LABELS[monthsKey]}</td>
@@ -76,12 +80,13 @@ function renderComparisonStrip() {
         <td>${dup}</td>
         <td>${netNew}</td>
         <td>${typeof deals === 'object' ? '—' : deals}</td>
-        <td>${realActivity === 'error' ? '<span style="color:#b91c1c;">error</span>' : realActivity} <span style="color:#9ca3af;">(${activityMonths}m)</span></td>
+        <td>${fmt(dupActivity)} / ${dup} <span style="color:#9ca3af;">(${activityMonths}m)</span></td>
+        <td>${fmt(netNewActivity)} <span style="color:#9ca3af;">(${activityMonths}m)</span></td>
       </tr>`;
     }).join('');
   return `<h2>Comparativa de ventanas ya cargadas</h2>
     <table>
-      <thead><tr><th>Ventana</th><th>Companies (B)</th><th>Duplicados claros</th><th>Net-new/ambiguos</th><th>Deals (B)</th><th>Net-new con email real</th></tr></thead>
+      <thead><tr><th>Ventana</th><th>Companies (B)</th><th>Duplicados claros</th><th>Net-new/ambiguos</th><th>Deals (B)</th><th>Duplicados con email real (control)</th><th>Net-new con email real</th></tr></thead>
       <tbody>${rows}</tbody>
     </table>`;
 }
@@ -101,6 +106,7 @@ function renderComparisonTable(title, rows, kind) {
         <td>${escapeHtml(r.matchedNameInA)}</td>
         <td>${(r.score * 100).toFixed(0)}%</td>
         <td><span class="badge dup">Duplicado claro</span></td>
+        <td>${activityBadge(r.recentEmailActivity)}</td>
       </tr>`;
     }
     return `<tr>
@@ -111,10 +117,9 @@ function renderComparisonTable(title, rows, kind) {
       <td>${activityBadge(r.recentEmailActivity)}</td>
     </tr>`;
   }).join('');
-  const extraHeader = kind === 'new' ? '<th>Actividad real (email)</th>' : '';
   return `<h2>${title} (${rows.length})</h2>
     <table>
-      <thead><tr><th>Nombre en cuenta B</th><th>Posible match en cuenta A</th><th>Confianza</th><th>Estado</th>${extraHeader}</tr></thead>
+      <thead><tr><th>Nombre en cuenta B</th><th>Posible match en cuenta A</th><th>Confianza</th><th>Estado</th><th>Actividad real (email)</th></tr></thead>
       <tbody>${body}</tbody>
     </table>`;
 }
@@ -135,8 +140,20 @@ function renderBody(body) {
   if (companiesComparison.emailActivityError) {
     html += `<div class="error">No se pudo comprobar la actividad real por email: ${escapeHtml(companiesComparison.emailActivityError)}</div>`;
   } else {
+    const dupRate = companiesComparison.clearDuplicates > 0
+      ? Math.round((companiesComparison.duplicatesWithRealActivity / companiesComparison.clearDuplicates) * 100)
+      : null;
+    const mechanismLooksBlind = companiesComparison.clearDuplicates > 0 && companiesComparison.duplicatesWithRealActivity === 0;
     html += `<div class="note">
-      De esas net-new/ambiguas, <strong>${companiesComparison.netNewWithRealActivity}</strong> tienen al menos un email real
+      <strong>Control de fiabilidad:</strong> de los ${companiesComparison.clearDuplicates} duplicados claros (cuentas que YA
+      sabemos que son clientes reales en ambos sistemas), <strong>${companiesComparison.duplicatesWithRealActivity}</strong>
+      ${dupRate !== null ? `(${dupRate}%)` : ''} muestran un email real en los últimos ${companiesComparison.emailActivityMonths} meses.
+      ${mechanismLooksBlind
+        ? ' <strong style="color:#b91c1c;">0% incluso en cuentas que sabemos activas — esto sugiere que en este portal los emails no se asocian directamente a la Company (probablemente solo a Contacto), y el 0% de net-new de abajo NO es un hallazgo de negocio fiable, es un punto ciego de este chequeo.</strong>'
+        : ' Esto confirma que el mecanismo sí encuentra actividad real cuando existe, así que el resultado de abajo (net-new) es de fiar.'}
+    </div>`;
+    html += `<div class="note">
+      De las net-new/ambiguas, <strong>${companiesComparison.netNewWithRealActivity}</strong> tienen al menos un email real
       en los últimos ${companiesComparison.emailActivityMonths} meses — una señal más fiable que la fecha de última
       modificación de la company/deal, que en esta cuenta parece tocarse en bloque por algo automático. El resto no
       muestra actividad de email en esa ventana.
