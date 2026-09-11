@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const { buildProposals } = require('./lib/proposals');
 const { updateCompany, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany } = require('./lib/hubspot');
-const { buildInventory, debugAssociations } = require('./lib/inventory');
+const { buildInventory, debugAssociations, debugObjectRead } = require('./lib/inventory');
 
 const app = express();
 app.use(express.json());
@@ -179,6 +179,28 @@ app.get('/api/debug/associations', async (req, res) => {
   }
   try {
     const result = await debugAssociations(tokenB, String(from), String(to), String(ids).split(','));
+    res.json(result);
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
+// Same spirit as /api/debug/associations: raw v3 object batch-read for a
+// handful of real IDs, used while planning the pilot migration (real contact
+// names/emails, real timestamps) without writing anything anywhere.
+// Example: /api/debug/objects?type=contacts&ids=123,456&properties=email,firstname,lastname
+app.get('/api/debug/objects', async (req, res) => {
+  const tokenB = process.env.HUBSPOT_TOKEN_B;
+  if (!tokenB) {
+    return res.status(400).json({ error: 'HUBSPOT_TOKEN_B no está configurado.' });
+  }
+  const { type, ids, properties } = req.query;
+  if (!type || !ids) {
+    return res.status(400).json({ error: 'Parámetros requeridos: type, ids (coma-separados). properties opcional (coma-separadas).' });
+  }
+  try {
+    const props = properties ? String(properties).split(',') : ['name'];
+    const result = await debugObjectRead(tokenB, String(type), String(ids).split(','), props);
     res.json(result);
   } catch (e) {
     res.status(500).json({ error: String(e.message || e) });
