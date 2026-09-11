@@ -1,7 +1,11 @@
 const express = require('express');
 const path = require('path');
 const { buildProposals } = require('./lib/proposals');
-const { updateCompany, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany } = require('./lib/hubspot');
+const {
+  updateCompany, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany,
+  setupCrosswalkProperties, findByProperty, findManyByProperty, createContact, associateDefault,
+} = require('./lib/hubspot');
+const fs = require('fs');
 const { buildInventory, debugAssociations, debugObjectRead, debugCount } = require('./lib/inventory');
 
 const app = express();
@@ -118,6 +122,140 @@ app.post('/api/link-branches', async (req, res) => {
   }
   cache = null;
   res.json({ results });
+});
+
+// --- Migration pilot (account B -> account A), Fase 2 first slice ---
+// Manel asked (11/09/2026) to pick 20 real net-new companies with genuine
+// email activity (see /inventory.html's two-hop signal) and plan -- not yet
+// execute -- creating them in account A, keeping the B<->A id
+// correspondence so a paused/resumed run never creates a duplicate. The
+// reviewed list of 19 (one, STRATTO, was pulled out as a likely undetected
+// duplicate of the existing "Areas" account and needs manual linking
+// instead) lives in data/pilot_candidates.json -- a fixed, human-reviewed
+// list, not recomputed on the fly, since the point of a pilot is to review
+// a specific set before doing anything at scale.
+const PILOT_CANDIDATES_PATH = path.join(__dirname, 'data', 'pilot_candidates.json');
+function loadPilotCandidates() {
+  return JSON.parse(fs.readFileSync(PILOT_CANDIDATES_PATH, 'utf8'));
+}
+
+// Cleans up literal "null"/"none" strings that exist as real data in account
+// B (a human typed them into the field) -- never write those into account A.
+function cleanName(v) {
+  if (!v) return null;
+  const s = String(v).trim();
+  return (!s || /^(null|none)$/i.test(s)) ? null : s;
+}
+
+// Read-only: the pilot list plus, for every company/contact, whether it
+// already exists in account A (checked live via the crosswalk properties).
+// Safe to call anytime, including on every page load -- this is what lets
+// the UI show "✓ Ya creado" without trusting anything the browser
+// remembered, per Manel's point (11/09/2026) that a browser-only tick would
+// be lost/wrong across a paused-and-resumed session.
+app.get('/api/pilot/candidates', async (req, res) => {
+  try {
+    const candidates = loadPilotCandidates();
+    const companyOriginIds = candidates.map((c) => c.companyIdInB);
+    const contactOriginIds = candidates.flatMap((c) => c.contacts.map((k) => k.contactIdInB));
+
+    const existingCompanies = await findManyByProperty('companies', 'id_origen_cuenta_b', companyOriginIds, ['name', 'id_origen_cuenta_b']);
+    const existingContacts = await findManyByProperty('contacts', 'id_contacto_origen_cuenta_b', contactOriginIds, ['email', 'id_contacto_origen_cuenta_b']);
+
+    const result = candidates.map((c) => {
+      const existingCompany = existingCompanies.get(c.companyIdInB);
+      return {
+        companyIdInB: c.companyIdInB,
+        companyName: c.companyName,
+        alreadyCreated: Boolean(existingCompany),
+        companyIdInA: existingCompany ? existingCompany.id : null,
+        contacts: c.contacts.map((k) => {
+          const existingContact = existingContacts.get(k.contactIdInB);
+          return {
+            contactIdInB: k.contactIdInB,
+            email: k.email,
+            firstname: cleanName(k.firstname),
+            lastname: cleanName(k.lastname),
+            alreadyCreated: Boolean(existingContact),
+            contactIdInA: existingContact ? existingContact.id : null,
+          };
+        }),
+      };
+    });
+    res.json({ candidates: result });
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
+// Schema-only: creates the 2 crosswalk properties (id_origen_cuenta_b on
+// Company, id_contacto_origen_cuenta_b on Contact) if they don't already
+// exist. Touches no records. Only called from an explicit button.
+app.post('/api/pilot/setup-crosswalk-properties', async (req, res) => {
+  try {
+    const results = await setupCrosswalkProperties();
+    res.json({ ok: true, results });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: String(e.message || e) });
+  }
+});
+
+// THE write endpoint. Only ever called from an explicit per-row (or
+// selected-batch) button + confirm() in the browser -- never automatically,
+// never on page load. Idempotent: re-running this for a company/contact
+// that already has a matching crosswalk id in account A skips creating it
+// again and reuses the existing record, so pausing and resuming a pilot run
+// (or clicking twice) can never create a duplicate.
+app.post('/api/pilot/create', async (req, res) => {
+  const { companyIdInB, companyName, contacts } = req.body;
+  if (!companyIdInB || !companyName) {
+    return res.status(400).json({ error: 'companyIdInB and companyName are required' });
+  }
+  try {
+    let companyRecord = await findByProperty('companies', 'id_origen_cuenta_b', companyIdInB, ['name']);
+    let companySkipped = Boolean(companyRecord);
+    if (!companyRecord) {
+      companyRecord = await createCompany({ name: companyName, id_origen_cuenta_b: String(companyIdInB) });
+    }
+
+    const contactResults = [];
+    for (const k of contacts || []) {
+      let contactRecord = await findByProperty('contacts', 'id_contacto_origen_cuenta_b', k.contactIdInB, ['email']);
+      let contactSkipped = Boolean(contactRecord);
+      if (!contactRecord) {
+        contactRecord = await createContact({
+          email: k.email,
+          firstname: cleanName(k.firstname),
+          lastname: cleanName(k.lastname),
+          id_contacto_origen_cuenta_b: String(k.contactIdInB),
+        });
+      }
+      if (!contactSkipped || !companySkipped) {
+        // Associate whenever either side was just created -- a pre-existing
+        // contact might not yet be linked to a company created in this same
+        // call. Cheap no-op if the association already exists.
+        try {
+          await associateDefault('companies', companyRecord.id, 'contacts', contactRecord.id);
+        } catch (e) {
+          // Association failures don't invalidate the create -- surfaced per-contact below.
+          contactResults.push({ contactIdInB: k.contactIdInB, contactIdInA: contactRecord.id, skipped: contactSkipped, associationError: String(e.message || e) });
+          continue;
+        }
+      }
+      contactResults.push({ contactIdInB: k.contactIdInB, contactIdInA: contactRecord.id, skipped: contactSkipped });
+    }
+
+    cache = null;
+    res.json({
+      ok: true,
+      companyIdInB,
+      companyIdInA: companyRecord.id,
+      companySkipped,
+      contacts: contactResults,
+    });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: String(e.message || e) });
+  }
 });
 
 // Read-only inventory of a SECOND, separate HubSpot account (its own Private

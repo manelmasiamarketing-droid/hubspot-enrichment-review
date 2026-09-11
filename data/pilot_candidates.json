@@ -1,0 +1,374 @@
+[
+  {
+    "companyIdInB": "2067976194",
+    "companyName": "Mediahome",
+    "contacts": [
+      {
+        "contactIdInB": "50351",
+        "email": "rodriguez.ser@mediamarkt.es",
+        "firstname": "Sergi Rodriguez",
+        "lastname": null
+      },
+      {
+        "contactIdInB": "217851",
+        "email": "cartagena@mediamarkt.es",
+        "firstname": "Juan de Dios",
+        "lastname": "Cartagena Guillamó"
+      }
+    ]
+  },
+  {
+    "companyIdInB": "2073746317",
+    "companyName": "MCR",
+    "contacts": [
+      {
+        "contactIdInB": "5877001",
+        "email": "arnau.valero@mcr.com.es",
+        "firstname": "Arnau",
+        "lastname": "Valero Hernandez"
+      },
+      {
+        "contactIdInB": "19063701",
+        "email": "elena@mcr.com.es",
+        "firstname": "Elena",
+        "lastname": "Pardo Acero"
+      }
+    ]
+  },
+  {
+    "companyIdInB": "8810148468",
+    "companyName": "ARAMARK BLANQUERNAS",
+    "contacts": [
+      {
+        "contactIdInB": "25501",
+        "email": "pampanas-luciano@aramark.es",
+        "firstname": "Luciano Pampanas",
+        "lastname": null
+      },
+      {
+        "contactIdInB": "11746001",
+        "email": "arcas-miriam@aramark.es",
+        "firstname": null,
+        "lastname": null
+      },
+      {
+        "contactIdInB": "11865412",
+        "email": "sierra-joaquin@aramark.es",
+        "firstname": "Joaquin",
+        "lastname": "Sierra San Vicente"
+      },
+      {
+        "contactIdInB": "73944240769",
+        "email": "navales-diana@aramark.es",
+        "firstname": "Diana",
+        "lastname": "Navales"
+      },
+      {
+        "contactIdInB": "73944240770",
+        "email": "calvo-oscar@aramark.es",
+        "firstname": null,
+        "lastname": null
+      }
+    ]
+  },
+  {
+    "companyIdInB": "5045283378",
+    "companyName": "GELATERIA DINO",
+    "contacts": [
+      {
+        "contactIdInB": "87301",
+        "email": "stefano@gelatidino.com",
+        "firstname": "Stefano Rosso",
+        "lastname": "Rosso"
+      },
+      {
+        "contactIdInB": "18957751",
+        "email": "cesar@gelatidino.com",
+        "firstname": "Cesar",
+        "lastname": null
+      }
+    ]
+  },
+  {
+    "companyIdInB": "2613165518",
+    "companyName": "SEAT - GLOBAL BUSINESS TRAVEL",
+    "contacts": [
+      {
+        "contactIdInB": "1883251",
+        "email": "joseluis.martinez1@seat.es",
+        "firstname": "José Luis",
+        "lastname": "Martinez"
+      }
+    ]
+  },
+  {
+    "companyIdInB": "2707118129",
+    "companyName": "MINISO LIFESTYLE SPAIN SL",
+    "contacts": [
+      {
+        "contactIdInB": "2446201",
+        "email": "patricia.novillo@miniso.com.es",
+        "firstname": "Patricia",
+        "lastname": "Novillo"
+      },
+      {
+        "contactIdInB": "5630801",
+        "email": "adriana.velasquez@miniso.com.es",
+        "firstname": "Adriana",
+        "lastname": "Velasques"
+      }
+    ]
+  },
+  {
+    "companyIdInB": "2833940211",
+    "companyName": "CONSORCIO MERCANTIL",
+    "contacts": [
+      {
+        "contactIdInB": "313101",
+        "email": "info@thefreshpoke.es",
+        "firstname": "info_the_fresh_poke",
+        "lastname": null
+      },
+      {
+        "contactIdInB": "313151",
+        "email": "k.sielmann@thefreshpoke.es",
+        "firstname": "Kevin",
+        "lastname": "Sielmann Balsells"
+      },
+      {
+        "contactIdInB": "15725901",
+        "email": "cesc@thefreshpoke.es",
+        "firstname": null,
+        "lastname": null
+      }
+    ]
+  },
+  {
+    "companyIdInB": "3118265223",
+    "companyName": "Channel4you",
+    "contacts": [
+      {
+        "contactIdInB": "486651",
+        "email": "nmartinez@channel4you.es",
+        "firstname": "Núria",
+        "lastname": "Martínez"
+      },
+      {
+        "contactIdInB": "8720301",
+        "email": "cdelgado@leddream.es",
+        "firstname": "Carlos",
+        "lastname": "Delgado"
+      }
+    ]
+  },
+  {
+    "companyIdInB": "3419994148",
+    "companyName": "Adalides Visuales",
+    "contacts": [
+      {
+        "contactIdInB": "669851",
+        "email": "jcjimenez@adalides.com",
+        "firstname": "Juan Carlos",
+        "lastname": "Jimenez Calzado"
+      },
+      {
+        "contactIdInB": "160428995719",
+        "email": "francesc.vives@adalides.com",
+        "firstname": null,
+        "lastname": null
+      }
+    ]
+  },
+  {
+    "companyIdInB": "3522548292",
+    "companyName": "IKEA Kuwait",
+    "contacts": [
+      {
+        "contactIdInB": "1793801",
+        "email": "paris@ikea.com.kw",
+        "firstname": "Paris",
+        "lastname": "kapsouros"
+      },
+      {
+        "contactIdInB": "13060651",
+        "email": "tarek.anasi@ikea.com.kw",
+        "firstname": "Tarek",
+        "lastname": "Anasi"
+      },
+      {
+        "contactIdInB": "54141386611",
+        "email": "jacob@ikea.com.kw",
+        "firstname": null,
+        "lastname": null
+      },
+      {
+        "contactIdInB": "54141386612",
+        "email": "shihab@ikea.com.kw",
+        "firstname": null,
+        "lastname": null
+      },
+      {
+        "contactIdInB": "54141386613",
+        "email": "mohammad.samara@ikea.com.kw",
+        "firstname": null,
+        "lastname": null
+      },
+      {
+        "contactIdInB": "56657142789",
+        "email": "b.gudey@ikea.com.kw",
+        "firstname": "Bala",
+        "lastname": "Gudey"
+      },
+      {
+        "contactIdInB": "58651554897",
+        "email": "adriaan@ikea.com.kw",
+        "firstname": "Adriaan",
+        "lastname": "Pretorius"
+      }
+    ]
+  },
+  {
+    "companyIdInB": "3794157947",
+    "companyName": "Retail tech ",
+    "contacts": [
+      {
+        "contactIdInB": "709802",
+        "email": "ignasi.iglesias@retailtech.es",
+        "firstname": "Ignasi",
+        "lastname": "Iglesias"
+      }
+    ]
+  },
+  {
+    "companyIdInB": "3794157956",
+    "companyName": "MODUL 4 SERVEIS INFORMATICS SL",
+    "contacts": [
+      {
+        "contactIdInB": "3419551",
+        "email": "leon@canonbcn22.com",
+        "firstname": "Leon",
+        "lastname": "Bouma"
+      }
+    ]
+  },
+  {
+    "companyIdInB": "3861614336",
+    "companyName": "FACTORY BURGER HOSTELERIA - The Fitzgerald",
+    "contacts": [
+      {
+        "contactIdInB": "9134701",
+        "email": "javier.garcia@thefitzgerald.es",
+        "firstname": "Javier Garcia Vidal, Director de Operaciones",
+        "lastname": null
+      },
+      {
+        "contactIdInB": "78367150125",
+        "email": "mantenimiento@thefitzgerald.es",
+        "firstname": "Mantenimiento",
+        "lastname": "Fitz"
+      }
+    ]
+  },
+  {
+    "companyIdInB": "4417515146",
+    "companyName": "Electronic Arts Spain",
+    "contacts": [
+      {
+        "contactIdInB": "1303251",
+        "email": "gzoanetti@ea.com",
+        "firstname": "German Zoanetti",
+        "lastname": "Zoanetti"
+      },
+      {
+        "contactIdInB": "1694048",
+        "email": "jvalladares@ea.com",
+        "firstname": "Julio Valladares",
+        "lastname": null
+      }
+    ]
+  },
+  {
+    "companyIdInB": "5358575139",
+    "companyName": "Nicole Arlés",
+    "contacts": [
+      {
+        "contactIdInB": "2119201",
+        "email": "jorge.luna@lukhiar.com",
+        "firstname": "Jorge",
+        "lastname": "Luna"
+      },
+      {
+        "contactIdInB": "6822101",
+        "email": "marc.llenas@lukhiar.com",
+        "firstname": "MARC",
+        "lastname": "LLENAS"
+      },
+      {
+        "contactIdInB": "7042701",
+        "email": "jordi.canto@lukhiar.com",
+        "firstname": "Jordi",
+        "lastname": "Canto"
+      },
+      {
+        "contactIdInB": "66420603709",
+        "email": "atraugott@lukhiar.com",
+        "firstname": "Antonio",
+        "lastname": "Traugott"
+      },
+      {
+        "contactIdInB": "194457690222",
+        "email": "pablo@lukhiar.com",
+        "firstname": null,
+        "lastname": null
+      }
+    ]
+  },
+  {
+    "companyIdInB": "5551570869",
+    "companyName": "LA PECERA SC",
+    "contacts": [
+      {
+        "contactIdInB": "2028001",
+        "email": "santander@thefreshpoke.es",
+        "firstname": "Marcos",
+        "lastname": null
+      }
+    ]
+  },
+  {
+    "companyIdInB": "5674478446",
+    "companyName": "Vida & Comida",
+    "contacts": [
+      {
+        "contactIdInB": "2218751",
+        "email": "info@vidaycomida.com",
+        "firstname": "Alfredo",
+        "lastname": "Matallana"
+      }
+    ]
+  },
+  {
+    "companyIdInB": "5850892338",
+    "companyName": "PESRTRADA",
+    "contacts": [
+      {
+        "contactIdInB": "15801",
+        "email": "paco.eh@outlook.com",
+        "firstname": "Paco",
+        "lastname": "Estrada"
+      }
+    ]
+  },
+  {
+    "companyIdInB": "5980707680",
+    "companyName": "Monbake",
+    "contacts": [
+      {
+        "contactIdInB": "71111591560",
+        "email": "angel.mayo@monbake.com",
+        "firstname": "Angel",
+        "lastname": "Mayo"
+      }
+    ]
+  }
+]
