@@ -102,17 +102,45 @@ accounts), the duplicates result works as a built-in control group: if a
 signal reads ~0% even on those known-active companies, that signal is
 useless as checked and its net-new result should be ignored.
 
-**This account turned out not to associate ANY engagement/deal directly to
-Companies at all** (found + verified against HubSpot's own v4 associations
-API docs, 09/09-10/2026: Email, Deal, and Task all read exactly 0% even on
-672 known-active duplicate companies). The real relationship model in this
-portal is Company → Contact → (Email/Deal/Task) -- Contacts is the one
-object with genuine activity here (its `lastmodifieddate` shows a real
-decay curve, unlike Companies/Deals). So the check is two hops:
-`fetchCompanyContactMap()` reads company→contact associations ONCE, then
-`evaluateRecentActivityViaContacts()` reads contact→{emails,deals,tasks}
-(reusing the same contact map for all three) and rolls the result back up
-to "does this company have a contact with real recent activity".
+**This account does not associate engagements/deals directly to Companies**
+(found + verified against HubSpot's own v4 associations API docs,
+09/09-10/2026: Email, Deal, and Task all read 0% checked directly on
+Companies). The real relationship model in this portal is Company → Contact
+→ (Email/Deal/Task) -- Contacts is the one object with genuine activity here
+(its `lastmodifieddate` shows a real decay curve, unlike Companies/Deals). So
+the check is two hops: `fetchCompanyContactMap()` reads company→contact
+associations ONCE, then `evaluateRecentActivityViaContacts()` reads
+contact→{emails,deals,tasks} (reusing the same contact map for all three)
+and rolls the result back up to "does this company have a contact with real
+recent activity".
+
+**Bug found and fixed (11/09/2026):** the two-hop check first shipped still
+read 0% for every signal, even on 673 known-real duplicate companies with
+100+ contacts each (e.g. SERUNION) -- caught via a read-only
+`/api/debug/associations` route added specifically to inspect HubSpot's raw
+response instead of trusting this file's own aggregation. Root cause:
+HubSpot's v4 associations batch-read returns `from.id` as a **string** but
+`to[].toObjectId` as a raw JSON **number**, while the v3 object batch-read
+endpoint returns its own `id` as a **string**. The code joined these across
+Maps/Sets without normalizing types, so every lookup mixing a numeric
+`toObjectId` against a string id silently never matched -- no error, just a
+false "no activity" result for every company and every signal. All ids are
+now normalized to strings the moment they're read (see the comment above
+`batchReadAssociations` in `lib/inventory.js`). The mocked test also had to
+be rewritten to use numeric `toObjectId`/string `id` like real HubSpot data,
+since the original mock used strings on both sides and couldn't have caught
+this class of bug.
+
+**Real numbers after the fix** (companies updated in the last 6 months,
+activity window 24 months, 673 duplicates / 4,652 net-new): Email --
+142/673 (21%) duplicates, 179/4,652 (3.8%) net-new; Deal (createdate) --
+3/673, 1/4,652; Task -- 14/673 (2%), 33/4,652 (0.7%). Email via contact is
+now a credible, non-flat signal -- roughly 1 in 5 known-real companies shows
+a contact with a real recent email, and the 3.8% of net-new companies with
+the same signal are the strongest candidates to review before writing off
+the rest as inactive. Deals stay low even on duplicates, which is plausible
+(this account may simply not have created many new deals recently) rather
+than a sign of another bug.
 
 To use it: create a **separate** Private App token in the other HubSpot
 account (Private App tokens are portal-specific, so `HUBSPOT_TOKEN` from this
