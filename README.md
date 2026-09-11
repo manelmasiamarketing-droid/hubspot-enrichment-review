@@ -100,11 +100,19 @@ batch-read + v3 object batch-read endpoints, see `ACTIVITY_SIGNALS` in
 too (companies already known to be real, active customers in both
 accounts), the duplicates result works as a built-in control group: if a
 signal reads ~0% even on those known-active companies, that signal is
-useless in this portal (found 09/09/2026: emails aren't associated directly
-to Companies here at all, only Deals/Tasks are candidates worth trusting)
-and its net-new result should be ignored. If a signal is real, the
-duplicates rate should be meaningfully higher than 0%, and its net-new
-result becomes actionable.
+useless as checked and its net-new result should be ignored.
+
+**This account turned out not to associate ANY engagement/deal directly to
+Companies at all** (found + verified against HubSpot's own v4 associations
+API docs, 09/09-10/2026: Email, Deal, and Task all read exactly 0% even on
+672 known-active duplicate companies). The real relationship model in this
+portal is Company → Contact → (Email/Deal/Task) -- Contacts is the one
+object with genuine activity here (its `lastmodifieddate` shows a real
+decay curve, unlike Companies/Deals). So the check is two hops:
+`fetchCompanyContactMap()` reads company→contact associations ONCE, then
+`evaluateRecentActivityViaContacts()` reads contact→{emails,deals,tasks}
+(reusing the same contact map for all three) and rolls the result back up
+to "does this company have a contact with real recent activity".
 
 To use it: create a **separate** Private App token in the other HubSpot
 account (Private App tokens are portal-specific, so `HUBSPOT_TOKEN` from this

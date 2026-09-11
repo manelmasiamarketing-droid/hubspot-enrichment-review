@@ -162,11 +162,12 @@ function renderBody(body) {
       : null;
     const mechanismLooksBlind = companiesComparison.clearDuplicates > 0 && sig.duplicatesWithRealActivity === 0;
     html += `<div class="note">
-      <strong>Señal "${SIGNAL_LABELS[key]}" (control de fiabilidad):</strong> de los ${companiesComparison.clearDuplicates} duplicados claros
+      <strong>Señal "${SIGNAL_LABELS[key]}" vía contacto (control de fiabilidad):</strong> de los ${companiesComparison.clearDuplicates} duplicados claros
       (cuentas YA sabidas reales), <strong>${sig.duplicatesWithRealActivity}</strong>${dupRate !== null ? ` (${dupRate}%)` : ''}
-      tienen un ${SIGNAL_LABELS[key].toLowerCase()} real en los últimos ${sig.activityMonths} meses.
+      tienen algún contacto asociado con un ${SIGNAL_LABELS[key].toLowerCase()} real en los últimos ${sig.activityMonths} meses
+      (Company → Contacto → ${SIGNAL_LABELS[key]}, ya que esta cuenta no asocia nada directamente a la Company).
       ${mechanismLooksBlind
-        ? ` <strong style="color:#b91c1c;">0% incluso en cuentas activas conocidas — esta señal no se puede usar en este portal (no hay asociación directa Company→${SIGNAL_LABELS[key]}).</strong>`
+        ? ` <strong style="color:#b91c1c;">0% incluso en cuentas activas conocidas — revisar antes de confiar en esta señal.</strong>`
         : ` Señal fiable — de las net-new/ambiguas, <strong>${sig.netNewWithRealActivity}</strong> muestran esta misma actividad real.`}
     </div>`;
   }
