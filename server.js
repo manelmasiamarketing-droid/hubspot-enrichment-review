@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const { buildProposals } = require('./lib/proposals');
 const { updateCompany, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany } = require('./lib/hubspot');
-const { buildInventory } = require('./lib/inventory');
+const { buildInventory, debugAssociations } = require('./lib/inventory');
 
 const app = express();
 app.use(express.json());
@@ -159,6 +159,28 @@ app.get('/api/inventory', async (req, res) => {
     res.json(result);
   } catch (e) {
     inventoryProgress = { stage: 'idle', done: 0, total: null };
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
+// Read-only debug helper: raw v4 associations batch-read for a handful of
+// real IDs, association types included. Used to root-cause a surprising
+// signal result (e.g. "0% even on known-real duplicates") against the raw
+// HubSpot response instead of trusting this app's own aggregation.
+// Example: /api/debug/associations?from=companies&to=contacts&ids=123,456
+app.get('/api/debug/associations', async (req, res) => {
+  const tokenB = process.env.HUBSPOT_TOKEN_B;
+  if (!tokenB) {
+    return res.status(400).json({ error: 'HUBSPOT_TOKEN_B no está configurado.' });
+  }
+  const { from, to, ids } = req.query;
+  if (!from || !to || !ids) {
+    return res.status(400).json({ error: 'Parámetros requeridos: from, to, ids (coma-separados).' });
+  }
+  try {
+    const result = await debugAssociations(tokenB, String(from), String(to), String(ids).split(','));
+    res.json(result);
+  } catch (e) {
     res.status(500).json({ error: String(e.message || e) });
   }
 });
