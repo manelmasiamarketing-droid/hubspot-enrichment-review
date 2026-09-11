@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const { buildProposals } = require('./lib/proposals');
 const { updateCompany, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany } = require('./lib/hubspot');
-const { buildInventory, debugAssociations, debugObjectRead } = require('./lib/inventory');
+const { buildInventory, debugAssociations, debugObjectRead, debugCount } = require('./lib/inventory');
 
 const app = express();
 app.use(express.json());
@@ -205,6 +205,30 @@ app.get('/api/debug/objects', async (req, res) => {
   } catch (e) {
     res.status(500).json({ error: String(e.message || e) });
   }
+});
+
+// Same spirit again: a bare, unfiltered count for an arbitrary object type
+// (tickets, quotes, line_items, communications...), used to check whether
+// this account has anything at all outside the object types the main
+// inventory already covers. Example: /api/debug/count?types=tickets,quotes
+app.get('/api/debug/count', async (req, res) => {
+  const tokenB = process.env.HUBSPOT_TOKEN_B;
+  if (!tokenB) {
+    return res.status(400).json({ error: 'HUBSPOT_TOKEN_B no está configurado.' });
+  }
+  const { types } = req.query;
+  if (!types) {
+    return res.status(400).json({ error: 'Parámetro requerido: types (coma-separados).' });
+  }
+  const result = {};
+  for (const type of String(types).split(',')) {
+    try {
+      result[type] = await debugCount(tokenB, type);
+    } catch (e) {
+      result[type] = { error: String(e.message || e) };
+    }
+  }
+  res.json(result);
 });
 
 const port = process.env.PORT || 3000;
