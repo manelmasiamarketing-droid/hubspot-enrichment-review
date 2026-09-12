@@ -4,7 +4,7 @@ const { buildProposals } = require('./lib/proposals');
 const {
   updateCompany, updateContact, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany,
   setupCrosswalkProperties, findByProperty, findManyByProperty, createContact, associateDefault,
-  batchReadContactCompanies, batchReadCompanyNames,
+  batchReadContactCompanies, batchReadCompanyNames, getById,
 } = require('./lib/hubspot');
 const fs = require('fs');
 const { buildInventory, debugAssociations, debugObjectRead, debugCount } = require('./lib/inventory');
@@ -220,6 +220,24 @@ app.get('/api/pilot/candidates', async (req, res) => {
       };
     });
     res.json({ candidates: result });
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
+// Read-only: inspect the real current state of a specific account-A record
+// by id -- used to check a suspected leftover/duplicate (e.g. Mediahome,
+// 12/09/2026) before deciding what to fix, instead of guessing from what the
+// UI last showed.
+app.get('/api/pilot/debug/object', async (req, res) => {
+  const { type, id, properties } = req.query;
+  if (!type || !id) {
+    return res.status(400).json({ error: 'Parámetros requeridos: type, id. properties opcional (coma-separadas).' });
+  }
+  try {
+    const props = properties ? String(properties).split(',') : ['name'];
+    const result = await getById(String(type), String(id), props);
+    res.json({ result });
   } catch (e) {
     res.status(500).json({ error: String(e.message || e) });
   }
