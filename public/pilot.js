@@ -23,13 +23,23 @@ function renderCompany(company, index) {
     : '<span class="badge pending">Pendiente</span>';
   const contactRows = company.contacts.map(renderContactRow).join('');
   const disableCheckbox = company.alreadyCreated ? 'disabled' : '';
+  const dup = company.possibleDuplicateCompany;
+  const warning = (dup && !company.alreadyCreated) ? `<div class="note" style="background:#fef2f2;border-color:#fecaca;color:#b91c1c;margin:0 16px 12px;">
+      ⚠️ Posible duplicado: uno o más contactos ya pertenecen a <strong>${escapeHtml(dup.name || `company ${dup.id}`)}</strong> (id A: ${escapeHtml(dup.id)}) en la cuenta A.
+      Antes de crear "${escapeHtml(company.companyName)}" como empresa nueva, revisa si es el mismo cliente real.
+    </div>` : '';
+  const createBtn = (dup && !company.alreadyCreated)
+    ? `<button class="danger link-existing-btn" data-index="${index}">Vincular a "${escapeHtml(dup.name || dup.id)}" (recomendado)</button>
+       <button class="secondary create-one-btn" data-index="${index}">Crear de todas formas</button>`
+    : `<button class="secondary create-one-btn" data-index="${index}" ${company.alreadyCreated ? 'disabled' : ''}>Crear esta company</button>`;
   return `<div class="company-card" data-index="${index}">
     <div class="company-head">
       <input type="checkbox" class="row-check" data-index="${index}" ${disableCheckbox} ${company.alreadyCreated ? '' : 'checked'} />
       <div class="company-name">${escapeHtml(company.companyName)} <span style="color:var(--text-dim); font-weight:400;">(B: ${escapeHtml(company.companyIdInB)})</span></div>
       ${status}
-      <button class="secondary create-one-btn" data-index="${index}" ${company.alreadyCreated ? 'disabled' : ''}>Crear esta company</button>
+      ${createBtn}
     </div>
+    ${warning}
     <table>
       <thead><tr><th>Contacto</th><th>Email</th><th>ID contacto (B)</th><th>Estado</th></tr></thead>
       <tbody>${contactRows}</tbody>
@@ -41,6 +51,9 @@ function render() {
   document.getElementById('content').innerHTML = candidates.map(renderCompany).join('');
   document.querySelectorAll('.create-one-btn').forEach((btn) => {
     btn.addEventListener('click', () => createOne(Number(btn.dataset.index)));
+  });
+  document.querySelectorAll('.link-existing-btn').forEach((btn) => {
+    btn.addEventListener('click', () => linkToExisting(Number(btn.dataset.index)));
   });
 }
 
@@ -83,7 +96,9 @@ async function createCompanyPayload(company) {
 
 async function createOne(index) {
   const company = candidates[index];
-  if (!confirm(`¿Crear "${company.companyName}" (+ ${company.contacts.length} contacto/s) en la cuenta A de HubSpot?\n\nEsto ESCRIBE en HubSpot. Si ya existe (mismo id_origen_cuenta_b), no se duplicará.`)) {
+  const dup = company.possibleDuplicateCompany;
+  const dupWarning = dup ? `\n\n⚠️ AVISO: contactos de esta empresa ya pertenecen a "${dup.name || dup.id}" en cuenta A -- esto puede ser un duplicado. Confirmas que quieres crear una empresa NUEVA de todas formas?` : '';
+  if (!confirm(`¿Crear "${company.companyName}" (+ ${company.contacts.length} contacto/s) en la cuenta A de HubSpot?\n\nEsto ESCRIBE en HubSpot. Si ya existe (mismo id_origen_cuenta_b), no se duplicará.${dupWarning}`)) {
     return;
   }
   const status = document.getElementById('status');
@@ -92,6 +107,34 @@ async function createOne(index) {
   status.textContent = '';
   if (!result.ok) {
     alert(`Error creando ${company.companyName}: ${result.error}`);
+    return;
+  }
+  await loadCandidates();
+}
+
+async function linkToExisting(index) {
+  const company = candidates[index];
+  const dup = company.possibleDuplicateCompany;
+  if (!confirm(`¿Vincular los contactos de "${company.companyName}" a la company existente "${dup.name || dup.id}" (id A: ${dup.id}) en vez de crear una nueva?\n\nEsto ESCRIBE en HubSpot (asocia contactos + rellena id_origen_cuenta_b si esa company aún no tiene uno).`)) {
+    return;
+  }
+  const status = document.getElementById('status');
+  status.textContent = `Vinculando ${company.companyName} a ${dup.name || dup.id}…`;
+  const res = await fetch('/api/pilot/link-to-existing-company', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      companyIdInB: company.companyIdInB,
+      existingCompanyIdInA: dup.id,
+      contacts: company.contacts.map((c) => ({
+        contactIdInB: c.contactIdInB, email: c.email, firstname: c.firstname, lastname: c.lastname,
+      })),
+    }),
+  });
+  const result = await res.json();
+  status.textContent = '';
+  if (!result.ok) {
+    alert(`Error vinculando ${company.companyName}: ${result.error}`);
     return;
   }
   await loadCandidates();

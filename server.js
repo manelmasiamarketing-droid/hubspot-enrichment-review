@@ -4,6 +4,7 @@ const { buildProposals } = require('./lib/proposals');
 const {
   updateCompany, updateContact, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany,
   setupCrosswalkProperties, findByProperty, findManyByProperty, createContact, associateDefault,
+  batchReadContactCompanies, batchReadCompanyNames,
 } = require('./lib/hubspot');
 const fs = require('fs');
 const { buildInventory, debugAssociations, debugObjectRead, debugCount } = require('./lib/inventory');
@@ -162,24 +163,60 @@ app.get('/api/pilot/candidates', async (req, res) => {
     const existingCompanies = await findManyByProperty('companies', 'id_origen_cuenta_b', companyOriginIds, ['name', 'id_origen_cuenta_b']);
     const existingContacts = await findManyByProperty('contacts', 'id_contacto_origen_cuenta_b', contactOriginIds, ['email', 'id_contacto_origen_cuenta_b']);
 
+    // Duplicate check (Manel, 12/09/2026): a contact's EMAIL can already
+    // belong to a real, different company in account A even when nothing
+    // here recognizes it via the crosswalk id yet -- "Mediahome" turned out
+    // to be @mediamarkt.es contacts, i.e. almost certainly the same real
+    // business as an existing "Mediamarkt" company. Check this BEFORE
+    // anything is created, not just react to a 409 at creation time: look up
+    // every contact email not already matched by crosswalk id, then follow
+    // its existing company associations in account A.
+    const emailsToCheck = candidates.flatMap((c) => c.contacts
+      .filter((k) => !existingContacts.has(k.contactIdInB))
+      .map((k) => k.email))
+      .filter(Boolean);
+    const existingContactsByEmail = await findManyByProperty('contacts', 'email', emailsToCheck, ['email']);
+    const matchedContactIds = [...existingContactsByEmail.values()].map((r) => r.id);
+    const contactToCompanies = await batchReadContactCompanies(matchedContactIds);
+    const allExistingCompanyIds = [...new Set([...contactToCompanies.values()].flat())];
+    const companyNames = await batchReadCompanyNames(allExistingCompanyIds);
+
     const result = candidates.map((c) => {
       const existingCompany = existingCompanies.get(c.companyIdInB);
+      const contactRows = c.contacts.map((k) => {
+        const existingContact = existingContacts.get(k.contactIdInB);
+        let possibleDuplicateCompany = null;
+        if (!existingContact && k.email) {
+          const byEmail = existingContactsByEmail.get(k.email);
+          if (byEmail) {
+            const companyIds = contactToCompanies.get(byEmail.id) || [];
+            const otherCompanyId = companyIds.find((id) => id !== (existingCompany && existingCompany.id));
+            if (otherCompanyId) {
+              possibleDuplicateCompany = { id: otherCompanyId, name: companyNames.get(otherCompanyId) || null };
+            }
+          }
+        }
+        return {
+          contactIdInB: k.contactIdInB,
+          email: k.email,
+          firstname: cleanName(k.firstname),
+          lastname: cleanName(k.lastname),
+          alreadyCreated: Boolean(existingContact),
+          contactIdInA: existingContact ? existingContact.id : null,
+          possibleDuplicateCompany,
+        };
+      });
+      // Roll up to the company row: if any contact points at the same
+      // existing company, that's the one to suggest linking to instead of
+      // creating new.
+      const rowDuplicate = contactRows.map((k) => k.possibleDuplicateCompany).find(Boolean) || null;
       return {
         companyIdInB: c.companyIdInB,
         companyName: c.companyName,
         alreadyCreated: Boolean(existingCompany),
         companyIdInA: existingCompany ? existingCompany.id : null,
-        contacts: c.contacts.map((k) => {
-          const existingContact = existingContacts.get(k.contactIdInB);
-          return {
-            contactIdInB: k.contactIdInB,
-            email: k.email,
-            firstname: cleanName(k.firstname),
-            lastname: cleanName(k.lastname),
-            alreadyCreated: Boolean(existingContact),
-            contactIdInA: existingContact ? existingContact.id : null,
-          };
-        }),
+        possibleDuplicateCompany: rowDuplicate,
+        contacts: contactRows,
       };
     });
     res.json({ candidates: result });
@@ -199,6 +236,50 @@ app.post('/api/pilot/setup-crosswalk-properties', async (req, res) => {
     res.status(500).json({ ok: false, error: String(e.message || e) });
   }
 });
+
+// Shared by /api/pilot/create and /api/pilot/link-to-existing-company:
+// idempotent create-or-adopt for one contact, then associate it to
+// companyIdInA. Returns the per-contact result row for the response.
+async function ensureContactLinkedToCompany(k, companyIdInA, companySkipped) {
+  let contactRecord = await findByProperty('contacts', 'id_contacto_origen_cuenta_b', k.contactIdInB, ['email']);
+  let contactSkipped = Boolean(contactRecord);
+  let matchedByEmail = false;
+  if (!contactRecord) {
+    try {
+      contactRecord = await createContact({
+        email: k.email,
+        firstname: cleanName(k.firstname),
+        lastname: cleanName(k.lastname),
+        id_contacto_origen_cuenta_b: String(k.contactIdInB),
+      });
+    } catch (e) {
+      // A contact with this email already exists in account A, just not one
+      // we created (so it never got our crosswalk id) -- e.g. it predates
+      // this pilot, or was added some other way. HubSpot's own 409 body
+      // names the existing id ("Existing ID: 123"); adopt that record
+      // instead of failing the whole company: backfill the crosswalk
+      // property onto it so a future run recognizes it, rather than
+      // creating a second contact for the same real person.
+      const match = /Existing ID:\s*(\d+)/.exec(String(e.message || ''));
+      if (!match) throw e;
+      contactRecord = { id: match[1] };
+      await updateContact(contactRecord.id, { id_contacto_origen_cuenta_b: String(k.contactIdInB) });
+      contactSkipped = true;
+      matchedByEmail = true;
+    }
+  }
+  if (!contactSkipped || !companySkipped) {
+    // Associate whenever either side was just created -- a pre-existing
+    // contact might not yet be linked to a company created in this same
+    // call. Cheap no-op if the association already exists.
+    try {
+      await associateDefault('companies', companyIdInA, 'contacts', contactRecord.id);
+    } catch (e) {
+      return { contactIdInB: k.contactIdInB, contactIdInA: contactRecord.id, skipped: contactSkipped, matchedByEmail, associationError: String(e.message || e) };
+    }
+  }
+  return { contactIdInB: k.contactIdInB, contactIdInA: contactRecord.id, skipped: contactSkipped, matchedByEmail };
+}
 
 // THE write endpoint. Only ever called from an explicit per-row (or
 // selected-batch) button + confirm() in the browser -- never automatically,
@@ -220,46 +301,7 @@ app.post('/api/pilot/create', async (req, res) => {
 
     const contactResults = [];
     for (const k of contacts || []) {
-      let contactRecord = await findByProperty('contacts', 'id_contacto_origen_cuenta_b', k.contactIdInB, ['email']);
-      let contactSkipped = Boolean(contactRecord);
-      let matchedByEmail = false;
-      if (!contactRecord) {
-        try {
-          contactRecord = await createContact({
-            email: k.email,
-            firstname: cleanName(k.firstname),
-            lastname: cleanName(k.lastname),
-            id_contacto_origen_cuenta_b: String(k.contactIdInB),
-          });
-        } catch (e) {
-          // A contact with this email already exists in account A, just not
-          // one we created (so it never got our crosswalk id) -- e.g. it
-          // predates this pilot, or was added some other way. HubSpot's own
-          // 409 body names the existing id ("Existing ID: 123"); adopt that
-          // record instead of failing the whole company: backfill the
-          // crosswalk property onto it so a future run recognizes it, rather
-          // than creating a second contact for the same real person.
-          const match = /Existing ID:\s*(\d+)/.exec(String(e.message || ''));
-          if (!match) throw e;
-          contactRecord = { id: match[1] };
-          await updateContact(contactRecord.id, { id_contacto_origen_cuenta_b: String(k.contactIdInB) });
-          contactSkipped = true;
-          matchedByEmail = true;
-        }
-      }
-      if (!contactSkipped || !companySkipped) {
-        // Associate whenever either side was just created -- a pre-existing
-        // contact might not yet be linked to a company created in this same
-        // call. Cheap no-op if the association already exists.
-        try {
-          await associateDefault('companies', companyRecord.id, 'contacts', contactRecord.id);
-        } catch (e) {
-          // Association failures don't invalidate the create -- surfaced per-contact below.
-          contactResults.push({ contactIdInB: k.contactIdInB, contactIdInA: contactRecord.id, skipped: contactSkipped, matchedByEmail, associationError: String(e.message || e) });
-          continue;
-        }
-      }
-      contactResults.push({ contactIdInB: k.contactIdInB, contactIdInA: contactRecord.id, skipped: contactSkipped, matchedByEmail });
+      contactResults.push(await ensureContactLinkedToCompany(k, companyRecord.id, companySkipped));
     }
 
     cache = null;
@@ -268,6 +310,44 @@ app.post('/api/pilot/create', async (req, res) => {
       companyIdInB,
       companyIdInA: companyRecord.id,
       companySkipped,
+      contacts: contactResults,
+    });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: String(e.message || e) });
+  }
+});
+
+// Alternative to /api/pilot/create for a row flagged as a possible
+// duplicate (see the possibleDuplicateCompany check in /api/pilot/candidates):
+// link this B-side company's contacts to an EXISTING account-A company
+// instead of creating a new one. Only ever called from an explicit button +
+// confirm(). Backfills id_origen_cuenta_b on the existing company only if it
+// doesn't already have a (different) one, so a company already linked to
+// another B-side record is never silently reassigned.
+app.post('/api/pilot/link-to-existing-company', async (req, res) => {
+  const { companyIdInB, existingCompanyIdInA, contacts } = req.body;
+  if (!companyIdInB || !existingCompanyIdInA) {
+    return res.status(400).json({ error: 'companyIdInB and existingCompanyIdInA are required' });
+  }
+  try {
+    const existing = await findByProperty('companies', 'hs_object_id', existingCompanyIdInA, ['name', 'id_origen_cuenta_b']);
+    const alreadyLinkedToOther = existing && existing.properties && existing.properties.id_origen_cuenta_b
+      && existing.properties.id_origen_cuenta_b !== String(companyIdInB);
+    if (!alreadyLinkedToOther) {
+      await updateCompany(existingCompanyIdInA, { id_origen_cuenta_b: String(companyIdInB) });
+    }
+
+    const contactResults = [];
+    for (const k of contacts || []) {
+      contactResults.push(await ensureContactLinkedToCompany(k, existingCompanyIdInA, true));
+    }
+
+    cache = null;
+    res.json({
+      ok: true,
+      companyIdInB,
+      companyIdInA: existingCompanyIdInA,
+      crosswalkSkipped: Boolean(alreadyLinkedToOther),
       contacts: contactResults,
     });
   } catch (e) {
