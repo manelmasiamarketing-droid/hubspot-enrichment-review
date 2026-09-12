@@ -4,7 +4,7 @@ const { buildProposals } = require('./lib/proposals');
 const {
   updateCompany, updateContact, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany,
   setupCrosswalkProperties, findByProperty, findManyByProperty, createContact, associateDefault,
-  batchReadContactCompanies, batchReadCompanyNames, getById,
+  batchReadContactCompanies, batchReadCompanyNames, getById, searchByProperty,
 } = require('./lib/hubspot');
 const fs = require('fs');
 const { buildInventory, debugAssociations, debugObjectRead, debugCount } = require('./lib/inventory');
@@ -229,6 +229,23 @@ app.get('/api/pilot/candidates', async (req, res) => {
 // by id -- used to check a suspected leftover/duplicate (e.g. Mediahome,
 // 12/09/2026) before deciding what to fix, instead of guessing from what the
 // UI last showed.
+// Read-only: list EVERY match for a property value (not just the first),
+// used to see all duplicates of a name (e.g. "MCR" created twice, 12/09/2026)
+// instead of only the one findByProperty would have returned.
+app.get('/api/pilot/debug/search', async (req, res) => {
+  const { type, property, value, properties } = req.query;
+  if (!type || !property || !value) {
+    return res.status(400).json({ error: 'Parámetros requeridos: type, property, value. properties opcional (coma-separadas).' });
+  }
+  try {
+    const props = properties ? String(properties).split(',') : ['name'];
+    const results = await searchByProperty(String(type), String(property), String(value), props, 20);
+    res.json({ results });
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
 app.get('/api/pilot/debug/object', async (req, res) => {
   const { type, id, properties } = req.query;
   if (!type || !id) {
