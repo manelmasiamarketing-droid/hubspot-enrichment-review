@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const { buildProposals } = require('./lib/proposals');
 const {
-  updateCompany, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany,
+  updateCompany, updateContact, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany,
   setupCrosswalkProperties, findByProperty, findManyByProperty, createContact, associateDefault,
 } = require('./lib/hubspot');
 const fs = require('fs');
@@ -222,13 +222,30 @@ app.post('/api/pilot/create', async (req, res) => {
     for (const k of contacts || []) {
       let contactRecord = await findByProperty('contacts', 'id_contacto_origen_cuenta_b', k.contactIdInB, ['email']);
       let contactSkipped = Boolean(contactRecord);
+      let matchedByEmail = false;
       if (!contactRecord) {
-        contactRecord = await createContact({
-          email: k.email,
-          firstname: cleanName(k.firstname),
-          lastname: cleanName(k.lastname),
-          id_contacto_origen_cuenta_b: String(k.contactIdInB),
-        });
+        try {
+          contactRecord = await createContact({
+            email: k.email,
+            firstname: cleanName(k.firstname),
+            lastname: cleanName(k.lastname),
+            id_contacto_origen_cuenta_b: String(k.contactIdInB),
+          });
+        } catch (e) {
+          // A contact with this email already exists in account A, just not
+          // one we created (so it never got our crosswalk id) -- e.g. it
+          // predates this pilot, or was added some other way. HubSpot's own
+          // 409 body names the existing id ("Existing ID: 123"); adopt that
+          // record instead of failing the whole company: backfill the
+          // crosswalk property onto it so a future run recognizes it, rather
+          // than creating a second contact for the same real person.
+          const match = /Existing ID:\s*(\d+)/.exec(String(e.message || ''));
+          if (!match) throw e;
+          contactRecord = { id: match[1] };
+          await updateContact(contactRecord.id, { id_contacto_origen_cuenta_b: String(k.contactIdInB) });
+          contactSkipped = true;
+          matchedByEmail = true;
+        }
       }
       if (!contactSkipped || !companySkipped) {
         // Associate whenever either side was just created -- a pre-existing
@@ -238,11 +255,11 @@ app.post('/api/pilot/create', async (req, res) => {
           await associateDefault('companies', companyRecord.id, 'contacts', contactRecord.id);
         } catch (e) {
           // Association failures don't invalidate the create -- surfaced per-contact below.
-          contactResults.push({ contactIdInB: k.contactIdInB, contactIdInA: contactRecord.id, skipped: contactSkipped, associationError: String(e.message || e) });
+          contactResults.push({ contactIdInB: k.contactIdInB, contactIdInA: contactRecord.id, skipped: contactSkipped, matchedByEmail, associationError: String(e.message || e) });
           continue;
         }
       }
-      contactResults.push({ contactIdInB: k.contactIdInB, contactIdInA: contactRecord.id, skipped: contactSkipped });
+      contactResults.push({ contactIdInB: k.contactIdInB, contactIdInA: contactRecord.id, skipped: contactSkipped, matchedByEmail });
     }
 
     cache = null;
