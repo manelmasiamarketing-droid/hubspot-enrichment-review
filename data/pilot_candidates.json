@@ -1,23 +1,5 @@
 [
   {
-    "companyIdInB": "2067976194",
-    "companyName": "Mediahome",
-    "contacts": [
-      {
-        "contactIdInB": "50351",
-        "email": "rodriguez.ser@mediamarkt.es",
-        "firstname": "Sergi Rodriguez",
-        "lastname": null
-      },
-      {
-        "contactIdInB": "217851",
-        "email": "cartagena@mediamarkt.es",
-        "firstname": "Juan de Dios",
-        "lastname": "Cartagena Guillamó"
-      }
-    ]
-  },
-  {
     "companyIdInB": "2073746317",
     "companyName": "MCR",
     "contacts": [
