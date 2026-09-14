@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { buildProposals } = require('./lib/proposals');
+const { buildProposals, buildPartnersExport } = require('./lib/proposals');
 const {
   updateCompany, updateContact, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany,
   setupCrosswalkProperties, findByProperty, findManyByProperty, createContact, associateDefault,
@@ -499,6 +499,19 @@ app.get('/api/debug/count', async (req, res) => {
     }
   }
   res.json(result);
+});
+
+// Read-only: every company in HubSpot (cuenta A) already tagged
+// tipo_de_empresa='Partner', plus partners known from nsign's own
+// device-history that don't have a HubSpot company yet. Used to build an
+// Excel export (Manel, 14/09/2026) -- never writes anything.
+app.get('/api/partners-export', async (req, res) => {
+  try {
+    const result = await buildPartnersExport();
+    res.json(result);
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
 });
 
 const port = process.env.PORT || 3000;
