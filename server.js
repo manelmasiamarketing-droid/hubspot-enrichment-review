@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { buildProposals, buildPartnersExport } = require('./lib/proposals');
+const { buildProposals, buildPartnersExport, buildVerticalDeviceApprox } = require('./lib/proposals');
 const {
   updateCompany, updateContact, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany,
   setupCrosswalkProperties, findByProperty, findManyByProperty, createContact, associateDefault,
@@ -508,6 +508,19 @@ app.get('/api/debug/count', async (req, res) => {
 app.get('/api/partners-export', async (req, res) => {
   try {
     const result = await buildPartnersExport();
+    res.json(result);
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
+// Read-only: active_devices summed per vertical (sector__vertical_, or the
+// Excel-derived fallback) across nsign's real device-history clients -- a
+// revenue-by-vertical APPROXIMATION (devices as proxy, no real revenue
+// figure available) for an external partner form (Manel, 17/09/2026).
+app.get('/api/vertical-device-approx', async (req, res) => {
+  try {
+    const result = await buildVerticalDeviceApprox();
     res.json(result);
   } catch (e) {
     res.status(500).json({ error: String(e.message || e) });
