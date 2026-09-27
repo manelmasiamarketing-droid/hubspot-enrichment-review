@@ -85,8 +85,70 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+// Track 2 (plan 09/09/2026): builds the shared <datalist> once per render
+// from allCompanies (already included in /api/proposals -- no extra
+// round-trip), and a name->id lookup so picking an option in the search box
+// resolves to a real company id before "Vincular" is enabled.
+function populateCompanySearchList(allCompanies) {
+  const datalist = document.getElementById('allCompaniesList');
+  datalist.innerHTML = allCompanies
+    .map((c) => `<option value="${escapeHtml(c.name)}"></option>`)
+    .join('');
+  const byName = new Map();
+  for (const c of allCompanies) {
+    const key = (c.name || '').trim().toLowerCase();
+    if (key && !byName.has(key)) byName.set(key, c);
+  }
+  return byName;
+}
+
+// One search input + "Vincular" button per unmatched row -- typing filters
+// the shared datalist; the button only enables once the typed text exactly
+// matches a real company name (so we always have a real id to write to).
+function platformLinkCell(rawName, companyByName) {
+  const inputId = `platformSearch-${Math.random().toString(36).slice(2)}`;
+  return `<div class="platform-link" data-raw-name="${escapeHtml(rawName)}">
+    <input type="text" list="allCompaniesList" class="platformSearchInput" id="${inputId}" placeholder="Buscar company existente…" />
+    <button class="ghost linkBtn" disabled>Vincular</button>
+  </div>`;
+}
+
+function wirePlatformLinkCells(root, companyByName, onLinked) {
+  root.querySelectorAll('.platform-link').forEach((cell) => {
+    const rawName = cell.dataset.rawName;
+    const input = cell.querySelector('.platformSearchInput');
+    const btn = cell.querySelector('.linkBtn');
+    input.addEventListener('input', () => {
+      const match = companyByName.get(input.value.trim().toLowerCase());
+      btn.disabled = !match;
+    });
+    btn.addEventListener('click', async () => {
+      const match = companyByName.get(input.value.trim().toLowerCase());
+      if (!match) return;
+      if (!confirm(`¿Vincular "${rawName}" con la company existente "${match.name}"?\n\nEsto graba nombre_en_plataforma="${rawName}" en esa company de HubSpot -- el próximo refresh la reconocerá automáticamente sin volver a preguntarte.`)) return;
+      btn.disabled = true;
+      btn.textContent = 'Vinculando…';
+      const res = await fetch('/api/link-platform-name', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ companyId: match.id, platformName: rawName }),
+      });
+      const out = await res.json();
+      if (out.ok) {
+        btn.textContent = 'Vinculado ✓';
+        if (onLinked) onLinked();
+      } else {
+        btn.textContent = 'Error';
+        btn.disabled = false;
+        alert(`Error vinculando: ${out.error}`);
+      }
+    });
+  });
+}
+
 function render() {
-  const { proposals, unmatchedClients, unmatchedPartners, totalCompaniesScanned } = state.data;
+  const { proposals, unmatchedClients, unmatchedPartners, totalCompaniesScanned, allCompanies } = state.data;
+  const companyByName = populateCompanySearchList(allCompanies || []);
   document.getElementById('headerSummary').textContent =
     `${totalCompaniesScanned} companies escaneadas · ${proposals.length} con cambios propuestos · ${unmatchedClients.length} clientes sin match · ${unmatchedPartners.length} partners sin match`;
 
@@ -185,10 +247,12 @@ function render() {
       <td>${c.active_devices}</td>
       <td>${escapeHtml(c.country || '')}</td>
       <td>${c.is_direct_channel ? 'Directo (Netipbox)' : escapeHtml(c.partner_group || '')}</td>
+      <td>${platformLinkCell(c.name, companyByName)}</td>
       <td><button class="ghost createBtn" data-name="${escapeHtml(c.name)}" data-country="${escapeHtml(c.country || '')}">Crear en HubSpot</button></td>
     `;
     unmatchedEl.appendChild(tr);
   }
+  wirePlatformLinkCells(unmatchedEl, companyByName, () => load(true));
   document.querySelectorAll('.createBtn').forEach((btn) => {
     btn.addEventListener('click', async () => {
       if (!confirm(`¿Crear la company "${btn.dataset.name}" en HubSpot como Cliente Final (país: ${btn.dataset.country || 'sin dato'})?`)) return;
@@ -214,10 +278,12 @@ function render() {
         <td>${p.active_devices}</td>
         <td>${p.managed_client_count}</td>
         <td><span class="badge low">${escapeHtml(p.suggestedTier)}</span></td>
+        <td>${platformLinkCell(p.name, companyByName)}</td>
         <td><button class="ghost createPartnerBtn" data-name="${escapeHtml(p.name)}" data-tier="${escapeHtml(p.suggestedTier)}">Crear en HubSpot</button></td>
       `;
       unmatchedPartnersEl.appendChild(tr);
     }
+    wirePlatformLinkCells(unmatchedPartnersEl, companyByName, () => load(true));
     document.querySelectorAll('.createPartnerBtn').forEach((btn) => {
       btn.addEventListener('click', async () => {
         if (!confirm(`¿Crear la company "${btn.dataset.name}" en HubSpot como Partner (Company Score: ${btn.dataset.tier})?`)) return;

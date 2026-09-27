@@ -55,6 +55,28 @@ app.post('/api/apply', async (req, res) => {
   res.json({ results });
 });
 
+// Track 2 (plan 09/09/2026): records a human-confirmed match between an
+// existing HubSpot company and a client/partner name from nsign's own
+// player-history CSV that the automated matching couldn't reach on its own
+// (different trade name, abbreviation, etc.). Writes the literal client name
+// into nombre_en_plataforma so every future refresh recognizes it without
+// fuzzy-matching or a code change -- see lib/matching.js's platformNameIndex.
+// Same explicit-confirmation gate as every other write here: only called
+// after the user picks a company in the search box and confirms.
+app.post('/api/link-platform-name', async (req, res) => {
+  const { companyId, platformName } = req.body;
+  if (!companyId || !platformName) {
+    return res.status(400).json({ error: 'companyId and platformName are required' });
+  }
+  try {
+    const r = await updateCompany(companyId, { nombre_en_plataforma: platformName });
+    cache = null;
+    res.json({ ok: true, result: r });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: String(e.message || e) });
+  }
+});
+
 // Creates a brand-new company record (e.g. the Alcampo case: real active
 // deployment, no matching company found). Same explicit-confirmation gate as
 // /api/apply -- only called from the "Crear" button per unmatched client.
@@ -68,10 +90,11 @@ app.post('/api/create-company', async (req, res) => {
   }
 });
 
-// Creates the 3 custom properties (acceso_comercial_newsletter,
-// acuerdo_de_contacto_directo_firmado, fecha_firma_acuerdo_directo) if they
-// don't already exist. Schema-only -- touches no company records. Only
-// called from the explicit "Crear propiedades en HubSpot" button.
+// Creates the custom properties (acceso_comercial_newsletter,
+// acuerdo_de_contacto_directo_firmado, fecha_firma_acuerdo_directo, idioma,
+// nombre_en_plataforma) if they don't already exist. Schema-only -- touches
+// no company records. Only called from the explicit "Crear propiedades en
+// HubSpot" button.
 app.post('/api/setup-properties', async (req, res) => {
   try {
     const results = await setupCustomProperties();
