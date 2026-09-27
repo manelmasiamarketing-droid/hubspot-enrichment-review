@@ -7,6 +7,8 @@ const OBJECT_LABELS = {
   emails: 'Emails',
   calls: 'Llamadas',
   meetings: 'Reuniones',
+  line_items: 'Line Items',
+  communications: 'Comunicaciones',
 };
 
 const SIGNAL_LABELS = { emails: 'Email', deals: 'Deal (creado)', tasks: 'Tarea' };
