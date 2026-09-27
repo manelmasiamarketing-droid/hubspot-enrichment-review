@@ -4,7 +4,7 @@ const { buildProposals, buildPartnersExport, buildVerticalDeviceApprox } = requi
 const {
   updateCompany, updateContact, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany,
   setupCrosswalkProperties, findByProperty, findManyByProperty, createContact, associateDefault,
-  batchReadContactCompanies, batchReadCompanyNames, getById, searchByProperty,
+  batchReadContactCompanies, batchReadCompanyNames, getById, searchByProperty, getCompanyPropertyDefinition,
 } = require('./lib/hubspot');
 const fs = require('fs');
 const { buildInventory, debugAssociations, debugObjectRead, debugCount } = require('./lib/inventory');
@@ -264,6 +264,21 @@ app.get('/api/pilot/debug/search', async (req, res) => {
     const props = properties ? String(properties).split(',') : ['name'];
     const results = await searchByProperty(String(type), String(property), String(value), props, 20);
     res.json({ results });
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
+// Read-only: current definition (incl. enum options) of a company property
+// -- needed to check whether "Catalán" already exists as an option on
+// idioma before proposing it, since an enumeration property rejects a value
+// that isn't one of its defined options.
+app.get('/api/pilot/debug/property', async (req, res) => {
+  const { name } = req.query;
+  if (!name) return res.status(400).json({ error: 'Parámetro requerido: name' });
+  try {
+    const def = await getCompanyPropertyDefinition(String(name));
+    res.json({ result: def });
   } catch (e) {
     res.status(500).json({ error: String(e.message || e) });
   }

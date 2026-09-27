@@ -102,6 +102,13 @@
   }
   .note::before { content: "ⓘ"; font-size: 16px; }
   #pageIndicator { color: var(--text-dim); font-family: "JetBrains Mono", monospace; font-size: 12.5px; }
+  .tabs { display: flex; gap: 6px; margin-bottom: 18px; }
+  .tab-btn {
+    background: var(--card); color: var(--text-dim); border: 1px solid var(--border);
+    padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  }
+  .tab-btn:hover:not(:disabled) { background: #f7f9fd; }
+  .tab-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
 </style>
 </head>
 <body>
@@ -144,54 +151,62 @@
     Marca las filas que quieras aplicar y usa el botón <strong>“Verificar y aplicar a HubSpot”</strong> al final de la página — solo eso escribe datos.
   </div>
 
-  <div class="unmatched-section" style="margin-top:0;">
-    <h2>Paso 1 — Partners/resellers activos sin company en HubSpot (candidatos a crear)</h2>
-    <table>
-      <thead><tr><th>Partner</th><th>Dispositivos activos</th><th>Clientes gestionados</th><th>Tier sugerido</th><th>¿Ya existe en HubSpot?</th><th></th></tr></thead>
-      <tbody id="unmatchedPartnerRows"></tbody>
-    </table>
-  </div>
-
-  <h2 style="font-size:14.5px; font-weight:700; color:var(--navy); margin:28px 0 12px;">Paso 2 — Revisión de cambios propuestos (partners primero, luego sus clientes)</h2>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:24px;"><input type="checkbox" id="selectAll" /></th>
-        <th>Empresa</th>
-        <th>Rol detectado</th>
-        <th>Cambios propuestos</th>
-        <th>Confianza</th>
-      </tr>
-    </thead>
-    <tbody id="rows"></tbody>
-  </table>
-  <div class="toolbar" style="justify-content:center;">
-    <button class="ghost" id="prevPage">‹ Anterior</button>
-    <span id="pageIndicator" style="font-size:13px;"></span>
-    <button class="ghost" id="nextPage">Siguiente ›</button>
-  </div>
-
-  <div class="unmatched-section">
-    <h2>Clientes activos en el historial sin company en HubSpot (candidatos a crear)</h2>
-    <table>
-      <thead><tr><th>Cliente</th><th>Dispositivos activos</th><th>País</th><th>Vía</th><th>¿Ya existe en HubSpot?</th><th></th></tr></thead>
-      <tbody id="unmatchedRows"></tbody>
-    </table>
+  <div class="tabs">
+    <button class="tab-btn active" id="tabBtnPaso1" data-tab="paso1">Paso 1 — Candidatos a crear</button>
+    <button class="tab-btn" id="tabBtnPaso2" data-tab="paso2">Paso 2 — Revisión de cambios propuestos</button>
   </div>
 
   <datalist id="allCompaniesList"></datalist>
 
-  <div class="unmatched-section">
-    <h2>Sucursales detectadas (patrón "MARCA (sucursal)") con padre encontrado</h2>
-    <table>
-      <thead><tr><th>Marca / padre</th><th>Sucursales</th><th></th></tr></thead>
-      <tbody id="branchClusterRows"></tbody>
-    </table>
+  <div id="tab-paso1">
+    <div class="unmatched-section" style="margin-top:0;">
+      <h2>Partners/resellers activos sin company en HubSpot (candidatos a crear)</h2>
+      <table>
+        <thead><tr><th>Partner</th><th>Dispositivos activos</th><th>Clientes gestionados</th><th>Tier sugerido</th><th>¿Ya existe en HubSpot?</th><th></th></tr></thead>
+        <tbody id="unmatchedPartnerRows"></tbody>
+      </table>
+    </div>
+
+    <div class="unmatched-section">
+      <h2>Clientes activos en el historial sin company en HubSpot (candidatos a crear)</h2>
+      <table>
+        <thead><tr><th>Cliente</th><th>Dispositivos activos</th><th>País</th><th>Vía</th><th>¿Ya existe en HubSpot?</th><th></th></tr></thead>
+        <tbody id="unmatchedRows"></tbody>
+      </table>
+    </div>
   </div>
 
-  <div class="unmatched-section">
-    <h2>Marcas con varias sucursales pero sin registro padre en HubSpot</h2>
-    <ul id="branchClustersNoParent" style="font-size:13px; color:var(--text-dim);"></ul>
+  <div id="tab-paso2" hidden>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:24px;"><input type="checkbox" id="selectAll" /></th>
+          <th>Empresa</th>
+          <th>Rol detectado</th>
+          <th>Cambios propuestos</th>
+          <th>Confianza</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="toolbar" style="justify-content:center;">
+      <button class="ghost" id="prevPage">‹ Anterior</button>
+      <span id="pageIndicator" style="font-size:13px;"></span>
+      <button class="ghost" id="nextPage">Siguiente ›</button>
+    </div>
+
+    <div class="unmatched-section">
+      <h2>Sucursales detectadas (patrón "MARCA (sucursal)") con padre encontrado</h2>
+      <table>
+        <thead><tr><th>Marca / padre</th><th>Sucursales</th><th></th></tr></thead>
+        <tbody id="branchClusterRows"></tbody>
+      </table>
+    </div>
+
+    <div class="unmatched-section">
+      <h2>Marcas con varias sucursales pero sin registro padre en HubSpot</h2>
+      <ul id="branchClustersNoParent" style="font-size:13px; color:var(--text-dim);"></ul>
+    </div>
   </div>
 </main>
 

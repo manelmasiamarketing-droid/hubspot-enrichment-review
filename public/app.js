@@ -421,4 +421,16 @@ function renderBranchClusters() {
   }
 }
 
+function setupTabs() {
+  const buttons = document.querySelectorAll('.tab-btn');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.toggle('active', b === btn));
+      document.getElementById('tab-paso1').hidden = btn.dataset.tab !== 'paso1';
+      document.getElementById('tab-paso2').hidden = btn.dataset.tab !== 'paso2';
+    });
+  });
+}
+setupTabs();
+
 load(false);
