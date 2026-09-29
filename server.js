@@ -4,7 +4,8 @@ const { buildProposals, buildPartnersExport, buildVerticalDeviceApprox } = requi
 const {
   updateCompany, updateContact, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany,
   setupCrosswalkProperties, findByProperty, findManyByProperty, createContact, associateDefault,
-  batchReadContactCompanies, batchReadCompanyNames, getById, searchByProperty, getCompanyPropertyDefinition,
+  batchReadContactCompanies, batchReadCompanyNames, getById, searchByProperty,
+  getPropertyDefinition,
 } = require('./lib/hubspot');
 const fs = require('fs');
 const { buildInventory, debugAssociations, debugObjectRead, debugCount } = require('./lib/inventory');
@@ -274,10 +275,10 @@ app.get('/api/pilot/debug/search', async (req, res) => {
 // idioma before proposing it, since an enumeration property rejects a value
 // that isn't one of its defined options.
 app.get('/api/pilot/debug/property', async (req, res) => {
-  const { name } = req.query;
-  if (!name) return res.status(400).json({ error: 'Parámetro requerido: name' });
+  const { name, type } = req.query;
+  if (!name) return res.status(400).json({ error: 'Parámetro requerido: name. type opcional (default: companies).' });
   try {
-    const def = await getCompanyPropertyDefinition(String(name));
+    const def = await getPropertyDefinition(String(type || 'companies'), String(name));
     res.json({ result: def });
   } catch (e) {
     res.status(500).json({ error: String(e.message || e) });
