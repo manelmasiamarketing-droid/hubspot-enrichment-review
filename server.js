@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { buildProposals, buildPartnersExport, buildVerticalDeviceApprox } = require('./lib/proposals');
+const { buildProposals, buildPartnersExport, buildVerticalDeviceApprox, buildSupermarketClients } = require('./lib/proposals');
 const {
   updateCompany, updateContact, createCompany, setupCustomProperties, associateCompanies, associateParentChildCompany,
   setupCrosswalkProperties, findByProperty, findManyByProperty, createContact, associateDefault,
@@ -561,6 +561,16 @@ app.get('/api/vertical-device-approx', async (req, res) => {
   try {
     const result = await buildVerticalDeviceApprox();
     res.json(result);
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
+// Read-only: active clients whose HubSpot company is a supermarket (Manel,
+// 07/10/2026) -- active_devices summed per company from the player history.
+app.get('/api/supermarket-clients', async (req, res) => {
+  try {
+    res.json(await buildSupermarketClients());
   } catch (e) {
     res.status(500).json({ error: String(e.message || e) });
   }
