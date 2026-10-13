@@ -118,7 +118,17 @@ def init_db(path):
     CREATE TABLE IF NOT EXISTS associations(account TEXT, from_type TEXT, from_id TEXT, to_type TEXT,
         to_id TEXT, assoc_types TEXT, PRIMARY KEY(account, from_type, from_id, to_type, to_id));
     CREATE TABLE IF NOT EXISTS properties_meta(account TEXT, type TEXT, name TEXT, label TEXT,
-        prop_type TEXT, field_type TEXT, group_name TEXT, options TEXT, PRIMARY KEY(account, type, name));
+        prop_type TEXT, field_type TEXT, group_name TEXT, options TEXT, calculated INTEGER,
+        hubspot_defined INTEGER, read_only INTEGER, formula TEXT, description TEXT, definition TEXT,
+        PRIMARY KEY(account, type, name));
+    CREATE TABLE IF NOT EXISTS properties_usage(account TEXT, type TEXT, name TEXT, filled INTEGER,
+        total INTEGER, PRIMARY KEY(account, type, name));
+    CREATE VIEW IF NOT EXISTS v_campos_calculados AS SELECT m.account, m.type, m.name, m.label, m.formula,
+        m.hubspot_defined, u.filled, u.total FROM properties_meta m LEFT JOIN properties_usage u
+        ON u.account=m.account AND u.type=m.type AND u.name=m.name WHERE m.calculated=1;
+    CREATE VIEW IF NOT EXISTS v_campos_personalizados AS SELECT m.account, m.type, m.name, m.label, m.prop_type,
+        u.filled, u.total FROM properties_meta m LEFT JOIN properties_usage u
+        ON u.account=m.account AND u.type=m.type AND u.name=m.name WHERE m.hubspot_defined=0;
     CREATE TABLE IF NOT EXISTS attachments(account TEXT, file_id TEXT, owner_type TEXT, owner_id TEXT,
         name TEXT, extension TEXT, size INTEGER, url TEXT, access TEXT, local_path TEXT, sha256 TEXT,
         status TEXT, note TEXT, PRIMARY KEY(account, file_id, owner_type, owner_id));
@@ -168,9 +178,12 @@ def export_type(api, db, account, otype, chunk, with_archived):
         log(db, account, step, "skipped", note="HTTP %s %s" % (e.status, re.sub(r"\s+", " ", e.text)[:160]))
         return
     for p in meta:
-        db.execute("INSERT OR REPLACE INTO properties_meta VALUES(?,?,?,?,?,?,?,?)",
+        db.execute("INSERT OR REPLACE INTO properties_meta VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                    (account, otype, p.get("name"), p.get("label"), p.get("type"), p.get("fieldType"),
-                    p.get("groupName"), json.dumps(p.get("options") or [], ensure_ascii=False)))
+                    p.get("groupName"), json.dumps(p.get("options") or [], ensure_ascii=False),
+                    1 if p.get("calculated") else 0, 1 if p.get("hubspotDefined") else 0,
+                    1 if p.get("readOnlyValue") else 0, p.get("calculationFormula"), p.get("description"),
+                    json.dumps(p, ensure_ascii=False)))
     db.commit()
     names = [p["name"] for p in meta]
     expected = None
@@ -367,6 +380,24 @@ def export_attachments(api, db, account, outdir, mode, max_total_bytes):
     log(db, account, "attachments:download", "done", len(seen), note="%.1f MB" % (downloaded / 1e6))
 
 
+def property_usage(db, account):
+    """How many records actually have each property filled, and any value whose property has no definition."""
+    db.execute("DELETE FROM properties_usage WHERE account=?", (account,))
+    db.execute("""INSERT INTO properties_usage SELECT o.account, o.type, j.key, COUNT(*),
+        (SELECT COUNT(*) FROM objects t WHERE t.account=o.account AND t.type=o.type AND t.archived=0)
+        FROM objects o, json_each(o.props) j WHERE o.account=? AND o.archived=0 GROUP BY o.type, j.key""", (account,))
+    db.commit()
+    print("\n[%s] CAMPOS POR OBJETO (definidos / calculados / personalizados / con algún dato)" % account)
+    for t, n, c, cu, f in db.execute("""SELECT m.type, COUNT(*), SUM(m.calculated), SUM(1-m.hubspot_defined),
+            SUM(CASE WHEN u.filled>0 THEN 1 ELSE 0 END) FROM properties_meta m LEFT JOIN properties_usage u
+            ON u.account=m.account AND u.type=m.type AND u.name=m.name WHERE m.account=? GROUP BY m.type""", (account,)):
+        print("   %-22s %4d / %4d / %4d / %4d" % (t, n, c or 0, cu or 0, f or 0))
+    orphan = db.execute("""SELECT u.type, u.name FROM properties_usage u LEFT JOIN properties_meta m
+        ON m.account=u.account AND m.type=u.type AND m.name=u.name WHERE u.account=? AND m.name IS NULL""", (account,)).fetchall()
+    if orphan:
+        print("   AVISO: valores sin definicion de campo:", orphan[:10])
+
+
 def load_env(path):
     if path and os.path.exists(path):
         for line in open(path, encoding="utf-8"):
@@ -419,6 +450,7 @@ def main():
             export_associations(api, db, account)
         export_misc(api, db, account)
         export_attachments(api, db, account, outdir, args.attachments, int(args.max_total_gb * 1e9))
+        property_usage(db, account)
     if not ran:
         sys.exit("Ninguna cuenta con token. Crea %s con HUBSPOT_TOKEN y HUBSPOT_TOKEN_B." % args.env)
     print("\nRESUMEN")
