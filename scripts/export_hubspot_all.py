@@ -31,6 +31,8 @@ import urllib.request
 from datetime import datetime, timezone
 
 BASE = os.environ.get("HUBSPOT_API_BASE", "https://api.hubapi.com")
+BROWSER_UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) "
+              "Chrome/124.0 Safari/537.36")
 DEFAULT_DRIVE_DIR = ("/Users/leandrobraier/Library/CloudStorage/GoogleDrive-mmasia@nsign.tv/"
                      "Unidades compartidas/Marketing/MKT-nsign/Projectes/HS to Brevo")
 ACCOUNT_ENV = {"A": "HUBSPOT_TOKEN", "B": "HUBSPOT_TOKEN_B"}
@@ -86,7 +88,10 @@ class Api:
             url += "?" + urllib.parse.urlencode(params, doseq=True)
         data = json.dumps(body).encode() if body is not None else None
         headers = {"Content-Type": "application/json"}
-        if not absolute:
+        if absolute:
+            # HubSpot's CDN (Cloudflare) rejects the default Python user agent with 403 "error code: 1010".
+            headers = {"User-Agent": BROWSER_UA, "Accept": "*/*"}
+        else:
             headers["Authorization"] = "Bearer " + self.token
         for attempt in range(8):
             time.sleep(self.delay)
@@ -423,7 +428,7 @@ def export_file_manager(api, db, account, outdir, mode, max_total_bytes):
     if not items:
         return
     already = db.execute("SELECT COALESCE(SUM(size),0) FROM attachments WHERE account=? AND status='downloaded'", (account,)).fetchone()[0]
-    total = fetched = 0
+    total = fetched = errors = 0
     for f in items:
         fid = str(f["id"])
         if db.execute("SELECT 1 FROM attachments WHERE account=? AND file_id=? AND status='downloaded'", (account, fid)).fetchone():
@@ -446,8 +451,10 @@ def export_file_manager(api, db, account, outdir, mode, max_total_bytes):
             db.execute("INSERT OR REPLACE INTO attachments VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
                        (account, fid, "file_manager", "", f.get("name"), f.get("extension"), size, f.get("url"),
                         f.get("access"), None, None, "error", str(e)[:200]))
+            errors += 1
         db.commit()
-    log(db, account, step, "done", fetched, note="%.1f MB" % (total / 1e6))
+    log(db, account, step, "partial" if errors else "done", fetched,
+        note="%.1f MB, %d errores (se reintentan al relanzar)" % (total / 1e6, errors) if errors else "%.1f MB" % (total / 1e6))
 
 
 def owner_label(db, account, otype, oid):
