@@ -147,3 +147,16 @@ account (Private App tokens are portal-specific, so `HUBSPOT_TOKEN` from this
 same app cannot be reused) with read scopes on companies/contacts/deals/notes/
 tasks/emails/calls/meetings, set it as `HUBSPOT_TOKEN_B` (env var, never
 committed), then open `/inventory.html` and click "Cargar inventario".
+
+## Full export of both HubSpot accounts (`scripts/export_hubspot_all.py`)
+
+Read-only. Dumps every object type (all properties, archived included), every
+association, owners/pipelines/forms/lists/users/workflows/files metadata, and
+the files attached to emails/notes/meetings (`hs_attachment_ids`) into one
+SQLite file outside the repo (`../base-de-datos/hubspot_completo.sqlite`,
+attachments in `../base-de-datos/adjuntos/`). Runs on your machine because the
+tokens only live on Render. Put `HUBSPOT_TOKEN` and `HUBSPOT_TOKEN_B` in
+`.env` (git-ignored), then `python3 scripts/export_hubspot_all.py`. Safe to
+re-run (resumes), `--force` to redo, `--attachments none|meta|download`.
+Anything a token can't read (missing scope) is logged in `export_log`, not fatal.
+Not covered: timeline analytics (page views, marketing email opens/clicks).
