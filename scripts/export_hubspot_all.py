@@ -31,6 +31,8 @@ import urllib.request
 from datetime import datetime, timezone
 
 BASE = os.environ.get("HUBSPOT_API_BASE", "https://api.hubapi.com")
+DEFAULT_DRIVE_DIR = ("/Users/leandrobraier/Library/CloudStorage/GoogleDrive-mmasia@nsign.tv/"
+                     "Unidades compartidas/Marketing/MKT-nsign/Projectes/HS to Brevo")
 ACCOUNT_ENV = {"A": "HUBSPOT_TOKEN", "B": "HUBSPOT_TOKEN_B"}
 ENGAGEMENTS = ["emails", "notes", "tasks", "calls", "meetings", "communications"]
 OBJECT_TYPES = [
@@ -279,6 +281,27 @@ def safe(name):
     return re.sub(r"[^A-Za-z0-9._-]+", "_", name or "file")[:120]
 
 
+def owner_label(db, account, otype, oid):
+    """(folder, date, subject) so Drive stays browsable: account/company/date_subject__file."""
+    row = db.execute("SELECT props FROM objects WHERE account=? AND type=? AND id=?", (account, otype, oid)).fetchone()
+    props = json.loads(row[0]) if row else {}
+    date = (props.get("hs_timestamp") or props.get("hs_createdate") or "")[:10] or "sin-fecha"
+    subject = props.get("hs_email_subject") or props.get("hs_meeting_title") or props.get("hs_note_body", "")[:40] or otype
+    folder = None
+    for name_sql, args in (
+        ("SELECT json_extract(c.props,'$.name') FROM associations a JOIN objects c ON c.account=a.account AND c.type='companies' AND c.id=a.to_id "
+         "WHERE a.account=? AND a.from_type=? AND a.from_id=? AND a.to_type='companies' LIMIT 1", (account, otype, oid)),
+        ("SELECT COALESCE(json_extract(c.props,'$.email'), json_extract(c.props,'$.lastname')) FROM associations a JOIN objects c "
+         "ON c.account=a.account AND c.type='contacts' AND c.id=a.to_id WHERE a.account=? AND a.from_type=? AND a.from_id=? "
+         "AND a.to_type='contacts' LIMIT 1", (account, otype, oid)),
+    ):
+        r = db.execute(name_sql, args).fetchone()
+        if r and r[0]:
+            folder = r[0]
+            break
+    return safe(folder or "sin-asociar")[:60], date, safe(re.sub(r"<[^>]+>", " ", subject))[:60]
+
+
 def export_attachments(api, db, account, outdir, mode, max_total_bytes):
     """Files linked from engagements via hs_attachment_ids (emails, notes, meetings...)."""
     if mode == "none":
@@ -321,10 +344,13 @@ def export_attachments(api, db, account, outdir, mode, max_total_bytes):
         if downloaded + (size or 0) > max_total_bytes:
             log(db, account, "attachments:download", "stopped", note="max-total-gb cap reached")
             return
-        target_dir = os.path.join(outdir, account)
+        otype_o, oid_o = db.execute(
+            "SELECT owner_type, owner_id FROM attachments WHERE account=? AND file_id=? LIMIT 1", (account, fid)).fetchone()
+        folder, date, subject = owner_label(db, account, otype_o, oid_o)
+        target_dir = os.path.join(outdir, account, folder)
         os.makedirs(target_dir, exist_ok=True)
-        fname = "%s_%s" % (fid, safe(name if not ext or str(name).endswith("." + ext) else "%s.%s" % (name, ext)))
-        path = os.path.join(target_dir, fname)
+        base = safe(name if not ext or str(name).endswith("." + ext) else "%s.%s" % (name, ext))
+        path = os.path.join(target_dir, "%s_%s__%s_%s" % (date, subject, fid, base))
         try:
             if access and access.startswith("PRIVATE"):
                 url = api.call("GET", "/files/v3/files/%s/signed-url" % fid).get("url")
@@ -355,6 +381,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--env", default=os.path.join(repo, ".env"))
     ap.add_argument("--db", default=os.path.join(os.path.dirname(repo), "base-de-datos", "hubspot_completo.sqlite"))
+    ap.add_argument("--drive-dir", default=DEFAULT_DRIVE_DIR,
+                    help="Shared Drive folder: attachments go to <dir>/adjuntos and a DB snapshot to <dir>/base-de-datos")
     ap.add_argument("--attachments-dir", default=None)
     ap.add_argument("--accounts", default="A,B")
     ap.add_argument("--only", default="", help="comma list of object types")
@@ -368,7 +396,11 @@ def main():
 
     load_env(args.env)
     db = init_db(args.db)
-    outdir = args.attachments_dir or os.path.join(os.path.dirname(os.path.abspath(args.db)), "adjuntos")
+    drive_ok = bool(args.drive_dir) and os.path.isdir(args.drive_dir)
+    if args.attachments != "none" and not args.attachments_dir and not drive_ok:
+        print("AVISO: no encuentro la carpeta de Drive (%s); los adjuntos irán junto a la base local." % args.drive_dir)
+    outdir = args.attachments_dir or (os.path.join(args.drive_dir, "adjuntos") if drive_ok
+                                      else os.path.join(os.path.dirname(os.path.abspath(args.db)), "adjuntos"))
     types = [t for t in args.only.split(",") if t] or OBJECT_TYPES
     ran = 0
     for account in [a.strip().upper() for a in args.accounts.split(",")]:
@@ -393,6 +425,15 @@ def main():
     for row in db.execute("SELECT account, step, status, fetched, expected, note FROM export_log ORDER BY account, step"):
         print("  %s %-30s %-8s %6s / %-6s %s" % row)
     print("\nBase de datos:", os.path.abspath(args.db))
+    if drive_ok:
+        # The live DB stays local (Drive sync can corrupt an open SQLite); a consistent copy goes to Drive.
+        snap_dir = os.path.join(args.drive_dir, "base-de-datos")
+        os.makedirs(snap_dir, exist_ok=True)
+        snap = os.path.join(snap_dir, "hubspot_completo_%s.sqlite" % datetime.now().strftime("%Y-%m-%d"))
+        dest = sqlite3.connect(snap)
+        db.backup(dest)
+        dest.close()
+        print("Copia en Drive:", snap)
 
 
 if __name__ == "__main__":
