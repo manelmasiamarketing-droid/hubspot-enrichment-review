@@ -39,6 +39,8 @@ OBJECT_TYPES = [
     "companies", "contacts", "deals", "tickets", "line_items", "products", "quotes",
     *ENGAGEMENTS, "postal_mail", "feedback_submissions", "leads", "orders", "carts",
     "invoices", "subscriptions", "appointments", "courses", "listings", "services",
+    "contracts", "projects", "goals", "marketing_events", "partner_clients", "partner_services",
+    "discounts", "fees", "taxes", "commerce_payments",
 ]
 ASSOC_PAIRS = (
     [("companies", t) for t in ("contacts", "deals", "tickets", "companies")]
@@ -62,6 +64,9 @@ MISC = [
     ("teams", "GET", "/settings/v3/users/teams", None, "results", None),
     ("workflows", "GET", "/automation/v4/flows", {"limit": 100}, "results", "after"),
     ("files_all", "GET", "/files/v3/files/search", {"limit": 100}, "results", "after"),
+    ("conversation_inboxes", "GET", "/conversations/v3/conversations/inboxes", {"limit": 100}, "results", "after"),
+    ("conversation_channels", "GET", "/conversations/v3/conversations/channels", {"limit": 100}, "results", "after"),
+    ("conversation_channel_accounts", "GET", "/conversations/v3/conversations/channel-accounts", {"limit": 100}, "results", "after"),
 ]
 
 
@@ -134,6 +139,12 @@ def init_db(path):
         status TEXT, note TEXT, PRIMARY KEY(account, file_id, owner_type, owner_id));
     CREATE TABLE IF NOT EXISTS misc(account TEXT, name TEXT, item_id TEXT, json TEXT,
         PRIMARY KEY(account, name, item_id));
+    CREATE TABLE IF NOT EXISTS assoc_labels(account TEXT, from_type TEXT, to_type TEXT, type_id INTEGER,
+        category TEXT, label TEXT, PRIMARY KEY(account, from_type, to_type, type_id, category));
+    CREATE TABLE IF NOT EXISTS list_members(account TEXT, list_id TEXT, record_id TEXT, added_at TEXT,
+        PRIMARY KEY(account, list_id, record_id));
+    CREATE TABLE IF NOT EXISTS conversation_messages(account TEXT, thread_id TEXT, message_id TEXT, json TEXT,
+        PRIMARY KEY(account, thread_id, message_id));
     CREATE TABLE IF NOT EXISTS export_log(account TEXT, step TEXT, status TEXT, fetched INTEGER,
         expected INTEGER, note TEXT, finished_at TEXT, PRIMARY KEY(account, step));
     CREATE INDEX IF NOT EXISTS idx_assoc_to ON associations(account, to_type, to_id);
@@ -250,8 +261,10 @@ def export_associations(api, db, account):
         log(db, account, step, "done", total)
 
 
-def export_misc(api, db, account):
+def export_misc(api, db, account, only=None):
     for name, method, path, params, key, paging in MISC:
+        if only and name not in only:
+            continue
         step = "misc:" + name
         if done(db, account, step):
             continue
@@ -292,6 +305,149 @@ def export_misc(api, db, account):
 
 def safe(name):
     return re.sub(r"[^A-Za-z0-9._-]+", "_", name or "file")[:120]
+
+
+
+def paged(api, path, params, key="results"):
+    """Yield every item of a cursor-paginated GET (paging.next.after)."""
+    after = None
+    while True:
+        p = dict(params)
+        if after:
+            p["after"] = after
+        page = api.call("GET", path, params=p)
+        for it in page.get(key, []):
+            yield it
+        after = (page.get("paging") or {}).get("next", {}).get("after")
+        if not after:
+            return
+
+
+def export_assoc_labels(api, db, account):
+    step = "assoc-labels"
+    if done(db, account, step):
+        return
+    n = 0
+    for f, t in ASSOC_PAIRS:
+        try:
+            res = api.call("GET", "/crm/v4/associations/%s/%s/labels" % (f, t)).get("results", [])
+        except ApiError:
+            continue
+        for r in res:
+            db.execute("INSERT OR REPLACE INTO assoc_labels VALUES(?,?,?,?,?,?)",
+                       (account, f, t, r.get("typeId"), r.get("category"), r.get("label")))
+            n += 1
+    db.commit()
+    log(db, account, step, "done", n)
+
+
+def export_list_members(api, db, account):
+    step = "list-members"
+    if done(db, account, step):
+        return
+    lists = [json.loads(j) for (j,) in db.execute("SELECT json FROM misc WHERE account=? AND name='lists'", (account,))]
+    if not lists:
+        return
+    n = 0
+    try:
+        for lst in lists:
+            lid = str(lst.get("listId") or lst.get("id"))
+            for m in paged(api, "/crm/v3/lists/%s/memberships" % lid, {"limit": 250}):
+                db.execute("INSERT OR REPLACE INTO list_members VALUES(?,?,?,?)",
+                           (account, lid, str(m.get("recordId")), m.get("membershipTimestamp")))
+                n += 1
+            db.commit()
+    except ApiError as e:
+        log(db, account, step, "error", n, note="HTTP %s %s" % (e.status, re.sub(r"\s+", " ", e.text)[:120]))
+        return
+    log(db, account, step, "done", n, note="%d lists" % len(lists))
+
+
+def export_custom_objects(api, db, account, chunk, with_archived):
+    for (j,) in db.execute("SELECT json FROM misc WHERE account=? AND name='schemas_custom_objects'", (account,)).fetchall():
+        sch = json.loads(j)
+        tid = sch.get("objectTypeId")
+        if tid and not done(db, account, "objects:" + tid):
+            export_type(api, db, account, tid, chunk, with_archived)
+
+
+def export_conversations(api, db, account):
+    step = "conversations"
+    if done(db, account, step):
+        return
+    threads = msgs = 0
+    try:
+        for archived in ("false", "true"):
+            for th in paged(api, "/conversations/v3/conversations/threads", {"limit": 100, "archived": archived}):
+                tid = str(th["id"])
+                db.execute("INSERT OR REPLACE INTO objects VALUES(?,?,?,?,?,?,?)",
+                           (account, "conversation_threads", tid, th.get("createdAt"), th.get("latestMessageTimestamp"),
+                            1 if archived == "true" else 0,
+                            json.dumps({k: v for k, v in th.items() if v not in (None, "")}, ensure_ascii=False)))
+                threads += 1
+                for m in paged(api, "/conversations/v3/conversations/threads/%s/messages" % tid, {"limit": 100}):
+                    db.execute("INSERT OR REPLACE INTO conversation_messages VALUES(?,?,?,?)",
+                               (account, tid, str(m.get("id")), json.dumps(m, ensure_ascii=False)))
+                    msgs += 1
+                if threads % 50 == 0:
+                    db.commit()
+            db.commit()
+    except ApiError as e:
+        log(db, account, step, "skipped", threads, note="HTTP %s %s" % (e.status, re.sub(r"\s+", " ", e.text)[:120]))
+        return
+    log(db, account, step, "done", threads, note="%d messages" % msgs)
+
+
+def fetch_file(api, db, account, f, path):
+    """Download one HubSpot file (signed URL for private ones) and return its size."""
+    if os.path.exists(path) and os.path.getsize(path) > 0:
+        with open(path, "rb") as fh:
+            blob = fh.read()
+        return len(blob), hashlib.sha256(blob).hexdigest()
+    url = f.get("url")
+    if str(f.get("access") or "").startswith("PRIVATE"):
+        url = api.call("GET", "/files/v3/files/%s/signed-url" % f["id"]).get("url")
+    blob = api.raw("GET", url, absolute=True)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "wb") as fh:
+        fh.write(blob)
+    return len(blob), hashlib.sha256(blob).hexdigest()
+
+
+def export_file_manager(api, db, account, outdir, mode, max_total_bytes):
+    """Everything in the File Manager (template images, PDFs...) -- those HubSpot-hosted links die with the account."""
+    step = "file-manager"
+    if mode != "download" or done(db, account, step):
+        return
+    items = [json.loads(j) for (j,) in db.execute("SELECT json FROM misc WHERE account=? AND name='files_all'", (account,))]
+    if not items:
+        return
+    already = db.execute("SELECT COALESCE(SUM(size),0) FROM attachments WHERE account=? AND status='downloaded'", (account,)).fetchone()[0]
+    total = fetched = 0
+    for f in items:
+        fid = str(f["id"])
+        if db.execute("SELECT 1 FROM attachments WHERE account=? AND file_id=? AND status='downloaded'", (account, fid)).fetchone():
+            continue
+        size = f.get("size") or 0
+        if already + total + size > max_total_bytes:
+            log(db, account, step, "stopped", fetched, note="max-total-gb cap reached")
+            return
+        parts = [safe(x) for x in (f.get("path") or "").strip("/").split("/") if x]
+        name = safe("%s.%s" % (f.get("name"), f.get("extension")) if f.get("extension") and not str(f.get("name")).endswith("." + str(f.get("extension"))) else f.get("name"))
+        path = os.path.join(outdir, account, "_gestor-archivos", *(parts[:-1] or []), "%s__%s" % (fid, parts[-1] if parts else name))
+        try:
+            n, sha = fetch_file(api, db, account, f, path)
+            db.execute("INSERT OR REPLACE INTO attachments VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                       (account, fid, "file_manager", "", f.get("name"), f.get("extension"), n, f.get("url"),
+                        f.get("access"), path, sha, "downloaded", ""))
+            total += n
+            fetched += 1
+        except Exception as e:
+            db.execute("INSERT OR REPLACE INTO attachments VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                       (account, fid, "file_manager", "", f.get("name"), f.get("extension"), size, f.get("url"),
+                        f.get("access"), None, None, "error", str(e)[:200]))
+        db.commit()
+    log(db, account, step, "done", fetched, note="%.1f MB" % (total / 1e6))
 
 
 def owner_label(db, account, otype, oid):
@@ -365,14 +521,10 @@ def export_attachments(api, db, account, outdir, mode, max_total_bytes):
         base = safe(name if not ext or str(name).endswith("." + ext) else "%s.%s" % (name, ext))
         path = os.path.join(target_dir, "%s_%s__%s_%s" % (date, subject, fid, base))
         try:
-            if access and access.startswith("PRIVATE"):
-                url = api.call("GET", "/files/v3/files/%s/signed-url" % fid).get("url")
-            blob = api.raw("GET", url, absolute=True)
-            with open(path, "wb") as fh:
-                fh.write(blob)
-            downloaded += len(blob)
+            n, sha = fetch_file(api, db, account, {"id": fid, "url": url, "access": access}, path)
+            downloaded += n
             db.execute("UPDATE attachments SET local_path=?, sha256=?, status='downloaded' WHERE account=? AND file_id=?",
-                       (path, hashlib.sha256(blob).hexdigest(), account, fid))
+                       (path, sha, account, fid))
         except Exception as e:  # keep going: one broken file must not stop the export
             db.execute("UPDATE attachments SET status='error', note=? WHERE account=? AND file_id=?",
                        (str(e)[:200], account, fid))
@@ -421,6 +573,7 @@ def main():
     ap.add_argument("--attachments", choices=["none", "meta", "download"], default="download")
     ap.add_argument("--max-total-gb", type=float, default=20.0)
     ap.add_argument("--skip-assoc", action="store_true")
+    ap.add_argument("--only-files", action="store_true", help="only list + download the whole File Manager (safe to run in parallel with a separate --db)")
     ap.add_argument("--no-archived", action="store_true")
     ap.add_argument("--force", action="store_true")
     args = ap.parse_args()
@@ -443,13 +596,22 @@ def main():
         api = Api(token)
         if args.force:
             db.execute("DELETE FROM export_log WHERE account=?", (account,))
+        if args.only_files:
+            export_misc(api, db, account, {"files_all"})
+            export_file_manager(api, db, account, outdir, "download", int(args.max_total_gb * 1e9))
+            continue
         for otype in types:
             if not done(db, account, "objects:" + otype):
                 export_type(api, db, account, otype, args.chunk, not args.no_archived)
         if not args.skip_assoc:
+            export_assoc_labels(api, db, account)
             export_associations(api, db, account)
         export_misc(api, db, account)
+        export_custom_objects(api, db, account, args.chunk, not args.no_archived)
+        export_list_members(api, db, account)
+        export_conversations(api, db, account)
         export_attachments(api, db, account, outdir, args.attachments, int(args.max_total_gb * 1e9))
+        export_file_manager(api, db, account, outdir, args.attachments, int(args.max_total_gb * 1e9))
         property_usage(db, account)
     if not ran:
         sys.exit("Ninguna cuenta con token. Crea %s con HUBSPOT_TOKEN y HUBSPOT_TOKEN_B." % args.env)
@@ -461,7 +623,7 @@ def main():
         # The live DB stays local (Drive sync can corrupt an open SQLite); a consistent copy goes to Drive.
         snap_dir = os.path.join(args.drive_dir, "base-de-datos")
         os.makedirs(snap_dir, exist_ok=True)
-        snap = os.path.join(snap_dir, "hubspot_completo_%s.sqlite" % datetime.now().strftime("%Y-%m-%d"))
+        snap = os.path.join(snap_dir, "%s_%s.sqlite" % (os.path.splitext(os.path.basename(args.db))[0], datetime.now().strftime("%Y-%m-%d")))
         dest = sqlite3.connect(snap)
         db.backup(dest)
         dest.close()
