@@ -208,35 +208,46 @@ def export_type(api, db, account, otype, chunk, with_archived):
     except ApiError:
         pass
     groups = [names[i:i + chunk] for i in range(0, len(names), chunk)] or [[]]
+    archived_note = ""
     try:
         for archived in ([False, True] if with_archived else [False]):
-            for props in groups:
-                after = None
-                while True:
-                    params = {"limit": 100, "archived": "true" if archived else "false"}
-                    if props:
-                        params["properties"] = ",".join(props)
-                    if after:
-                        params["after"] = after
-                    page = api.call("GET", "/crm/v3/objects/" + otype, params=params)
-                    for r in page.get("results", []):
-                        slim = {k: v for k, v in (r.get("properties") or {}).items() if v not in (None, "")}
-                        db.execute(
-                            "INSERT INTO objects VALUES(?,?,?,?,?,?,?) ON CONFLICT(account,type,id) DO UPDATE SET "
-                            "props=json_patch(objects.props, excluded.props), updated=excluded.updated, "
-                            "archived=MIN(objects.archived, excluded.archived)",
-                            (account, otype, str(r["id"]), r.get("createdAt"), r.get("updatedAt"),
-                             1 if archived else 0, json.dumps(slim, ensure_ascii=False)))
-                    db.commit()
-                    after = (page.get("paging") or {}).get("next", {}).get("after")
-                    if not after:
-                        break
+            try:
+                _fetch_pass(api, db, account, otype, groups, archived)
+            except ApiError as e:
+                if archived and e.status == 400 and "deleted objects" in e.text.lower():
+                    archived_note = "archivados no soportados por la API para este tipo"
+                    break
+                raise
     except ApiError as e:
         log(db, account, step, "error", note="HTTP %s %s" % (e.status, re.sub(r"\s+", " ", e.text)[:160]))
         return
     n = db.execute("SELECT COUNT(*) FROM objects WHERE account=? AND type=? AND archived=0", (account, otype)).fetchone()[0]
     note = "" if expected is None or expected == n else "MISMATCH vs search total"
-    log(db, account, step, "done", n, expected, note)
+    log(db, account, step, "done", n, expected, "; ".join(x for x in (note, archived_note) if x))
+
+
+def _fetch_pass(api, db, account, otype, groups, archived):
+    for props in groups:
+        after = None
+        while True:
+            params = {"limit": 100, "archived": "true" if archived else "false"}
+            if props:
+                params["properties"] = ",".join(props)
+            if after:
+                params["after"] = after
+            page = api.call("GET", "/crm/v3/objects/" + otype, params=params)
+            for r in page.get("results", []):
+                slim = {k: v for k, v in (r.get("properties") or {}).items() if v not in (None, "")}
+                db.execute(
+                    "INSERT INTO objects VALUES(?,?,?,?,?,?,?) ON CONFLICT(account,type,id) DO UPDATE SET "
+                    "props=json_patch(objects.props, excluded.props), updated=excluded.updated, "
+                    "archived=MIN(objects.archived, excluded.archived)",
+                    (account, otype, str(r["id"]), r.get("createdAt"), r.get("updatedAt"),
+                     1 if archived else 0, json.dumps(slim, ensure_ascii=False)))
+            db.commit()
+            after = (page.get("paging") or {}).get("next", {}).get("after")
+            if not after:
+                break
 
 
 def export_associations(api, db, account):
@@ -494,7 +505,7 @@ def export_attachments(api, db, account, outdir, mode, max_total_bytes):
         return
     for fid, links in owners.items():
         have = db.execute("SELECT status FROM attachments WHERE account=? AND file_id=? LIMIT 1", (account, fid)).fetchone()
-        if have:
+        if have and have[0] in ("meta", "downloaded"):
             continue
         try:
             f = api.call("GET", "/files/v3/files/" + fid)
@@ -579,6 +590,8 @@ def main():
     ap.add_argument("--chunk", type=int, default=50, help="properties per request")
     ap.add_argument("--attachments", choices=["none", "meta", "download"], default="download")
     ap.add_argument("--max-total-gb", type=float, default=20.0)
+    ap.add_argument("--snapshot-to-drive", action="store_true",
+                    help="also copy the whole SQLite into <drive-dir>/base-de-datos (multi-GB and holds personal data: off by default)")
     ap.add_argument("--skip-assoc", action="store_true")
     ap.add_argument("--only-files", action="store_true", help="only list + download the whole File Manager (safe to run in parallel with a separate --db)")
     ap.add_argument("--no-archived", action="store_true")
@@ -626,7 +639,7 @@ def main():
     for row in db.execute("SELECT account, step, status, fetched, expected, note FROM export_log ORDER BY account, step"):
         print("  %s %-30s %-8s %6s / %-6s %s" % row)
     print("\nBase de datos:", os.path.abspath(args.db))
-    if drive_ok:
+    if drive_ok and args.snapshot_to_drive:
         # The live DB stays local (Drive sync can corrupt an open SQLite); a consistent copy goes to Drive.
         snap_dir = os.path.join(args.drive_dir, "base-de-datos")
         os.makedirs(snap_dir, exist_ok=True)
